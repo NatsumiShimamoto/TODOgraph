@@ -6,8 +6,8 @@
 //  Copyright (c) 2013年 嶋本夏海. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface TODO_graphTests : SenTestCase
+@interface TODO_graphTests : XCTestCase
 
 @end
