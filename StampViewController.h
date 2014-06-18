@@ -12,6 +12,8 @@
 
 @interface StampViewController : UIViewController
 {
+    IBOutlet UILabel *label;
+    
     UIImage *stmArray[7];
     int i;
     

@@ -34,10 +34,13 @@
     IBOutlet UILabel *enLabel;
     IBOutlet UILabel *kouLabel;
     IBOutlet UILabel *teiLabel;
+    IBOutlet UILabel *lineLabel;
+
     
     IBOutlet UIButton *button; //動きの命令じゃないからIBActionではない
     
-    //IBOutlet UIButton *dateButton;
+    IBOutlet UIButton *checkButton;
+    IBOutlet UIButton *backButton;
 }
 
 @property int editIndex; //スタンプを作った順番

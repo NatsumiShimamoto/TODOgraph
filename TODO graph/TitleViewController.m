@@ -10,5 +10,12 @@
 #import "TitleViewController.h"
 
 @implementation TitleViewController
-
+-(void)viewDidLoad{
+    
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+ 
+    [todo.layer setShadowOpacity:0.2f];
+    [todo.layer setShadowOffset:CGSizeMake(0.5, 0.5)];
+}
 @end

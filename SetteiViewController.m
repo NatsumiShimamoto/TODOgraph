@@ -22,102 +22,51 @@
     
     /* -- フォントの設定 */
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-
+    
     if(screenSize.width == 320.0 && screenSize.height == 568.0)
     {
         [kigenLabel setFont:[UIFont fontWithName:@"azuki_font" size:20]];
+        [juyouLabel setFont:[UIFont fontWithName:@"azuki_font" size:20]];
+        [settingLabel setFont:[UIFont fontWithName:@"azuki_font" size:35]];
+        [kinLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
+        [enLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
+        [kouLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
+        [teiLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
+        [lineLabel setFont:[UIFont fontWithName:@"azuki_font" size:20]];
+
     }
     else if(screenSize.width == 320.0 && screenSize.height == 480.0)
     {
         [kigenLabel setFont:[UIFont fontWithName:@"azuki_font" size:20]];
+        [juyouLabel setFont:[UIFont fontWithName:@"azuki_font" size:20]];
+        [settingLabel setFont:[UIFont fontWithName:@"azuki_font" size:35]];
+        [kinLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
+        [enLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
+        [kouLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
+        [teiLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
     }
     else{
         [kigenLabel setFont:[UIFont fontWithName:@"azuki_font" size:50]];
-    }
-    
-    
-    if(screenSize.width == 320.0 && screenSize.height == 568.0)
-    {
-        [juyouLabel setFont:[UIFont fontWithName:@"azuki_font" size:20]];
-    }
-    else if(screenSize.width == 320.0 && screenSize.height == 480.0)
-    {
-    [juyouLabel setFont:[UIFont fontWithName:@"azuki_font" size:20]];
-    }
-    else{
-    [juyouLabel setFont:[UIFont fontWithName:@"azuki_font" size:50]];
-    }
-    
-    
-    if(screenSize.width == 320.0 && screenSize.height == 568.0)
-    {
-        [settingLabel setFont:[UIFont fontWithName:@"azuki_font" size:35]];
-
-    }
-    else if(screenSize.width == 320.0 && screenSize.height == 480.0)
-    {
-        [settingLabel setFont:[UIFont fontWithName:@"azuki_font" size:35]];
-    }
-    else{
+        [juyouLabel setFont:[UIFont fontWithName:@"azuki_font" size:50]];
         [settingLabel setFont:[UIFont fontWithName:@"azuki_font" size:70]];
-}
-    
-    
-    if(screenSize.width == 320.0 && screenSize.height == 568.0)
-    {
-        [kinLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-    }
-    else if(screenSize.width == 320.0 && screenSize.height == 480.0)
-    {
-        [kinLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-}
-    else{
         [kinLabel setFont:[UIFont fontWithName:@"azuki_font" size:25]];
-}
-    
-    
-    if(screenSize.width == 320.0 && screenSize.height == 568.0)
-    {
-         [enLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-    }
-    else if(screenSize.width == 320.0 && screenSize.height == 480.0)
-    {
-        [enLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-}
-    else{
         [enLabel setFont:[UIFont fontWithName:@"azuki_font" size:25]];
-}
-    
-    
-    if(screenSize.width == 320.0 && screenSize.height == 568.0)
-    {
-        [kouLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-    }
-    else if(screenSize.width == 320.0 && screenSize.height == 480.0)
-    {
-    [kouLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-    }
-    else{
-    [kouLabel setFont:[UIFont fontWithName:@"azuki_font" size:25]];
-    }
-    
-    
-    if(screenSize.width == 320.0 && screenSize.height == 568.0)
-    {
-        [teiLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-
-    }
-    else if(screenSize.width == 320.0 && screenSize.height == 480.0)
-    {
-    [teiLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-    }
-    else{
+        [kouLabel setFont:[UIFont fontWithName:@"azuki_font" size:25]];
         [teiLabel setFont:[UIFont fontWithName:@"azuki_font" size:25]];
-    }
 
+
+    }
     
     [button setImage:[UIImage imageNamed:@"icon4.png"] forState:UIControlStateNormal];
+    
+    [button.layer setShadowOpacity:0.05f];
+    [button.layer setShadowOffset:CGSizeMake(0.05, 0.05)];
+    [checkButton.layer setShadowOpacity:0.1f];
+    [checkButton.layer setShadowOffset:CGSizeMake(0.1, 0.1)];
+    [backButton.layer setShadowOpacity:0.1f];
+    [backButton.layer setShadowOffset:CGSizeMake(0.1, 0.1)];
 
+    
     
     /* -- 各種情報の呼び出し -- */
     if(self.editIndex)
@@ -126,8 +75,8 @@
         NSArray *array = [ud objectForKey:@"hoge"]; //hogeというキーでudという格納場所にarrayに入れる
         NSDictionary *dic = array[self.editIndex];
         
-//        strtime = [dic objectForKey:@"date"];
-//        [dateButton setTitle:strtime forState:UIControlStateNormal];
+        //        strtime = [dic objectForKey:@"date"];
+        //        [dateButton setTitle:strtime forState:UIControlStateNormal];
         
         textField.text = [dic objectForKey:@"contents"];
         
@@ -142,7 +91,9 @@
         
         
     }
+    textField.delegate = self;
     
+    textField.returnKeyType = UIReturnKeyDone;
 }
 
 
@@ -193,15 +144,45 @@
     
     naiyo = textField.text;
     
+    
+    
 }
 
+
+- (BOOL)textField:(UITextField *)lenTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    // 最大入力文字数
+    int maxInputLength = 31;
+    
+    // 入力済みのテキストを取得
+    NSMutableString *mTextField = [lenTextField.text mutableCopy];
+    
+    // 入力済みのテキストと入力が行われたテキストを結合
+    [mTextField replaceCharactersInRange:range withString:string];
+    
+    if ([mTextField length] > maxInputLength) {
+       
+        UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"文字数オーバー"
+                                                  message:@"30字まで入力できます。"
+                                                 delegate:nil
+                                        cancelButtonTitle:nil
+                                        otherButtonTitles:@"OK", nil
+                         
+                         ];
+    [alert show];
+
+        return NO;
+    }
+    
+    return YES;
+}
 
 #pragma mark - 切り替え
 - (IBAction)SegChanged:(UISegmentedControl *)sender
 {
-    if(sender.tag == 1) kigenNum = sender.selectedSegmentIndex; //tag1のSegmentedControlが選択されたら、選択された値をkigenNumに入れる
-    else juyouNum = sender.selectedSegmentIndex;
-    NSLog(@"sender.tagは-------%d",sender.selectedSegmentIndex);
+    if(sender.tag == 1) kigenNum = (int)sender.selectedSegmentIndex; //tag1のSegmentedControlが選択されたら、選択された値をkigenNumに入れる
+    else juyouNum = (int)sender.selectedSegmentIndex;
+    NSLog(@"sender.tagは-------%d",(int)sender.selectedSegmentIndex);
 }
 
 
@@ -237,18 +218,15 @@
                                                  cancelButtonTitle:nil
                                                  otherButtonTitles:@"OK", nil
                                  ];
-            
             [alert show];
             return;
         }
     }
     
-
     
     /* -- 予定の作成 -- */
     if(self.editIndex)
     {
-        
         NSDictionary *dic = array[self.editIndex];
         NSMutableDictionary * mDic = [dic mutableCopy];
         
@@ -265,10 +243,9 @@
         [ud setObject:mArray forKey:@"hoge"];
         [ud synchronize];
         NSLog(@"編集");
-        //return;
+        
     }else{
         NSDictionary *todo = [NSDictionary dictionaryWithObjectsAndKeys:
-                              //strtime,@"date",
                               textField.text,@"contents",
                               [NSString stringWithFormat:@"%d",stampNum],@"stamp",
                               [NSString stringWithFormat:@"%d",kigenNum],@"kigen",
@@ -283,7 +260,6 @@
         NSLog(@"新規作成");
     }
     
-    
     GraphViewController *prevController = [self.navigationController.viewControllers objectAtIndex:0];
     [prevController.noteView removeFromSuperview];
     prevController.noteView = nil;
@@ -295,11 +271,7 @@
 
 /* -- 戻る -- */
 -(IBAction)back{
-    
     [self.navigationController popViewControllerAnimated:YES];
-    //GraphViewController *gvc = [[self storyboard] instantiateViewControllerWithIdentifier:@"graph"];
-    //[self.view bringSubviewToFront:gvc.mainView];
-
 }
 
 

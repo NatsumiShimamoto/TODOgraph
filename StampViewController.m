@@ -26,6 +26,7 @@
     
     i = 0;
     
+    [label setFont:[UIFont fontWithName:@"azuki_font" size:20]];
     
 }
 
@@ -41,7 +42,7 @@
 -(IBAction)stamp:(UIButton *)sender
 {
     NSUserDefaults *sta = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
-    NSLog(@"sender is %d", sender.tag);
+    NSLog(@"sender is %d", (int)sender.tag);
     
     [sta setInteger:sender.tag forKey:@"stamp"];
 

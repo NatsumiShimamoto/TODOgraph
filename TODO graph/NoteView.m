@@ -13,7 +13,7 @@
 - (void)commonInit
 {
     // 画像の設定
-    self.image = [UIImage imageNamed:@"ノート正方形.png"];
+    self.image = [UIImage imageNamed:@"noteS.png"];
     
     // 位置と大きさの設定
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
@@ -21,12 +21,13 @@
     if(screenSize.width == 320.0 && screenSize.height == 568.0)
     {
         self.frame = CGRectMake(15,130,280,280);
-    }else if(screenSize.width == 320.0 && screenSize.height == 480.0){
+    }
+    else if(screenSize.width == 320.0 && screenSize.height == 480.0)
+    {
         self.frame = CGRectMake(15,130,280,280);
     }
     else{
         self.frame = CGRectMake(84,212,600,600);
-        
     }
     
     //影の設定

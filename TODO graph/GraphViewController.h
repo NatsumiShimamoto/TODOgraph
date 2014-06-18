@@ -11,9 +11,10 @@
 #import "SetteiViewController.h"//設定画面に、選んだスタンプのアイコン画像を送る
 #import "NoteView.h"
 
-@interface GraphViewController : UIViewController{
+@interface GraphViewController : UIViewController<UITextViewDelegate>{
     
     IBOutlet UIButton *plusButton;
+    BOOL isUnder;//あんべ追加
     NSUserDefaults *ud;
     
     UIImageView *gomi;

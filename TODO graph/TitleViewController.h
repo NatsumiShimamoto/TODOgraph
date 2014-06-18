@@ -10,5 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TitleViewController : UIViewController
-
+{
+    IBOutlet UIButton *todo;
+}
 @end
