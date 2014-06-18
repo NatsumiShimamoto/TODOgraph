@@ -10,7 +10,7 @@
 
 @implementation GraphViewController
 //@synthesize mainView;
-
+//あ
 
 #pragma mark - ViewDidLoad
 - (void)viewDidLoad
