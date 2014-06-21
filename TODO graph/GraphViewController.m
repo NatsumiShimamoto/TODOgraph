@@ -71,7 +71,7 @@
     [self.view bringSubviewToFront:plusButton];
     
     [self.view bringSubviewToFront:stampButton];
-
+    
 }
 
 
@@ -111,7 +111,7 @@
         }
         
         stampButton.tag = i;
-
+        
         //NSLog(@"tag%d",(int)stampButton.tag);
         
         stampButton.userInteractionEnabled = YES; //タッチの検知をするかしないかの設定
@@ -245,10 +245,10 @@
     }
     [self.view bringSubviewToFront:stampButton];
     
-
+    
     return view;
     
-
+    
 }
 
 
@@ -393,8 +393,8 @@
         todoFade = !todoFade;
     }
     
-        [self.view bringSubviewToFront:stampButton];
-
+    [self.view bringSubviewToFront:stampButton];
+    
 }
 
 
@@ -481,7 +481,7 @@
     CGPoint p = [sender translationInView:sender.view];
     
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-
+    
     
     // 移動した距離だけ、UIImageViewのcenterポジションを移動させる
     CGPoint movedPoint = CGPointMake(sender.view.center.x + p.x, sender.view.center.y + p.y);
@@ -494,7 +494,7 @@
         //isUnderがnoのとき→座標を記録する
         if(!isUnder){
             isUnder = YES;
-         
+            
             NSLog(@"きろく！");
         }
         
@@ -513,14 +513,14 @@
             }
             
             movedPoint = sender.view.center;
-
+            
             NSLog(@"うごいた");
         }
         
     }else{
         isUnder = NO;
         NSLog(@"かぶってない");
-    
+        
     }
     //あんべここまで
     
@@ -531,6 +531,14 @@
     //iPhone5
     if(screenSize.width == 320.0 && screenSize.height == 568.0)
     {
+        if(movedPoint.x <= 0){
+            movedPoint.x = 0;
+        }
+        
+        if(movedPoint.y <= 0){
+            movedPoint.y = 0;
+        }
+        
         if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 13)
         {
             sender.view.center = CGPointMake(movedPoint.x+25, movedPoint.y);
@@ -539,9 +547,9 @@
         {
             sender.view.center = CGPointMake(movedPoint.x-30, movedPoint.y);
         }
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 45)
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 22)
         {
-            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+35);
+            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+23);
         }
         if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 545)
         {
@@ -573,26 +581,27 @@
         movedPoint = sender.view.center;
     }
     
-        
-        else{ //iPad
-            if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 20)
-            {
-                sender.view.center = CGPointMake(movedPoint.x+85, movedPoint.y);
-            }
-            if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 750)
-            {
-                sender.view.center = CGPointMake(movedPoint.x-100, movedPoint.y);
-            }
-            if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 45)
-            {
-                sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+80);
-            }
-            if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 980)
-            {
-                sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-210);
-            }
-            movedPoint = sender.view.center;
+    
+    //iPad
+    else{
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 20)
+        {
+            sender.view.center = CGPointMake(movedPoint.x+85, movedPoint.y);
         }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 750)
+        {
+            sender.view.center = CGPointMake(movedPoint.x-100, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 45)
+        {
+            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+80);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 980)
+        {
+            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-210);
+        }
+        movedPoint = sender.view.center;
+    }
     
     
     if(sender.state == UIGestureRecognizerStateEnded)
@@ -607,7 +616,7 @@
         
         [ud setObject:mArray forKey:@"hoge"];
         [ud synchronize];
-
+        
     }
     
     /*--- ゴミ箱 ---*/
@@ -632,7 +641,7 @@
         }
         return;
     }
-
+    
     
     // ドラッグで移動した距離を初期化する
     [sender setTranslation:CGPointZero inView:self.view];
@@ -652,7 +661,7 @@
 
 //フェードイン
 - (void)noteImageFadeIn{
-
+    
     _noteView.alpha = 0;
     [UIView beginAnimations:@"fadeIn" context:nil]; //アニメーションのタイプを指定
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut]; //イージング指定

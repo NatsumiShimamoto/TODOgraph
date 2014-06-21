@@ -15,8 +15,6 @@
 {
     IBOutlet UISegmentedControl *kigenSeg;
     IBOutlet UISegmentedControl *juyouSeg;
-    
-    //IBOutlet UIDatePicker *picker;
 
     IBOutlet UITextField *textField;
     

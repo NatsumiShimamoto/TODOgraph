@@ -26,6 +26,7 @@
 		DD244567194B28670090D5AD /* todo1_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DD244566194B28670090D5AD /* todo1_iPad.png */; };
 		DD244569194B295B0090D5AD /* todo0_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DD244568194B295B0090D5AD /* todo0_iPad.png */; };
 		DD24456B194B2B960090D5AD /* todo1_3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = DD24456A194B2B960090D5AD /* todo1_3.5.png */; };
+		DD2A7D191955A27F00DEC8BD /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2A7D181955A27F00DEC8BD /* plusButton.png */; };
 		DD464E1118A508EA003B9A21 /* icon01_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DD464E1018A508EA003B9A21 /* icon01_iPad.png */; };
 		DD464E1318A509CA003B9A21 /* icon02_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DD464E1218A509CA003B9A21 /* icon02_iPad.png */; };
 		DD464E1518A50A3C003B9A21 /* icon03_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DD464E1418A50A3C003B9A21 /* icon03_iPad.png */; };
@@ -39,7 +40,6 @@
 		DD6E155C17B90BD000D24891 /* SetteiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6E155B17B90BD000D24891 /* SetteiViewController.m */; };
 		DD7B22FD19473586002582BE /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7B22FC19473586002582BE /* trash.png */; };
 		DD7B22FF1949D632002582BE /* todo_start.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7B22FE1949D632002582BE /* todo_start.png */; };
-		DD7B23011949D9E9002582BE /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7B23001949D9E9002582BE /* plusButton.png */; };
 		DD7B23031949DAD4002582BE /* todo1.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7B23021949DAD4002582BE /* todo1.png */; };
 		DD8B6E5917BB191A00414607 /* StampViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8B6E5817BB191A00414607 /* StampViewController.m */; };
 		DDA5A33F17BC65AD004962F4 /* TitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA5A33E17BC65AD004962F4 /* TitleViewController.m */; };
@@ -105,6 +105,7 @@
 		DD244566194B28670090D5AD /* todo1_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todo1_iPad.png; sourceTree = "<group>"; };
 		DD244568194B295B0090D5AD /* todo0_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todo0_iPad.png; sourceTree = "<group>"; };
 		DD24456A194B2B960090D5AD /* todo1_3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todo1_3.5.png; sourceTree = "<group>"; };
+		DD2A7D181955A27F00DEC8BD /* plusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusButton.png; sourceTree = "<group>"; };
 		DD464E1018A508EA003B9A21 /* icon01_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon01_iPad.png; sourceTree = "<group>"; };
 		DD464E1218A509CA003B9A21 /* icon02_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon02_iPad.png; sourceTree = "<group>"; };
 		DD464E1418A50A3C003B9A21 /* icon03_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon03_iPad.png; sourceTree = "<group>"; };
@@ -119,7 +120,6 @@
 		DD6E155B17B90BD000D24891 /* SetteiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetteiViewController.m; path = ../SetteiViewController.m; sourceTree = "<group>"; };
 		DD7B22FC19473586002582BE /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
 		DD7B22FE1949D632002582BE /* todo_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todo_start.png; sourceTree = "<group>"; };
-		DD7B23001949D9E9002582BE /* plusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusButton.png; sourceTree = "<group>"; };
 		DD7B23021949DAD4002582BE /* todo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todo1.png; sourceTree = "<group>"; };
 		DD8B6E5717BB191A00414607 /* StampViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StampViewController.h; path = ../StampViewController.h; sourceTree = "<group>"; };
 		DD8B6E5817BB191A00414607 /* StampViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StampViewController.m; path = ../StampViewController.m; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 				DDAD09B318F161120084C7A3 /* noteS.png */,
 				DD7B22FE1949D632002582BE /* todo_start.png */,
 				DD7B22FC19473586002582BE /* trash.png */,
-				DD7B23001949D9E9002582BE /* plusButton.png */,
+				DD2A7D181955A27F00DEC8BD /* plusButton.png */,
 				DDAD094818E946980084C7A3 /* icons */,
 				DDAD09A018F154920084C7A3 /* stamps */,
 				DDAD099F18F154570084C7A3 /* backgrounds */,
@@ -464,7 +464,6 @@
 				DD244567194B28670090D5AD /* todo1_iPad.png in Resources */,
 				DD244563194B23A90090D5AD /* todo0_3.5.png in Resources */,
 				DD464E1918A50B29003B9A21 /* icon05_iPad.png in Resources */,
-				DD7B23011949D9E9002582BE /* plusButton.png in Resources */,
 				DDD1040818A248F8006DD1BD /* icon04.png in Resources */,
 				DDAD09B218F15DE30084C7A3 /* yazirushi.png in Resources */,
 				DD1FBE7118B6056200C7AB12 /* todoicon_152.png in Resources */,
@@ -482,6 +481,7 @@
 				DD464E1B18A50BA9003B9A21 /* icon06_iPad.png in Resources */,
 				DD62AED0191348C200CCEEA8 /* shikaku.png in Resources */,
 				DD464E1D18A50CD1003B9A21 /* ノート3.5.png in Resources */,
+				DD2A7D191955A27F00DEC8BD /* plusButton.png in Resources */,
 				DDAD095F18EA9DF10084C7A3 /* batsu.png in Resources */,
 				DDDED97E17E9B28600DC97FA /* Storyboard_3.5.storyboard in Resources */,
 				DD1FBE6918B6056200C7AB12 /* todoicon_72.png in Resources */,

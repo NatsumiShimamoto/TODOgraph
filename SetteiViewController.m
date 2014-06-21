@@ -20,6 +20,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+
     /* -- フォントの設定 */
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
     
@@ -33,7 +34,6 @@
         [kouLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
         [teiLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
         [lineLabel setFont:[UIFont fontWithName:@"azuki_font" size:20]];
-
     }
     else if(screenSize.width == 320.0 && screenSize.height == 480.0)
     {
@@ -44,18 +44,40 @@
         [enLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
         [kouLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
         [teiLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
+        
+        CGRect kigenSegFrame= kigenSeg.frame;
+        kigenSeg.frame = CGRectMake(kigenSegFrame.origin.x, kigenSegFrame.origin.y,
+                                    kigenSegFrame.size.width, kigenSegFrame.size.height+3) ;
+        CGRect juyouSegFrame= juyouSeg.frame;
+        juyouSeg.frame = CGRectMake(juyouSegFrame.origin.x, juyouSegFrame.origin.y,
+                                    juyouSegFrame.size.width, juyouSegFrame.size.height+3) ;
     }
     else{
-        [kigenLabel setFont:[UIFont fontWithName:@"azuki_font" size:50]];
-        [juyouLabel setFont:[UIFont fontWithName:@"azuki_font" size:50]];
+        [kigenLabel setFont:[UIFont fontWithName:@"azuki_font" size:45]];
+        [juyouLabel setFont:[UIFont fontWithName:@"azuki_font" size:40]];
         [settingLabel setFont:[UIFont fontWithName:@"azuki_font" size:70]];
         [kinLabel setFont:[UIFont fontWithName:@"azuki_font" size:25]];
         [enLabel setFont:[UIFont fontWithName:@"azuki_font" size:25]];
         [kouLabel setFont:[UIFont fontWithName:@"azuki_font" size:25]];
         [teiLabel setFont:[UIFont fontWithName:@"azuki_font" size:25]];
-
+ 
+        
+        /* segmentedcontrollのサイズ変更 */
+        CGRect kigenSegFrame= kigenSeg.frame;
+        kigenSeg.frame = CGRectMake(kigenSegFrame.origin.x, kigenSegFrame.origin.y,
+                                  kigenSegFrame.size.width+210, kigenSegFrame.size.height+40) ;
+        CGRect juyouSegFrame= juyouSeg.frame;
+        juyouSeg.frame = CGRectMake(juyouSegFrame.origin.x, juyouSegFrame.origin.y,
+                                juyouSegFrame.size.width+210, juyouSegFrame.size.height+40) ;
+        
+        /* textFieldのサイズ変更 */
+        CGRect textFieldFrame= textField.frame;
+        textField.frame = CGRectMake(textFieldFrame.origin.x, textFieldFrame.origin.y,
+                                    textFieldFrame.size.width, textFieldFrame.size.height+40) ;
+        
 
     }
+    
     
     [button setImage:[UIImage imageNamed:@"icon4.png"] forState:UIControlStateNormal];
     

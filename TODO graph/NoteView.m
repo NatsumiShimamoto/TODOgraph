@@ -24,7 +24,7 @@
     }
     else if(screenSize.width == 320.0 && screenSize.height == 480.0)
     {
-        self.frame = CGRectMake(15,130,280,280);
+        self.frame = CGRectMake(15,105,280,280);
     }
     else{
         self.frame = CGRectMake(84,212,600,600);
