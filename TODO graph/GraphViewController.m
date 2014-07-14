@@ -40,7 +40,6 @@
     gomi = [[UIImageView alloc] initWithImage:gomibako];
     isUnder = NO;//あんべ(5/18)
     
-    //CGSize screenSize = [[UIScreen mainScreen] bounds].size;
     NSString *model = [UIDevice currentDevice].model;
     
     if ([model isEqualToString:@"iPhone"])
@@ -95,7 +94,6 @@
     NSUserDefaults *stampUd = [NSUserDefaults standardUserDefaults];
     svc.stampNum = [stampUd integerForKey:@"stamp"];
     
-    //CGSize screenSize = [[UIScreen mainScreen] bounds].size;
     NSString *model = [UIDevice currentDevice].model;
     
     
@@ -275,8 +273,7 @@
     NSDictionary *dic = array[button.tag];
     NSLog(@"%@",dic[@"contents"]);
     plusButton.enabled = NO;
-    
-    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+
     NSString *model = [UIDevice currentDevice].model;
     
     
@@ -294,9 +291,9 @@
         //labelの中身を書き換える
         if ([model isEqualToString:@"iPhone"]){
             [textView setFont:[UIFont fontWithName:@"azuki_font" size:25]];
-        }else if(screenSize.width == 320.0 && screenSize.height == 480.0){
+        }else if ([model isEqualToString:@"iPod touch"]) {
             [textView setFont:[UIFont fontWithName:@"azuki_font" size:25]];
-        }else{
+        }else if ([model isEqualToString:@"iPad"]) {
             [textView setFont:[UIFont fontWithName:@"azuki_font" size:60]];
         }
         
@@ -330,10 +327,9 @@
         
         if ([model isEqualToString:@"iPhone"])        {
             cancelButton.frame = CGRectMake(225, 225, 45, 45);
-            
-        }else if(screenSize.width == 320.0 && screenSize.height == 480.0){
+        }else if ([model isEqualToString:@"iPod touch"]) {
             cancelButton.frame = CGRectMake(219, 222, 45, 45);
-        }else{
+        }else if ([model isEqualToString:@"iPad"]) {
             cancelButton.frame = CGRectMake(485, 490, 90, 90);
         }
         
@@ -481,7 +477,6 @@
     NSMutableDictionary *mDic = [dic mutableCopy];
     CGPoint p = [sender translationInView:sender.view];
     
-    //CGSize screenSize = [[UIScreen mainScreen] bounds].size;
     NSString *model = [UIDevice currentDevice].model;
     
     
