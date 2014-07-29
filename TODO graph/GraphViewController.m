@@ -61,6 +61,8 @@
         [self.view addSubview:gomi];
     }else{
         NSLog(@"シュミレーター");
+        gomi.frame = CGRectMake(150, 872, 120, 120);
+        [self.view addSubview:gomi];
     }
     
     
@@ -107,6 +109,8 @@
         } else if ([model isEqualToString:@"iPod touch"]){
             stampButton.frame = CGRectMake(0, 0, 42, 42);
         }else if ([model isEqualToString:@"iPad"]) {
+            stampButton.frame = CGRectMake(0, 0, 85, 85);
+        }else{
             stampButton.frame = CGRectMake(0, 0, 85, 85);
         }
         
@@ -238,7 +242,34 @@
             
             [view addSubview:stampButton];
             
-        }
+        }else{
+            w = 108;
+            h = 140;
+            
+            
+            int ww,hh;
+            if (kigenNum<=2) {
+                hh=42;
+            }else{
+                hh=70;
+            }
+            if (juyouNum<=2) {
+                ww=54;
+            }else{
+                ww=86;
+            }
+            
+            
+            if(xpoint==0&&ypoint==0){
+                
+                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,85, 85);
+                
+            }else{
+                stampButton.center = CGPointMake(xpoint, ypoint);
+            }
+            
+            
+            [view addSubview:stampButton];        }
         
         
         
@@ -273,7 +304,7 @@
     NSDictionary *dic = array[button.tag];
     NSLog(@"%@",dic[@"contents"]);
     plusButton.enabled = NO;
-
+    
     NSString *model = [UIDevice currentDevice].model;
     
     
@@ -295,7 +326,8 @@
             [textView setFont:[UIFont fontWithName:@"azuki_font" size:25]];
         }else if ([model isEqualToString:@"iPad"]) {
             [textView setFont:[UIFont fontWithName:@"azuki_font" size:60]];
-        }
+        }else{
+            [textView setFont:[UIFont fontWithName:@"azuki_font" size:60]];        }
         
         if(!resaveMArray){
             textView.text = dic[@"contents"];
@@ -331,6 +363,8 @@
             cancelButton.frame = CGRectMake(219, 222, 45, 45);
         }else if ([model isEqualToString:@"iPad"]) {
             cancelButton.frame = CGRectMake(485, 490, 90, 90);
+        }else{
+            cancelButton.frame = CGRectMake(485, 490, 90, 90);
         }
         
         cancelButton.tag = button.tag;
@@ -355,7 +389,9 @@
         }else if ([model isEqualToString:@"iPad"]) {
             textView = [[UITextView alloc] initWithFrame:CGRectMake(125,255,400,250)];
             [textView setFont:[UIFont fontWithName:@"azuki_font" size:60]];
-            
+        }else{
+            textView = [[UITextView alloc] initWithFrame:CGRectMake(125,255,400,250)];
+            [textView setFont:[UIFont fontWithName:@"azuki_font" size:60]];
         }
         
         if(!resaveMArray){
@@ -378,6 +414,8 @@
         } else if ([model isEqualToString:@"iPod touch"]) {
             todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(45, 38, 50, 50)];
         }else if ([model isEqualToString:@"iPad"]) {
+            todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(80, 60, 140, 140)];
+        }else{
             todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(80, 60, 140, 140)];
         }
         
@@ -504,182 +542,184 @@
                 sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-60);
             }else if ([model isEqualToString:@"iPod touch"])
             {
-                    sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-60);
+                sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-60);
             }else if ([model isEqualToString:@"iPad"])
             {
-                    sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-150);
-            }
-                
-                movedPoint = sender.view.center;
-                
-                NSLog(@"うごいた");
-            }
-            
-        }else{
-            isUnder = NO;
-            NSLog(@"かぶってない");
-            
-        }
-        //あんべここまで
-        
-        
-        
-        /* ---　はじっこから脱出　--- */
-        
-        //iPhone5
-        if ([model isEqualToString:@"iPhone"])
-        {
-            NSLog(@"iPhone5");
-            if(movedPoint.x <= 0){
-                movedPoint.x = 0;
-            }
-            
-            if(movedPoint.y <= 0){
-                movedPoint.y = 0;
-            }
-            
-            if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 13)
-            {
-                sender.view.center = CGPointMake(movedPoint.x+25, movedPoint.y);
-            }
-            if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 300)
-            {
-                sender.view.center = CGPointMake(movedPoint.x-30, movedPoint.y);
-            }
-            if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 22)
-            {
-                sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+25);
-            }
-            if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 545)
-            {
-                sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-90);
-            }
-            movedPoint = sender.view.center;
-        }
-        
-        
-        //iPhone4
-        else if ([model isEqualToString:@"iPod touch"])
-                {
-                NSLog(@"iPhone4");
-                if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 13)
-                {
-                    sender.view.center = CGPointMake(movedPoint.x+30, movedPoint.y);
-                }
-                if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 300)
-                {
-                    sender.view.center = CGPointMake(movedPoint.x-30, movedPoint.y);
-                }
-                if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 45)
-                {
-                    sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+40);
-                }
-                if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 460)
-                {
-                    sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-80);
-                }
-                movedPoint = sender.view.center;
-            }
-            
-            
-            //iPad
-            else if ([model isEqualToString:@"iPad"]) {
-                NSLog(@"iPad");
-                if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 20)
-                {
-                    sender.view.center = CGPointMake(movedPoint.x+85, movedPoint.y);
-                }
-                if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 750)
-                {
-                    sender.view.center = CGPointMake(movedPoint.x-100, movedPoint.y);
-                }
-                if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 45)
-                {
-                    sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+80);
-                }
-                if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 980)
-                {
-                    sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-210);
-                }
-                movedPoint = sender.view.center;
-            }
-            
-            
-            if(sender.state == UIGestureRecognizerStateEnded)
-            {
-                [mDic setObject:[NSNumber numberWithFloat:movedPoint.x] forKey:@"x"];
-                [mDic setObject:[NSNumber numberWithFloat:movedPoint.y] forKey:@"y"];
-                
-                NSMutableArray *mArray = [array mutableCopy];
-                mArray[sender.view.tag] = mDic;
-                
-                NSLog(@"-----------------------%@",mArray);
-                
-                [ud setObject:mArray forKey:@"hoge"];
-                [ud synchronize];
-                
-            }
-            
-            /*--- ゴミ箱 ---*/
-            if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= gomi.frame.origin.x && movedPoint.x <= gomi.frame.origin.x + gomi.frame.size.width && movedPoint.y >= gomi.frame.origin.y && movedPoint.y <= gomi.frame.origin.y + gomi.frame.size.height)
-            {
-                //ゴミ箱と重なっていたら削除！　消えろ！　うら！
-                NSMutableArray *mArray = [array mutableCopy];
-                NSLog(@"%d",(int)sender.view.tag,[mArray count]);
-                [mArray removeObjectAtIndex:sender.view.tag];
-                
-                // TODO:hogeにmArrayをset(ゴミ箱)
-                [ud setObject:mArray forKey:@"hoge"];
-                [ud synchronize];
-                
-                [mainView removeFromSuperview];
-                mainView = [self createView];
-                [self.view addSubview:mainView];
-                [self.view bringSubviewToFront:plusButton];
-                
-                if(_noteView){
-                    [self.view bringSubviewToFront:_noteView];
-                }
-                return;
-            }
-            
-            
-            // ドラッグで移動した距離を初期化する
-            [sender setTranslation:CGPointZero inView:self.view];
-            [self.view bringSubviewToFront:stampButton];
-            
-        }
-    
-        //もぐったかどうかを判定する(あんべ5/18)
-        -(BOOL) isUnderPlusButton:(float)x Y:(float)y {
-            if((x < plusButton.center.x+50 && x > plusButton.center.x-50 )&& (y > plusButton.center.y-30 && y < plusButton.center.y+30)){
-                return true;
+                sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-150);
             }else{
-                return false;
+                sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-150);
             }
-        }
-        //あんべここまで
-        
-        
-        //フェードイン
-        - (void)noteImageFadeIn{
             
-            _noteView.alpha = 0;
-            [UIView beginAnimations:@"fadeIn" context:nil]; //アニメーションのタイプを指定
-            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut]; //イージング指定
-            [UIView setAnimationDuration:0.15]; //アニメーション秒数を指定
-            _noteView.alpha = 1; //目標のアルファ値を指定
-            [UIView commitAnimations]; //アニメーション実行
+            movedPoint = sender.view.center;
+            
+            NSLog(@"うごいた");
         }
         
-        //フェードアウト
-        - (void)noteImageFadeOut
+    }else{
+        isUnder = NO;
+        NSLog(@"かぶってない");
+        
+    }
+    //あんべここまで
+    
+    
+    
+    /* ---　はじっこから脱出　--- */
+    
+    //iPhone5
+    if ([model isEqualToString:@"iPhone"])
+    {
+        NSLog(@"iPhone5");
+        if(movedPoint.x <= 0){
+            movedPoint.x = 0;
+        }
+        
+        if(movedPoint.y <= 0){
+            movedPoint.y = 0;
+        }
+        
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 13)
         {
-            [UIView beginAnimations:@"fadeOut" context:nil];
-            [UIView setAnimationCurve:UIViewAnimationCurveEaseOut]; //イージング指定
-            [UIView setAnimationDuration:0.3];  //アニメーション秒数を指定
-            _noteView.alpha = 0; //目標のアルファ値を指定
-            [UIView commitAnimations]; //アニメーション実行
+            sender.view.center = CGPointMake(movedPoint.x+25, movedPoint.y);
         }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 300)
+        {
+            sender.view.center = CGPointMake(movedPoint.x-30, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 22)
+        {
+            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+25);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 545)
+        {
+            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-90);
+        }
+        movedPoint = sender.view.center;
+    }
+    
+    
+    //iPhone4
+    else if ([model isEqualToString:@"iPod touch"])
+    {
+        NSLog(@"iPhone4");
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 13)
+        {
+            sender.view.center = CGPointMake(movedPoint.x+30, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 300)
+        {
+            sender.view.center = CGPointMake(movedPoint.x-30, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 45)
+        {
+            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+40);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 460)
+        {
+            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-80);
+        }
+        movedPoint = sender.view.center;
+    }
+    
+    
+    //iPad
+    else if ([model isEqualToString:@"iPad"]) {
+        NSLog(@"iPad");
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 20)
+        {
+            sender.view.center = CGPointMake(movedPoint.x+85, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 750)
+        {
+            sender.view.center = CGPointMake(movedPoint.x-100, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 45)
+        {
+            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+80);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 980)
+        {
+            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-210);
+        }
+        movedPoint = sender.view.center;
+    }
+    
+    
+    if(sender.state == UIGestureRecognizerStateEnded)
+    {
+        [mDic setObject:[NSNumber numberWithFloat:movedPoint.x] forKey:@"x"];
+        [mDic setObject:[NSNumber numberWithFloat:movedPoint.y] forKey:@"y"];
         
-        @end
+        NSMutableArray *mArray = [array mutableCopy];
+        mArray[sender.view.tag] = mDic;
+        
+        NSLog(@"-----------------------%@",mArray);
+        
+        [ud setObject:mArray forKey:@"hoge"];
+        [ud synchronize];
+        
+    }
+    
+    /*--- ゴミ箱 ---*/
+    if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= gomi.frame.origin.x && movedPoint.x <= gomi.frame.origin.x + gomi.frame.size.width && movedPoint.y >= gomi.frame.origin.y && movedPoint.y <= gomi.frame.origin.y + gomi.frame.size.height)
+    {
+        //ゴミ箱と重なっていたら削除！　消えろ！　うら！
+        NSMutableArray *mArray = [array mutableCopy];
+        NSLog(@"%d",(int)sender.view.tag,[mArray count]);
+        [mArray removeObjectAtIndex:sender.view.tag];
+        
+        // TODO:hogeにmArrayをset(ゴミ箱)
+        [ud setObject:mArray forKey:@"hoge"];
+        [ud synchronize];
+        
+        [mainView removeFromSuperview];
+        mainView = [self createView];
+        [self.view addSubview:mainView];
+        [self.view bringSubviewToFront:plusButton];
+        
+        if(_noteView){
+            [self.view bringSubviewToFront:_noteView];
+        }
+        return;
+    }
+    
+    
+    // ドラッグで移動した距離を初期化する
+    [sender setTranslation:CGPointZero inView:self.view];
+    [self.view bringSubviewToFront:stampButton];
+    
+}
+
+//もぐったかどうかを判定する(あんべ5/18)
+-(BOOL) isUnderPlusButton:(float)x Y:(float)y {
+    if((x < plusButton.center.x+50 && x > plusButton.center.x-50 )&& (y > plusButton.center.y-30 && y < plusButton.center.y+30)){
+        return true;
+    }else{
+        return false;
+    }
+}
+//あんべここまで
+
+
+//フェードイン
+- (void)noteImageFadeIn{
+    
+    _noteView.alpha = 0;
+    [UIView beginAnimations:@"fadeIn" context:nil]; //アニメーションのタイプを指定
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut]; //イージング指定
+    [UIView setAnimationDuration:0.15]; //アニメーション秒数を指定
+    _noteView.alpha = 1; //目標のアルファ値を指定
+    [UIView commitAnimations]; //アニメーション実行
+}
+
+//フェードアウト
+- (void)noteImageFadeOut
+{
+    [UIView beginAnimations:@"fadeOut" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut]; //イージング指定
+    [UIView setAnimationDuration:0.3];  //アニメーション秒数を指定
+    _noteView.alpha = 0; //目標のアルファ値を指定
+    [UIView commitAnimations]; //アニメーション実行
+}
+
+@end
