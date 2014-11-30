@@ -13,12 +13,11 @@
 
 @interface GraphViewController : UIViewController<UITextViewDelegate>{
     
+    int height;
+    
     IBOutlet UIButton *plusButton;
     BOOL isUnder;//あんべ追加
     NSUserDefaults *ud;
-    
-    UIImageView *gomi;
-    UIImage *gomibako;
     
     NSArray *array;
     UIView *mainView;
@@ -42,12 +41,15 @@
     
     int h;
     int w;
-    
-    BOOL todoFade;
-    
-}
 
-//-(IBAction)setting;
+    BOOL upRed;
+    BOOL upBlue;
+    
+    UIImage *plus;
+    UIImageView *plusView;
+    UIImage *trash;
+    UIImageView *trashView;
+}
 
 @property (nonatomic) NoteView *noteView;
 //@property UIView *mainView;

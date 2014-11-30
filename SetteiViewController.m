@@ -8,11 +8,12 @@
 //設定画面
 
 #import "SetteiViewController.h"
+#import "StampViewController.h"
 
 @implementation SetteiViewController
 
 @synthesize editIndex; //スタンプの順番
-@synthesize stampNum; //スタンプの番号
+@synthesize stampArrNum; //スタンプの番号
 
 
 -(void)viewDidLoad{
@@ -79,9 +80,9 @@
     }
     
     
-    [button setImage:[UIImage imageNamed:@"icon4.png"] forState:UIControlStateNormal];
+    //[button setImage:[UIImage imageNamed:@"icon4.png"] forState:UIControlStateNormal];
     
-    [button.layer setShadowOpacity:0.05f];
+    //[button.layer setShadowOpacity:0.05f];
     [button.layer setShadowOffset:CGSizeMake(0.05, 0.05)];
     [checkButton.layer setShadowOpacity:0.1f];
     [checkButton.layer setShadowOffset:CGSizeMake(0.1, 0.1)];
@@ -129,33 +130,63 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    /* -- まっすー改造！！！！ --- */
+
+    [super viewWillAppear:animated];
+    
     NSUserDefaults *sta = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
     
-    stampNum = [sta integerForKey:@"stamp"];
+    stampArrNum = [sta integerForKey:@"stamp"]; //@"stamp"のkeyにはアイコンのタグが入ってる(0から)
+
+    //stampNum = [sta integerForKey:@"stamp"];
     
-    if(!stampNum) stampNum = 0;
+    UIImage *icon1 = [UIImage imageNamed:@"icon1.png"];
+    UIImage *icon2 = [UIImage imageNamed:@"icon2.png"];
+    UIImage *icon3 = [UIImage imageNamed:@"icon3.png"];
+    UIImage *icon4 = [UIImage imageNamed:@"icon4.png"];
+    UIImage *icon5 = [UIImage imageNamed:@"icon5.png"];
+    UIImage *icon6 = [UIImage imageNamed:@"icon6.png"];
+    UIImage *icon7 = [UIImage imageNamed:@"icon7.png"];
+    UIImage *icon8 = [UIImage imageNamed:@"icon8.png"];
+    UIImage *icon9 = [UIImage imageNamed:@"icon9.png"];
+    UIImage *icon10 = [UIImage imageNamed:@"icon10.png"];
+    UIImage *icon11 = [UIImage imageNamed:@"icon11.png"];
+    UIImage *icon12 = [UIImage imageNamed:@"icon12.png"];
+
+
+
+
+    NSArray *iconArray =  [[NSArray alloc] initWithObjects:icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,icon9,icon10,icon11,icon12,nil];
+        
+    UIImage *icon = [[UIImage alloc] init];
+    icon = iconArray[stampArrNum];
     
-    switch(stampNum){
-        case 0:
-            [button setImage:[UIImage imageNamed:@"icon01.png"] forState:UIControlStateNormal];
-            break;
-        case 1:
-            [button setImage:[UIImage imageNamed:@"icon02.png"] forState:UIControlStateNormal];
-            break;
-        case 2:
-            [button setImage:[UIImage imageNamed:@"icon03.png"] forState:UIControlStateNormal];
-            break;
-        case 3:
-            [button setImage:[UIImage imageNamed:@"icon04.png"] forState:UIControlStateNormal];
-            break;
-        case 4:
-            [button setImage:[UIImage imageNamed:@"icon05.png"] forState:UIControlStateNormal];
-            break;
-        case 5:
-            [button setImage:[UIImage imageNamed:@"icon06.png"] forState:UIControlStateNormal];
-            break;
+    NSLog(@"stampArrNum == %d",stampArrNum);
+    
+    iconView = [[UIImageView alloc] initWithImage:icon];
+    
+    
+    if([[UIScreen mainScreen] bounds].size.height==480){ //iPhone4,4s,iPod Touch第4世代
+        
+       iconView.frame = CGRectMake(120, 330, 80, 80);
+        
+    }else if([[UIScreen mainScreen] bounds].size.height==568){ //iPhone5,5s,iPod Touch第5世代
+        
+        iconView.frame = CGRectMake(120, 380, 90, 90);
+        
+    }else if([[UIScreen mainScreen] bounds].size.height==1024){
+      
+        iconView.frame = CGRectMake(330, 720, 150, 150);
     }
+
+   
+    
+    [self.view addSubview:iconView];
+    
+    
+     iconView.userInteractionEnabled = YES;
+    iconView.tag = 1;
+    
+    
 }
 
 /* --- やるべきことの入力 --- */
@@ -199,6 +230,35 @@
     return YES;
 }
 
+
+#pragma mark - タッチ
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    //キーボードを閉じる
+    [textField resignFirstResponder];
+    
+    
+    UITouch *touch = [touches anyObject];
+    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
+    
+    
+    switch (touch.view.tag) {
+        case 1:
+            [self presentViewController:stampVC animated:YES completion:nil];
+            NSLog(@"画面遷移");
+            [iconView removeFromSuperview];
+            break;
+            
+            
+        default:
+            break;
+    }
+}
+
+
+    
+
+    
 #pragma mark - 切り替え
 - (IBAction)SegChanged:(UISegmentedControl *)sender
 {
@@ -254,7 +314,7 @@
         
         //[mDic setObject:strtime forKey:@"date"];
         [mDic setObject:textField.text forKey:@"contents"];
-        [mDic setObject:[NSString stringWithFormat:@"%d",stampNum] forKey:@"stamp"];
+        [mDic setObject:[NSString stringWithFormat:@"%d",stampArrNum] forKey:@"stamp"];
         [mDic setObject:[NSString stringWithFormat:@"%d",kigenNum] forKey:@"kigen"];
         [mDic setObject:[NSString stringWithFormat:@"%d",juyouNum] forKey:@"juyou"];
         
@@ -269,7 +329,7 @@
     }else{
         NSDictionary *todo = [NSDictionary dictionaryWithObjectsAndKeys:
                               textField.text,@"contents",
-                              [NSString stringWithFormat:@"%d",stampNum],@"stamp",
+                              [NSString stringWithFormat:@"%d",stampArrNum],@"stamp",
                               [NSString stringWithFormat:@"%d",kigenNum],@"kigen",
                               [NSString stringWithFormat:@"%d",juyouNum],@"juyou",
                               nil];
@@ -287,13 +347,17 @@
     prevController.noteView = nil;
     
     /* -- 戻る -- */
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+    NSLog(@"もどったよ");
 }
 
 
 /* -- 戻る -- */
 -(IBAction)back{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 

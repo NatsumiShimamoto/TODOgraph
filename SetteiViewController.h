@@ -25,6 +25,8 @@
     
     int juyouNum; //SegmentedControl
     
+    //int stampArrNum;
+    
     IBOutlet UILabel *kigenLabel;
     IBOutlet UILabel *juyouLabel;
     IBOutlet UILabel *settingLabel;
@@ -34,6 +36,7 @@
     IBOutlet UILabel *teiLabel;
     IBOutlet UILabel *lineLabel;
 
+    UIImageView *iconView;
     
     IBOutlet UIButton *button; //動きの命令じゃないからIBActionではない
     
@@ -41,13 +44,12 @@
     IBOutlet UIButton *backButton;
 }
 
-@property int editIndex; //スタンプを作った順番
-@property int stampNum;//スタンプの番号
-
-
 - (IBAction)doText; //TextFieldに入力する
 
 -(IBAction)hozon; //設定完了ボタンを押す
+
+@property int editIndex; //スタンプを作った順番
+@property int stampArrNum;//スタンプの番号
 
 
 @end

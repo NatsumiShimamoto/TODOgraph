@@ -7,6 +7,7 @@
 //
 
 #import "GraphViewController.h"
+#import "SetteiViewController.h"
 
 @implementation GraphViewController
 //@synthesize mainView;
@@ -15,15 +16,72 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    plusButton.enabled = YES;
-    todoFade = YES;
     
-    [plusButton.layer setShadowOpacity:0.2f];
-    [plusButton.layer setShadowOffset:CGSizeMake(0.5, 0.5)];
-    [gomi.layer setShadowOpacity:0.2f];
-    [gomi.layer setShadowOffset:CGSizeMake(0.5, 0.5)];
+    // 全画面のサイズを取得する
+    height = [[UIScreen mainScreen] bounds].size.height;
+    NSLog(@"%d",height);
+    
+    if([[UIScreen mainScreen] bounds].size.height==480){ //iPhone4,4s,iPod Touch第4世代
+        //プラスボタン生成
+        plus = [UIImage imageNamed:@"plusView_iPhone.png"];
+        plusView = [[UIImageView alloc] initWithImage:plus];
+        
+        //ゴミ箱生成
+        trash = [UIImage imageNamed:@"trashView_iPhone.png"];
+        trashView = [[UIImageView alloc] initWithImage:trash];
+
+    }else if([[UIScreen mainScreen] bounds].size.height==568){ //iPhone5,5s,iPod Touch第5世代
+        //プラスボタン生成
+        plus = [UIImage imageNamed:@"plusView_iPhone.png"];
+        plusView = [[UIImageView alloc] initWithImage:plus];
+        
+        //ゴミ箱生成
+        trash = [UIImage imageNamed:@"trashView_iPhone.png"];
+        trashView = [[UIImageView alloc] initWithImage:trash];
+
+    }else if([[UIScreen mainScreen] bounds].size.height==1024){ //iPad
+        //プラスボタン生成
+        plus = [UIImage imageNamed:@"plusView_iPad.png"];
+        plusView = [[UIImageView alloc] initWithImage:plus];
+        
+        //ゴミ箱生成
+        trash = [UIImage imageNamed:@"trashView_iPad.png"];
+        trashView = [[UIImageView alloc] initWithImage:trash];
+        
+    }
+    
+    
+    
+    if([[UIScreen mainScreen] bounds].size.height==480){ //iPhone4,4s,iPod Touch第4世代
+        
+        plusView.frame = CGRectMake(0, 420, 320, 60);
+        trashView.frame = CGRectMake(0,480,320,60);
+        
+    }else if([[UIScreen mainScreen] bounds].size.height==568){ //iPhone5,5s,iPod Touch第5世代
+        
+        plusView.frame = CGRectMake(0, 503, 320, 65);
+        trashView.frame = CGRectMake(0,568,320,65);
+        
+    }else if([[UIScreen mainScreen] bounds].size.height==1024){ //iPad
+        
+        plusView.frame = CGRectMake(0, 894, 768, 130);
+        trashView.frame = CGRectMake(0,1024,768,130);
+    }
+    
+    
+    [self.view addSubview:plusView];
+    [self.view addSubview:trashView];
+    
+    plusView.userInteractionEnabled = YES;
+    plusView.tag = 1;
+    
+    upRed = YES;
+    upBlue = NO;
     
 }
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -35,35 +93,36 @@
 #pragma mark - ViewWillAppear
 
 - (void)viewWillAppear:(BOOL)animated{ //画面が表示される都度呼び出される
+    [super viewWillAppear:animated];
+    
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
-    gomibako = [UIImage imageNamed:@"trash.png"];
-    gomi = [[UIImageView alloc] initWithImage:gomibako];
-    isUnder = NO;//あんべ(5/18)
     
-    NSString *model = [UIDevice currentDevice].model;
+    isUnder = NO;
     
-    if ([model isEqualToString:@"iPhone"])
-    {
-        NSLog(@"iPhoneである");
-        gomi.frame = CGRectMake(55,490,62,62);
-        [self.view addSubview:gomi];
-    }
+    NSLog(@"%f",[[UIScreen mainScreen] bounds].size.height);
     
-    //iPod touchの場合
-    else if ([model isEqualToString:@"iPod touch"]){
-        gomi.frame = CGRectMake(58, 418, 53, 53);
-        [self.view addSubview:gomi];
-        
-    }
-    //iPadの場合
-    else if ([model isEqualToString:@"iPad"]) {
-        gomi.frame = CGRectMake(150, 872, 120, 120);
-        [self.view addSubview:gomi];
-    }else{
-        NSLog(@"シュミレーター");
-        gomi.frame = CGRectMake(150, 872, 120, 120);
-        [self.view addSubview:gomi];
-    }
+    
+    
+    /*
+     if([[UIScreen mainScreen] bounds].size.height==480){
+     //iPhone4,4s,iPod Touch第4世代
+     gomi.frame = CGRectMake(60,420,48,48);
+     // plusButton.frame = CGRectMake(plusButton.frame.origin.x, 425, 40, 25);
+     [self.view addSubview:gomi];
+     
+     }else if([[UIScreen mainScreen] bounds].size.height==568){
+     //iPhone5,5s,iPod Touch第5世代
+     NSLog(@"あいふぉん");
+     gomi.frame = CGRectMake(55,491,62,62);
+     [self.view addSubview:gomi];
+     
+     }else if([[UIScreen mainScreen] bounds].size.height==1024){
+     NSLog(@"iPad");
+     //iPad
+     gomi.frame = CGRectMake(145,875,120,120);
+     [self.view addSubview:gomi];
+     }
+     */
     
     
     //一回mainViewを全部消す
@@ -71,9 +130,11 @@
     mainView = [self createView];//-------------スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
     
     [self.view addSubview:mainView];
-    [self.view bringSubviewToFront:plusButton];
+    [self.view bringSubviewToFront:plusView];
+ 
     
     [self.view bringSubviewToFront:stampButton];
+    
     
 }
 
@@ -94,35 +155,33 @@
     
     SetteiViewController *svc = [[self storyboard] instantiateViewControllerWithIdentifier:@"settei"];
     NSUserDefaults *stampUd = [NSUserDefaults standardUserDefaults];
-    svc.stampNum = [stampUd integerForKey:@"stamp"];
-    
-    NSString *model = [UIDevice currentDevice].model;
+    svc.stampArrNum = [stampUd integerForKey:@"stamp"];
     
     
     for(i = 0; i < [array count]; i++)
     {
         stampButton = [[UIButton alloc] init];
         
-        if ([model isEqualToString:@"iPhone"])
-        {
-            stampButton.frame = CGRectMake(0, 0, 45, 45);
-        } else if ([model isEqualToString:@"iPod touch"]){
+        
+        if([[UIScreen mainScreen] bounds].size.height==480){
+            //iPhone4,4s,iPod Touch第4世代
             stampButton.frame = CGRectMake(0, 0, 42, 42);
-        }else if ([model isEqualToString:@"iPad"]) {
-            stampButton.frame = CGRectMake(0, 0, 85, 85);
-        }else{
+        }else if([[UIScreen mainScreen] bounds].size.height==568){
+            //iPhone5,5s,iPhod Touch第5世代
+            stampButton.frame = CGRectMake(0, 0, 45, 45);
+            
+        }else if([[UIScreen mainScreen] bounds].size.height==1024)
+            //iPad
+        {
             stampButton.frame = CGRectMake(0, 0, 85, 85);
         }
         
-        stampButton.tag = i;
         
-        //NSLog(@"tag%d",(int)stampButton.tag);
+        stampButton.tag = i;
         
         stampButton.userInteractionEnabled = YES; //タッチの検知をするかしないかの設定
         
-        // TODO:arrayには座標の情報が入っているのに、dicには座標の情報が入っていない！！！わんわん！
         NSDictionary *dic = array[i];
-        
         NSLog(@"dic is %@", dic);
         
         NSString *GVstStampNum = [dic objectForKey:@"stamp"];
@@ -133,12 +192,21 @@
         int ypoint =[[dic objectForKey:@"y"] floatValue];
         
         /* --- スタンプの条件分け ---*/
-        if([GVstStampNum intValue] == 0) [stampButton setImage:[UIImage imageNamed:@"icon01.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 1) [stampButton setImage:[UIImage imageNamed:@"icon02.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 2) [stampButton setImage:[UIImage imageNamed:@"icon03.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 3) [stampButton setImage:[UIImage imageNamed:@"icon04.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 4) [stampButton setImage:[UIImage imageNamed:@"icon05.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 5) [stampButton setImage:[UIImage imageNamed:@"icon06.png"] forState:UIControlStateNormal];
+        if([GVstStampNum intValue] == 0) [stampButton setImage:[UIImage imageNamed:@"icon1.png"] forState:UIControlStateNormal];
+        if([GVstStampNum intValue] == 1) [stampButton setImage:[UIImage imageNamed:@"icon2.png"] forState:UIControlStateNormal];
+        if([GVstStampNum intValue] == 2) [stampButton setImage:[UIImage imageNamed:@"icon3.png"] forState:UIControlStateNormal];
+        if([GVstStampNum intValue] == 3) [stampButton setImage:[UIImage imageNamed:@"icon4.png"] forState:UIControlStateNormal];
+        if([GVstStampNum intValue] == 4) [stampButton setImage:[UIImage imageNamed:@"icon5.png"] forState:UIControlStateNormal];
+        if([GVstStampNum intValue] == 5) [stampButton setImage:[UIImage imageNamed:@"icon6.png"] forState:UIControlStateNormal];
+        if([GVstStampNum intValue] == 6) [stampButton setImage:[UIImage imageNamed:@"icon7.png"] forState:UIControlStateNormal];
+        if([GVstStampNum intValue] == 7) [stampButton setImage:[UIImage imageNamed:@"icon8.png"] forState:UIControlStateNormal];
+        if([GVstStampNum intValue] == 8) [stampButton setImage:[UIImage imageNamed:@"icon9.png"] forState:UIControlStateNormal];
+        if([GVstStampNum intValue] == 9) [stampButton setImage:[UIImage imageNamed:@"icon10.png"] forState:UIControlStateNormal];
+        if([GVstStampNum intValue] == 10) [stampButton setImage:[UIImage imageNamed:@"icon11.png"] forState:UIControlStateNormal];
+        if([GVstStampNum intValue] == 11) [stampButton setImage:[UIImage imageNamed:@"icon12.png"] forState:UIControlStateNormal];
+        
+        
+        
         
         [stampButton addTarget:self action:@selector(buttonPushed:) forControlEvents:UIControlEventTouchUpInside];
         //stampButtonが押されたらbuttonPushedが呼び出される
@@ -147,40 +215,8 @@
         [stampButton addGestureRecognizer:pan]; //stampViewにpanを設定する
         
         
-        //iPhoneの場合
-        if ([model isEqualToString:@"iPhone"])
-        {
-            
-            w = 45;
-            h = 70;
-            
-            
-            int ww,hh;
-            
-            if (kigenNum<=2) {
-                hh=62;
-            }else{
-                hh=52;
-            }
-            if (juyouNum<=2) {
-                ww=18;
-            }else{
-                ww=32;
-            }
-            
-            if(xpoint==0&&ypoint==0){
-                
-                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,45, 45);
-                
-            }else{
-                stampButton.center = CGPointMake(xpoint, ypoint);
-            }
-            
-            [view addSubview:stampButton];
-        }
-        
-        //iPod touchの場合
-        else if ([model isEqualToString:@"iPod touch"]) {
+        if([[UIScreen mainScreen] bounds].size.height==480){
+            //iPhone4,4s,iPod Touch第4世代
             w = 45;
             h = 60;
             
@@ -209,10 +245,46 @@
             
             [view addSubview:stampButton];
             
+            
         }
         
+        else if([[UIScreen mainScreen] bounds].size.height==568){
+            //iPhone5,5s,iPhod Touch第5世代
+            
+            
+            w = 45;
+            h = 70;
+            
+            
+            int ww,hh;
+            
+            if (kigenNum<=2) {
+                hh=62;
+            }else{
+                hh=52;
+            }
+            if (juyouNum<=2) {
+                ww=18;
+            }else{
+                ww=32;
+            }
+            
+            if(xpoint==0&&ypoint==0){
+                
+                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,45, 45);
+                
+            }else{
+                stampButton.center = CGPointMake(xpoint, ypoint);
+            }
+            
+            [view addSubview:stampButton];
+            
+            
+        }
+        
+        
         //iPadの場合
-        else if ([model isEqualToString:@"iPad"]) {
+        else if([[UIScreen mainScreen] bounds].size.height==1024){
             
             w = 108;
             h = 140;
@@ -241,59 +313,51 @@
             
             
             [view addSubview:stampButton];
+            [self.view bringSubviewToFront:stampButton];
             
-        }else{
-            w = 108;
-            h = 140;
-            
-            
-            int ww,hh;
-            if (kigenNum<=2) {
-                hh=42;
-            }else{
-                hh=70;
-            }
-            if (juyouNum<=2) {
-                ww=54;
-            }else{
-                ww=86;
-            }
-            
-            
-            if(xpoint==0&&ypoint==0){
-                
-                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,85, 85);
-                
-            }else{
-                stampButton.center = CGPointMake(xpoint, ypoint);
-            }
-            
-            
-            [view addSubview:stampButton];        }
-        
-        
+        }
         
     }
-    [self.view bringSubviewToFront:stampButton];
-    
-    
     return view;
-    
-    
 }
 
 
+#pragma mark - タッチ
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    // キーボードを閉じる
+    //キーボードを閉じる
     [textView resignFirstResponder];
+    
+    
+    UITouch *touch = [touches anyObject];
+    SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
+    
+    NSLog(@"タッチ");
+    NSLog(@"%d",(int)plusView.tag);
+    NSLog(@"%d",(int)touch.view.tag);
+    
+    
+    switch (touch.view.tag) {
+        case 1:
+            
+            [self presentViewController:setteiVC animated:YES completion:nil];
+            
+            NSLog(@"画面遷移");
+            
+            [_noteView removeFromSuperview];
+            _noteView = nil;
+            
+            break;
+            
+        default:
+            NSLog(@"mainView");
+            break;
+    }
 }
 
 
 
 #pragma mark - スタンプの選択(移動)
-/* -- ここで画面遷移 --- */
-
 - (void)buttonPushed:(UIButton *)button //buttonとstampButtonは同じって考えていい
 {
     NSLog(@"%d番目に作られたやつ",(int)button.tag);
@@ -303,9 +367,6 @@
     array = [ud objectForKey:@"hoge"];
     NSDictionary *dic = array[button.tag];
     NSLog(@"%@",dic[@"contents"]);
-    plusButton.enabled = NO;
-    
-    NSString *model = [UIDevice currentDevice].model;
     
     
     NSDictionary *resaveDic = array[button.tag];
@@ -318,16 +379,22 @@
     
     
     if(_noteView) {
-        
-        //labelの中身を書き換える
-        if ([model isEqualToString:@"iPhone"]){
+        if([[UIScreen mainScreen] bounds].size.height==480){
+            //iPhone4,4s,iPod Touch第4世代
             [textView setFont:[UIFont fontWithName:@"azuki_font" size:25]];
-        }else if ([model isEqualToString:@"iPod touch"]) {
+            //labelの中身を書き換える
+        }
+        else if([[UIScreen mainScreen] bounds].size.height==568){
+            //iPhone5,5s,iPhod Touch第5世代
             [textView setFont:[UIFont fontWithName:@"azuki_font" size:25]];
-        }else if ([model isEqualToString:@"iPad"]) {
+            
+            
+            //iPadの場合
+        }else if([[UIScreen mainScreen] bounds].size.height==1024){
             [textView setFont:[UIFont fontWithName:@"azuki_font" size:60]];
-        }else{
-            [textView setFont:[UIFont fontWithName:@"azuki_font" size:60]];        }
+        }
+        
+        
         
         if(!resaveMArray){
             textView.text = dic[@"contents"];
@@ -357,15 +424,18 @@
         batsuView = [[UIImageView alloc] initWithImage:batsu];
         cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        if ([model isEqualToString:@"iPhone"])        {
-            cancelButton.frame = CGRectMake(225, 225, 45, 45);
-        }else if ([model isEqualToString:@"iPod touch"]) {
+        if([[UIScreen mainScreen] bounds].size.height==480){
+            //iPhone4,4s,iPod Touch第4世代
             cancelButton.frame = CGRectMake(219, 222, 45, 45);
-        }else if ([model isEqualToString:@"iPad"]) {
-            cancelButton.frame = CGRectMake(485, 490, 90, 90);
-        }else{
+            
+        }else if([[UIScreen mainScreen] bounds].size.height==568){
+            //iPhone5,5s,iPhod Touch第5世代
+            cancelButton.frame = CGRectMake(225, 225, 45, 45);
+        }else if([[UIScreen mainScreen] bounds].size.height==1024){
+            //iPadの場合
             cancelButton.frame = CGRectMake(485, 490, 90, 90);
         }
+        
         
         cancelButton.tag = button.tag;
         NSLog(@"キャンセルボタンのタグ！！！%d",(int)cancelButton.tag);
@@ -378,18 +448,19 @@
         
         
         //labelを表示する部分
-        if ([model isEqualToString:@"iPhone"])
-        {
+        
+        if([[UIScreen mainScreen] bounds].size.height==480){
+            //iPhone4,4s,iPod Touch第4世代
+            textView = [[UITextView alloc] initWithFrame:CGRectMake(60,120,180,135)];
+            [textView setFont:[UIFont fontWithName:@"azuki_font" size:25]];
+        }
+        else if([[UIScreen mainScreen] bounds].size.height==568){
+            //iPhone5,5s,iPhod Touch第5世代
             textView = [[UITextView alloc] initWithFrame:CGRectMake(60,110,170,145)];
             [textView setFont:[UIFont fontWithName:@"azuki_font" size:25]];
             
-        }else if ([model isEqualToString:@"iPod touch"]) {
-            textView = [[UITextView alloc] initWithFrame:CGRectMake(60,120,180,135)];
-            [textView setFont:[UIFont fontWithName:@"azuki_font" size:25]];
-        }else if ([model isEqualToString:@"iPad"]) {
-            textView = [[UITextView alloc] initWithFrame:CGRectMake(125,255,400,250)];
-            [textView setFont:[UIFont fontWithName:@"azuki_font" size:60]];
-        }else{
+        }else if([[UIScreen mainScreen] bounds].size.height==1024){
+            //iPad
             textView = [[UITextView alloc] initWithFrame:CGRectMake(125,255,400,250)];
             [textView setFont:[UIFont fontWithName:@"azuki_font" size:60]];
         }
@@ -408,14 +479,15 @@
         [self.view bringSubviewToFront:textView];
         
         //とどの上にstampの画像を表示
-        if ([model isEqualToString:@"iPhone"])
-        {
+        if([[UIScreen mainScreen] bounds].size.height==480){
+            //iPhone4,4s,iPod Touch第4世代
             todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(45, 38, 50, 50)];
-        } else if ([model isEqualToString:@"iPod touch"]) {
+        }
+        else if([[UIScreen mainScreen] bounds].size.height==568){
+            //iPhone5,5s,iPhod Touch第5世代
             todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(45, 38, 50, 50)];
-        }else if ([model isEqualToString:@"iPad"]) {
-            todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(80, 60, 140, 140)];
-        }else{
+        }else if([[UIScreen mainScreen] bounds].size.height==1024){
+            //iPad
             todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(80, 60, 140, 140)];
         }
         
@@ -424,8 +496,6 @@
         
         
         [self noteImageFadeIn];
-        
-        todoFade = !todoFade;
     }
     
     [self.view bringSubviewToFront:stampButton];
@@ -441,7 +511,6 @@
     _noteView = nil;
     textView = nil;
     
-    plusButton.enabled = YES;
 }
 
 
@@ -481,6 +550,7 @@
  *
  */
 
+#pragma mark - 編集保存
 - (void)saveEdit:(int)editIndex
 {
     ud = [NSUserDefaults standardUserDefaults];
@@ -503,9 +573,78 @@
     NSLog(@"saveEditIndex------%d",editIndex);
 }
 
+-(void)startAnimation{
+    
+    if(!upBlue){
+        
+        [UIView animateWithDuration:0.4f
+                              delay:0.1f
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             // アニメーションをする処理
+                             
+                             if([[UIScreen mainScreen] bounds].size.height==480){
+                                 //iPhone4,4s,iPod Touch第4世代
+                                 trashView.transform = CGAffineTransformMakeTranslation(0, -60);
+                             }else if([[UIScreen mainScreen] bounds].size.height==568){
+                                 //iPhone5,5s,iPod Touch第5世代
+                                 trashView.transform = CGAffineTransformMakeTranslation(0, -65);
+                                 
+                             }else if([[UIScreen mainScreen] bounds].size.height==1024){
+                                 trashView.transform = CGAffineTransformMakeTranslation(0, -130);
+                                 
+                             }
+                             
+                             
+                         }
+                         completion:^(BOOL finished){
+                             // アニメーションが終わった後実行する処理
+                             upBlue = YES;
+                         }];
+        
+        
+        NSLog(@"青でてくる");
+        
+        
+        
+    }
+    
+    if(upRed){
+        [UIView animateWithDuration:0.4f
+                              delay:0.1f
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             // アニメーションをする処理
+                             
+                             if([[UIScreen mainScreen] bounds].size.height==480){
+                                 //iPhone4,4s,iPod Touch第4世代
+                                 plusView.transform = CGAffineTransformMakeTranslation(0, 60);
+                             }else if([[UIScreen mainScreen] bounds].size.height==568){
+                                 //iPhone5,5s,iPod Touch第5世代
+                                 plusView.transform = CGAffineTransformMakeTranslation(0, 65);
+                                 
+                             }else if([[UIScreen mainScreen] bounds].size.height==1024){
+                                 plusView.transform = CGAffineTransformMakeTranslation(0, 130);
+                                 
+                             }
+                             
+                             
+                         }
+                         completion:^(BOOL finished){
+                             // アニメーションが終わった後実行する処理
+                             upRed = NO;
+                         }];
+        
+        NSLog(@"赤消える");
+    }
+    
+}
+
 
 #pragma mark - スタンプの移動
 - (void)panAction:(UIPanGestureRecognizer *)sender {
+    
+    [self startAnimation];
     
     ud = [NSUserDefaults standardUserDefaults];
     array = [ud objectForKey:@"hoge"]; //hogeでudをarrayに入れる
@@ -515,60 +654,85 @@
     NSMutableDictionary *mDic = [dic mutableCopy];
     CGPoint p = [sender translationInView:sender.view];
     
-    NSString *model = [UIDevice currentDevice].model;
-    
     
     // 移動した距離だけ、UIImageViewのcenterポジションを移動させる
     CGPoint movedPoint = CGPointMake(sender.view.center.x + p.x, sender.view.center.y + p.y);
     sender.view.center = movedPoint;
     
-    //plusボタンに重なっていた(もぐっていた)場合(あんべ)
-    if([self isUnderPlusButton:movedPoint.x Y:movedPoint.y] ){
-        NSLog(@"もぐった！");
-        
-        //isUnderがnoのとき→座標を記録する
-        if(!isUnder){
-            isUnder = YES;
-            
-            NSLog(@"きろく！");
-        }
-        
-        //指を離したときにもぐっていた場合、動かす
-        if(sender.state == UIGestureRecognizerStateEnded && isUnder){
-            
-            //iPhoneの場合
-            if ([model isEqualToString:@"iPhone"])
-            {
-                sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-60);
-            }else if ([model isEqualToString:@"iPod touch"])
-            {
-                sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-60);
-            }else if ([model isEqualToString:@"iPad"])
-            {
-                sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-150);
-            }else{
-                sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-150);
-            }
-            
-            movedPoint = sender.view.center;
-            
-            NSLog(@"うごいた");
-        }
-        
-    }else{
-        isUnder = NO;
-        NSLog(@"かぶってない");
-        
-    }
-    //あんべここまで
     
+    /*
+     
+     //plusボタンに重なっていた(もぐっていた)場合
+     if([self isUnderPlusButton:movedPoint.x Y:movedPoint.y] ){
+     NSLog(@"もぐった！");
+     
+     //isUnderがnoのとき→座標を記録する
+     if(!isUnder){
+     isUnder = YES;
+     
+     NSLog(@"きろく！");
+     }
+     
+     //指を離したときにもぐっていた場合、動かす
+     if(sender.state == UIGestureRecognizerStateEnded && isUnder){
+     
+     //iPhoneの場合
+     if([[UIScreen mainScreen] bounds].size.height==480){
+     //iPhone4,4s,iPod Touch第4世代
+     sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-60);
+     }
+     else if([[UIScreen mainScreen] bounds].size.height==568){
+     //iPhone5,5s,iPhod Touch第5世代
+     sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-60);
+     }else if([[UIScreen mainScreen] bounds].size.height==1024){
+     //iPad
+     sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-150);
+     }
+     
+     movedPoint = sender.view.center;
+     
+     NSLog(@"うごいた");
+     }
+     
+     }else{
+     isUnder = NO;
+     NSLog(@"かぶってない");
+     
+     }
+     
+     */
     
     
     /* ---　はじっこから脱出　--- */
     
-    //iPhone5
-    if ([model isEqualToString:@"iPhone"])
+    if([[UIScreen mainScreen] bounds].size.height==480)
+        //iPhone4,4s,iPod Touch第4世代
     {
+        NSLog(@"iPhone4");
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 13)
+        {
+            sender.view.center = CGPointMake(movedPoint.x+30, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 300)
+        {
+            sender.view.center = CGPointMake(movedPoint.x-30, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 45)
+        {
+            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+40);
+        }
+        /*if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 460)
+         {
+         sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-80);
+         }
+         */
+        movedPoint = sender.view.center;
+    }
+    
+    //iPhone5
+    else if([[UIScreen mainScreen] bounds].size.height==568){
+        //iPhone5,5s,iPhod Touch第5世代
+        
         NSLog(@"iPhone5");
         if(movedPoint.x <= 0){
             movedPoint.x = 0;
@@ -590,41 +754,20 @@
         {
             sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+25);
         }
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 545)
-        {
-            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-90);
-        }
+        /*
+         if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 545)
+         {
+         sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-90);
+         }
+         */
         movedPoint = sender.view.center;
     }
     
     
-    //iPhone4
-    else if ([model isEqualToString:@"iPod touch"])
-    {
-        NSLog(@"iPhone4");
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 13)
-        {
-            sender.view.center = CGPointMake(movedPoint.x+30, movedPoint.y);
-        }
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 300)
-        {
-            sender.view.center = CGPointMake(movedPoint.x-30, movedPoint.y);
-        }
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 45)
-        {
-            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+40);
-        }
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 460)
-        {
-            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-80);
-        }
-        movedPoint = sender.view.center;
-    }
     
     
-    //iPad
-    else if ([model isEqualToString:@"iPad"]) {
-        NSLog(@"iPad");
+    else if([[UIScreen mainScreen] bounds].size.height==1024){
+        //iPad
         if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 20)
         {
             sender.view.center = CGPointMake(movedPoint.x+85, movedPoint.y);
@@ -637,14 +780,15 @@
         {
             sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+80);
         }
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 980)
-        {
-            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-210);
-        }
+        /* if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 980)
+         {
+         sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-210);
+         }
+         */
         movedPoint = sender.view.center;
     }
     
-    
+    //指を離した時
     if(sender.state == UIGestureRecognizerStateEnded)
     {
         [mDic setObject:[NSNumber numberWithFloat:movedPoint.x] forKey:@"x"];
@@ -653,36 +797,104 @@
         NSMutableArray *mArray = [array mutableCopy];
         mArray[sender.view.tag] = mDic;
         
-        NSLog(@"-----------------------%@",mArray);
+        
         
         [ud setObject:mArray forKey:@"hoge"];
         [ud synchronize];
         
-    }
-    
-    /*--- ゴミ箱 ---*/
-    if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= gomi.frame.origin.x && movedPoint.x <= gomi.frame.origin.x + gomi.frame.size.width && movedPoint.y >= gomi.frame.origin.y && movedPoint.y <= gomi.frame.origin.y + gomi.frame.size.height)
-    {
-        //ゴミ箱と重なっていたら削除！　消えろ！　うら！
-        NSMutableArray *mArray = [array mutableCopy];
-        NSLog(@"%d",(int)sender.view.tag,[mArray count]);
-        [mArray removeObjectAtIndex:sender.view.tag];
         
-        // TODO:hogeにmArrayをset(ゴミ箱)
-        [ud setObject:mArray forKey:@"hoge"];
-        [ud synchronize];
-        
-        [mainView removeFromSuperview];
-        mainView = [self createView];
-        [self.view addSubview:mainView];
-        [self.view bringSubviewToFront:plusButton];
-        
-        if(_noteView){
-            [self.view bringSubviewToFront:_noteView];
+        if(upBlue){
+            
+            
+            height = [[UIScreen mainScreen] bounds].size.height;
+            
+            /* --- ゴミ箱 --- */
+            if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= height -
+               trashView.frame.size.height)
+            {
+                NSLog(@"消えろ");
+                //ゴミ箱と重なっていたら削除！　消えろ！　うら！
+                NSMutableArray *mArray = [array mutableCopy];
+                NSLog(@"%d %d",(int)sender.view.tag,(int)[mArray count]);
+                [mArray removeObjectAtIndex:sender.view.tag];
+                
+                [ud setObject:mArray forKey:@"hoge"];
+                [ud synchronize];
+                
+                [mainView removeFromSuperview];
+                mainView = [self createView];
+                [self.view addSubview:mainView];
+                [self.view bringSubviewToFront:plusView];
+                
+                if(_noteView){
+                    [self.view bringSubviewToFront:_noteView];
+                }
+                
+                
+                
+                
+                [UIView animateWithDuration:0.4f
+                                      delay:0.1f
+                                    options:UIViewAnimationOptionCurveEaseInOut
+                                 animations:^{
+                                     // アニメーションをする処理
+                                     plusView.transform = CGAffineTransformMakeTranslation(0, 0);
+                                 }
+                                 completion:^(BOOL finished){
+                                     // アニメーションが終わった後実行する処理
+                                     upRed = YES;
+                                 }];
+                
+                NSLog(@"赤でてくる");
+                
+            }
+            
+            
+            [UIView animateWithDuration:0.4f
+                                  delay:0.1f
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 // アニメーションをする処理
+                                 if([[UIScreen mainScreen] bounds].size.height==480){
+                                     //iPhone4,4s,iPod Touch第4世代
+                                     trashView.transform = CGAffineTransformMakeTranslation(0, 60);
+                                 }else if([[UIScreen mainScreen] bounds].size.height==568){
+                                     //iPhone5,5s,iPod Touch第5世代
+                                     trashView.transform = CGAffineTransformMakeTranslation(0, 65);
+                                     
+                                 }else if([[UIScreen mainScreen] bounds].size.height==1024){
+                                     trashView.transform = CGAffineTransformMakeTranslation(0, 130);
+                                     
+                                 }
+                             }
+                             completion:^(BOOL finished){
+                                 // アニメーションが終わった後実行する処理
+                                 upBlue = NO;
+                             }];
+            NSLog(@"青消える");
+            
         }
-        return;
+        
+        if(!upRed){
+            
+            
+            [UIView animateWithDuration:0.4f
+                                  delay:0.1f
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 // アニメーションをする処理
+                                 plusView.transform = CGAffineTransformMakeTranslation(0, 0);
+                             }
+                             completion:^(BOOL finished){
+                                 // アニメーションが終わった後実行する処理
+                                 upRed = YES;
+                             }];
+            
+            NSLog(@"赤でてくる");
+            
+        }
+        
     }
-    
     
     // ドラッグで移動した距離を初期化する
     [sender setTranslation:CGPointZero inView:self.view];
@@ -690,7 +902,7 @@
     
 }
 
-//もぐったかどうかを判定する(あんべ5/18)
+//もぐったかどうかを判定する
 -(BOOL) isUnderPlusButton:(float)x Y:(float)y {
     if((x < plusButton.center.x+50 && x > plusButton.center.x-50 )&& (y > plusButton.center.y-30 && y < plusButton.center.y+30)){
         return true;
@@ -698,7 +910,7 @@
         return false;
     }
 }
-//あんべここまで
+
 
 
 //フェードイン

@@ -14,9 +14,9 @@
 {
     IBOutlet UILabel *label;
     
-    UIImage *stmArray[7];
-    int i;
-    
+   UIImage *stmArray[12];
+    //int i;
 }
+
 
 @end
