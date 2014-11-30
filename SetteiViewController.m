@@ -143,14 +143,14 @@
     UIImage *icon2 = [UIImage imageNamed:@"icon2_todo.png"];
     UIImage *icon3 = [UIImage imageNamed:@"icon3_todo.png"];
     UIImage *icon4 = [UIImage imageNamed:@"icon4_todo.png"];
-    UIImage *icon5 = [UIImage imageNamed:@"icon5.png"];
-    UIImage *icon6 = [UIImage imageNamed:@"icon6.png"];
-    UIImage *icon7 = [UIImage imageNamed:@"icon7.png"];
-    UIImage *icon8 = [UIImage imageNamed:@"icon8.png"];
-    UIImage *icon9 = [UIImage imageNamed:@"icon9.png"];
-    UIImage *icon10 = [UIImage imageNamed:@"icon10.png"];
-    UIImage *icon11 = [UIImage imageNamed:@"icon11.png"];
-    UIImage *icon12 = [UIImage imageNamed:@"icon12.png"];
+    UIImage *icon5 = [UIImage imageNamed:@"icon5_todo.png"];
+    UIImage *icon6 = [UIImage imageNamed:@"icon6_todo.png"];
+    UIImage *icon7 = [UIImage imageNamed:@"icon7_todo.png"];
+    UIImage *icon8 = [UIImage imageNamed:@"icon8_todo.png"];
+    UIImage *icon9 = [UIImage imageNamed:@"icon9_todo.png"];
+    UIImage *icon10 = [UIImage imageNamed:@"icon10_todo.png"];
+    UIImage *icon11 = [UIImage imageNamed:@"icon11_todo.png"];
+    UIImage *icon12 = [UIImage imageNamed:@"icon12_todo.png"];
 
 
 
