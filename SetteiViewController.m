@@ -139,10 +139,10 @@
 
     //stampNum = [sta integerForKey:@"stamp"];
     
-    UIImage *icon1 = [UIImage imageNamed:@"icon1.png"];
-    UIImage *icon2 = [UIImage imageNamed:@"icon2.png"];
-    UIImage *icon3 = [UIImage imageNamed:@"icon3.png"];
-    UIImage *icon4 = [UIImage imageNamed:@"icon4.png"];
+    UIImage *icon1 = [UIImage imageNamed:@"icon1_todo.png"];
+    UIImage *icon2 = [UIImage imageNamed:@"icon2_todo.png"];
+    UIImage *icon3 = [UIImage imageNamed:@"icon3_todo.png"];
+    UIImage *icon4 = [UIImage imageNamed:@"icon4_todo.png"];
     UIImage *icon5 = [UIImage imageNamed:@"icon5.png"];
     UIImage *icon6 = [UIImage imageNamed:@"icon6.png"];
     UIImage *icon7 = [UIImage imageNamed:@"icon7.png"];
@@ -171,7 +171,7 @@
         
     }else if([[UIScreen mainScreen] bounds].size.height==568){ //iPhone5,5s,iPod Touch第5世代
         
-        iconView.frame = CGRectMake(120, 380, 90, 90);
+        iconView.frame = CGRectMake(127, 150, 70, 70);
         
     }else if([[UIScreen mainScreen] bounds].size.height==1024){
       

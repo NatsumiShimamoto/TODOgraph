@@ -60,6 +60,11 @@
 		DDA86C701A2AE4D60052D35F /* todoSplash_480.320.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86C6F1A2AE4D60052D35F /* todoSplash_480.320.png */; };
 		DDA86C731A2AE7630052D35F /* plusView_iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86C711A2AE7630052D35F /* plusView_iPhone.png */; };
 		DDA86C741A2AE7630052D35F /* trashView_iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86C721A2AE7630052D35F /* trashView_iPhone.png */; };
+		DDA86C7C1A2B08C50052D35F /* a.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86C7B1A2B08C50052D35F /* a.png */; };
+		DDA86C801A2B0A760052D35F /* icon2_todo.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86C7F1A2B0A760052D35F /* icon2_todo.png */; };
+		DDA86C821A2B0B110052D35F /* icon1_todo.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86C811A2B0B110052D35F /* icon1_todo.png */; };
+		DDA86C861A2B0D570052D35F /* icon3_todo.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86C851A2B0D570052D35F /* icon3_todo.png */; };
+		DDA86C8C1A2B0E900052D35F /* icon4_todo.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86C8B1A2B0E8F0052D35F /* icon4_todo.png */; };
 		DDAD094D18E947410084C7A3 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAD094C18E947410084C7A3 /* NoteView.m */; };
 		DDAD095F18EA9DF10084C7A3 /* batsu.png in Resources */ = {isa = PBXBuildFile; fileRef = DDAD095E18EA9DF10084C7A3 /* batsu.png */; };
 		DDAD098D18F022590084C7A3 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = DDAD098C18F022590084C7A3 /* clock.png */; };
@@ -158,6 +163,11 @@
 		DDA86C6F1A2AE4D60052D35F /* todoSplash_480.320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todoSplash_480.320.png; sourceTree = "<group>"; };
 		DDA86C711A2AE7630052D35F /* plusView_iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusView_iPhone.png; sourceTree = "<group>"; };
 		DDA86C721A2AE7630052D35F /* trashView_iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trashView_iPhone.png; sourceTree = "<group>"; };
+		DDA86C7B1A2B08C50052D35F /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
+		DDA86C7F1A2B0A760052D35F /* icon2_todo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2_todo.png; sourceTree = "<group>"; };
+		DDA86C811A2B0B110052D35F /* icon1_todo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1_todo.png; sourceTree = "<group>"; };
+		DDA86C851A2B0D570052D35F /* icon3_todo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3_todo.png; sourceTree = "<group>"; };
+		DDA86C8B1A2B0E8F0052D35F /* icon4_todo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon4_todo.png; sourceTree = "<group>"; };
 		DDAD094B18E947410084C7A3 /* NoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteView.h; sourceTree = "<group>"; };
 		DDAD094C18E947410084C7A3 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteView.m; sourceTree = "<group>"; };
 		DDAD095E18EA9DF10084C7A3 /* batsu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = batsu.png; sourceTree = "<group>"; };
@@ -222,6 +232,7 @@
 		AF1682A017F3F8A200973991 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DDA86C7B1A2B08C50052D35F /* a.png */,
 				DDA86C4F1A28935D0052D35F /* setting.png */,
 				DDA86C711A2AE7630052D35F /* plusView_iPhone.png */,
 				DDA86C721A2AE7630052D35F /* trashView_iPhone.png */,
@@ -234,7 +245,6 @@
 				DDAD095E18EA9DF10084C7A3 /* batsu.png */,
 				DDAD09B318F161120084C7A3 /* noteS.png */,
 				DDAD094818E946980084C7A3 /* icons */,
-				DDAD09A018F154920084C7A3 /* stamps */,
 				DDAD099F18F154570084C7A3 /* backgrounds */,
 			);
 			name = Images;
@@ -299,6 +309,10 @@
 		DDAD09A018F154920084C7A3 /* stamps */ = {
 			isa = PBXGroup;
 			children = (
+				DDA86C7F1A2B0A760052D35F /* icon2_todo.png */,
+				DDA86C811A2B0B110052D35F /* icon1_todo.png */,
+				DDA86C851A2B0D570052D35F /* icon3_todo.png */,
+				DDA86C8B1A2B0E8F0052D35F /* icon4_todo.png */,
 				DDD103FD18A244D8006DD1BD /* icon01.png */,
 				DD464E2018A50F2D003B9A21 /* icon02.png */,
 				DDD1041718A250BC006DD1BD /* icon03.png */,
@@ -372,6 +386,7 @@
 				DDD1041918A2528C006DD1BD /* MainStoryboard.storyboard */,
 				DDDED97D17E9B28600DC97FA /* Storyboard_3.5.storyboard */,
 				DDDED97F17E9B37700DC97FA /* Storyboard_iPad.storyboard */,
+				DDAD09A018F154920084C7A3 /* stamps */,
 				AF1682A017F3F8A200973991 /* Images */,
 				DDA86C3D1A232D270052D35F /* Images.xcassets */,
 				DDE8E6AB17AA042400B8AA4F /* Supporting Files */,
@@ -492,6 +507,7 @@
 				DD04C6831A1CB688005B27AD /* todo01.png in Resources */,
 				DDA86C701A2AE4D60052D35F /* todoSplash_480.320.png in Resources */,
 				DD1FBE6618B6056200C7AB12 /* todoicon_58.png in Resources */,
+				DDA86C8C1A2B0E900052D35F /* icon4_todo.png in Resources */,
 				DDAD09A618F1568C0084C7A3 /* check.png in Resources */,
 				DDE8E6AF17AA042400B8AA4F /* InfoPlist.strings in Resources */,
 				DDD1041A18A2528C006DD1BD /* MainStoryboard.storyboard in Resources */,
@@ -511,6 +527,7 @@
 				DDA86C6A1A2AE3620052D35F /* todoSplash_960.640.png in Resources */,
 				DD464E2118A50F2D003B9A21 /* icon02.png in Resources */,
 				DDD1041818A250BC006DD1BD /* icon03.png in Resources */,
+				DDA86C801A2B0A760052D35F /* icon2_todo.png in Resources */,
 				DD464E1518A50A3C003B9A21 /* icon03_iPad.png in Resources */,
 				DDA86C6B1A2AE3620052D35F /* todoSplash_1024.768.png in Resources */,
 				DD04C67C1A1B62A9005B27AD /* icon3.png in Resources */,
@@ -519,11 +536,13 @@
 				DDE8E6BB17AA042400B8AA4F /* Default-568h@2x.png in Resources */,
 				DD04C68F1A1E1206005B27AD /* icon9.png in Resources */,
 				DD464E1918A50B29003B9A21 /* icon05_iPad.png in Resources */,
+				DDA86C861A2B0D570052D35F /* icon3_todo.png in Resources */,
 				DDD1040818A248F8006DD1BD /* icon04.png in Resources */,
 				DDA86C4D1A2605A70052D35F /* icon11.png in Resources */,
 				DDAD09B218F15DE30084C7A3 /* yazirushi.png in Resources */,
 				DDA86C581A2AD7D00052D35F /* todo01_iPad.png in Resources */,
 				DD1FBE7118B6056200C7AB12 /* todoicon_152.png in Resources */,
+				DDA86C821A2B0B110052D35F /* icon1_todo.png in Resources */,
 				DD1FBE6318B6056200C7AB12 /* todoicon_40.png in Resources */,
 				DD1FBE6E18B6056200C7AB12 /* todoicon_114.png in Resources */,
 				DDA86C501A28935D0052D35F /* setting.png in Resources */,
@@ -545,6 +564,7 @@
 				DD1FBE6118B6056200C7AB12 /* todoicon_29.png in Resources */,
 				DDAD09A218F155520084C7A3 /* exclamation.png in Resources */,
 				DDDED98017E9B37700DC97FA /* Storyboard_iPad.storyboard in Resources */,
+				DDA86C7C1A2B08C50052D35F /* a.png in Resources */,
 				DDA86C6E1A2AE41B0052D35F /* todoSplash_2048.1536.png in Resources */,
 				DDA86C4E1A2605A70052D35F /* icon12.png in Resources */,
 				DD464E1318A509CA003B9A21 /* icon02_iPad.png in Resources */,
