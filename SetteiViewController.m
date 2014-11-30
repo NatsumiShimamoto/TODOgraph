@@ -48,10 +48,10 @@
         
         CGRect kigenSegFrame= kigenSeg.frame;
         kigenSeg.frame = CGRectMake(kigenSegFrame.origin.x, kigenSegFrame.origin.y,
-                                    kigenSegFrame.size.width, kigenSegFrame.size.height+3) ;
+                                    kigenSegFrame.size.width, kigenSegFrame.size.height-3) ;
         CGRect juyouSegFrame= juyouSeg.frame;
         juyouSeg.frame = CGRectMake(juyouSegFrame.origin.x, juyouSegFrame.origin.y,
-                                    juyouSegFrame.size.width, juyouSegFrame.size.height+3) ;
+                                    juyouSegFrame.size.width, juyouSegFrame.size.height-3) ;
     }
     else{
         [kigenLabel setFont:[UIFont fontWithName:@"azuki_font" size:45]];
@@ -167,15 +167,15 @@
     
     if([[UIScreen mainScreen] bounds].size.height==480){ //iPhone4,4s,iPod Touch第4世代
         
-       iconView.frame = CGRectMake(120, 330, 80, 80);
+       iconView.frame = CGRectMake(132, 105, 55, 55);
         
     }else if([[UIScreen mainScreen] bounds].size.height==568){ //iPhone5,5s,iPod Touch第5世代
         
-        iconView.frame = CGRectMake(127, 150, 70, 70);
+        iconView.frame = CGRectMake(127, 130, 70, 70);
         
     }else if([[UIScreen mainScreen] bounds].size.height==1024){
       
-        iconView.frame = CGRectMake(330, 720, 150, 150);
+        iconView.frame = CGRectMake(318, 218, 120, 120);
     }
 
    

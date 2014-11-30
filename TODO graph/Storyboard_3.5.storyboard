@@ -13,37 +13,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ノート3.5.png" id="4gc-yZ-q5k">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setting_3.5.png" id="4gc-yZ-q5k">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="期限" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IRI-jD-PYB">
-                                <rect key="frame" x="55" y="153" width="41" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="18"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="重要度" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0OH-k4-ecQ">
-                                <rect key="frame" x="40" y="254" width="71" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="やることを入力してください" minimumFontSize="17" id="6or-pX-SFE">
-                                <rect key="frame" x="67" y="97" width="227" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="doText" destination="l3a-LJ-pG1" eventType="editingDidEndOnExit" id="xN1-Hy-NbB"/>
-                                </connections>
-                            </textField>
                             <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="bOo-9n-5Yn">
-                                <rect key="frame" x="84" y="192" width="194" height="29"/>
+                                <rect key="frame" x="63" y="254" width="194" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="1"/>
                                     <segment title="2"/>
@@ -52,14 +30,15 @@
                                     <segment title="5"/>
                                     <segment title="6"/>
                                 </segments>
-                                <color key="tintColor" red="0.50980395079999996" green="0.83921575550000005" blue="0.90588241820000004" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <connections>
                                     <action selector="SegChanged:" destination="l3a-LJ-pG1" eventType="valueChanged" id="4Oy-eF-NUZ"/>
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="VZa-8w-rZR">
-                                <rect key="frame" x="84" y="286" width="194" height="29"/>
+                                <rect key="frame" x="63" y="346" width="194" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="1"/>
                                     <segment title="2"/>
@@ -68,16 +47,16 @@
                                     <segment title="5"/>
                                     <segment title="6"/>
                                 </segments>
-                                <color key="tintColor" red="0.50980395079999996" green="0.83921575550000005" blue="0.90588241820000004" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <connections>
                                     <action selector="SegChanged:" destination="l3a-LJ-pG1" eventType="valueChanged" id="kXj-sO-Sab"/>
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MUX-ue-isy">
-                                <rect key="frame" x="78" y="417" width="64" height="48"/>
+                                <rect key="frame" x="0.0" y="410" width="160" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="yazirushi.png">
+                                <state key="normal" image="backView.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -88,61 +67,19 @@
                                     <action selector="back" destination="l3a-LJ-pG1" eventType="touchUpInside" id="PZU-Qw-n6o"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="遠" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="P2u-py-EnE">
-                                <rect key="frame" x="70" y="225" width="17" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="近" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cfe-c5-13d">
-                                <rect key="frame" x="271" y="225" width="17" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="低" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UZ8-rB-BgN">
-                                <rect key="frame" x="70" y="314" width="17" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3gR-SJ-7ah">
-                                <rect key="frame" x="271" y="314" width="17" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d1J-As-ez2">
-                                <rect key="frame" x="84" y="34" width="161" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---------------------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="07D-Pl-xgS">
-                                <rect key="frame" x="37" y="68" width="281" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock.png" id="oYs-CB-evJ">
-                                <rect key="frame" x="100" y="165" width="21" height="21"/>
+                                <rect key="frame" x="88" y="230" width="21" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exclamation.png" id="8vD-4l-e0U">
-                                <rect key="frame" x="110" y="259" width="21" height="21"/>
+                                <rect key="frame" x="101" y="317" width="21" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tYG-HN-fl3">
-                                <rect key="frame" x="206" y="406" width="72" height="70"/>
+                                <rect key="frame" x="160" y="410" width="160" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="check.png">
+                                <state key="normal" image="okView.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -153,6 +90,15 @@
                                     <action selector="hozon" destination="l3a-LJ-pG1" eventType="touchUpInside" id="A1U-Rc-jrj"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="やることを入力してください" minimumFontSize="17" id="6or-pX-SFE">
+                                <rect key="frame" x="63" y="187" width="194" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="doText" destination="l3a-LJ-pG1" eventType="editingDidEndOnExit" id="xN1-Hy-NbB"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -161,15 +107,8 @@
                     <connections>
                         <outlet property="backButton" destination="MUX-ue-isy" id="XSS-xU-iV4"/>
                         <outlet property="checkButton" destination="tYG-HN-fl3" id="3oy-q7-tQ9"/>
-                        <outlet property="enLabel" destination="P2u-py-EnE" id="dHA-5U-NKx"/>
-                        <outlet property="juyouLabel" destination="0OH-k4-ecQ" id="eW5-Rw-GZu"/>
                         <outlet property="juyouSeg" destination="VZa-8w-rZR" id="C1g-fw-fP7"/>
-                        <outlet property="kigenLabel" destination="IRI-jD-PYB" id="IdP-TF-BrN"/>
                         <outlet property="kigenSeg" destination="bOo-9n-5Yn" id="Egb-1k-0Pp"/>
-                        <outlet property="kinLabel" destination="cfe-c5-13d" id="GqY-Fz-kL7"/>
-                        <outlet property="kouLabel" destination="3gR-SJ-7ah" id="bOz-ke-cvZ"/>
-                        <outlet property="settingLabel" destination="d1J-As-ez2" id="bze-SO-Pgr"/>
-                        <outlet property="teiLabel" destination="UZ8-rB-BgN" id="HsL-fe-rqX"/>
                         <outlet property="textField" destination="6or-pX-SFE" id="VAG-cJ-o8F"/>
                     </connections>
                 </viewController>
@@ -346,7 +285,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LCo-tE-Qcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1385" y="47"/>
+            <point key="canvasLocation" x="1385" y="63"/>
         </scene>
         <!--Graph View Controller-->
         <scene sceneID="KtJ-QU-KHd">
@@ -384,7 +323,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="check.png" width="256" height="256"/>
+        <image name="backView.png" width="320" height="130"/>
         <image name="clock.png" width="57" height="57"/>
         <image name="exclamation.png" width="53" height="49"/>
         <image name="icon1.png" width="1200" height="1200"/>
@@ -399,8 +338,9 @@
         <image name="icon7.png" width="1200" height="1200"/>
         <image name="icon8.png" width="1200" height="1200"/>
         <image name="icon9.png" width="1200" height="1200"/>
+        <image name="okView.png" width="320" height="130"/>
+        <image name="setting_3.5.png" width="640" height="960"/>
         <image name="todo01_3.5.png" width="640" height="960"/>
-        <image name="yazirushi.png" width="630" height="624"/>
         <image name="ノート3.5.png" width="640" height="900"/>
         <image name="プラス.png" width="105" height="89"/>
     </resources>
