@@ -102,6 +102,8 @@
 		DDE8E6CB17AA042400B8AA4F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE8E6A617AA042400B8AA4F /* Foundation.framework */; };
 		DDE8E6D317AA042400B8AA4F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDE8E6D117AA042400B8AA4F /* InfoPlist.strings */; };
 		DDE8E6D617AA042400B8AA4F /* TODO_graphTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE8E6D517AA042400B8AA4F /* TODO_graphTests.m */; };
+		DDFFA0FE1A2C69220065B15C /* iconBack.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFFA0FD1A2C69220065B15C /* iconBack.png */; };
+		DDFFA1001A2C74FC0065B15C /* contentsView.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFFA0FF1A2C74FC0065B15C /* contentsView.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,6 +221,8 @@
 		DDE8E6D217AA042400B8AA4F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DDE8E6D417AA042400B8AA4F /* TODO_graphTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TODO_graphTests.h; sourceTree = "<group>"; };
 		DDE8E6D517AA042400B8AA4F /* TODO_graphTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TODO_graphTests.m; sourceTree = "<group>"; };
+		DDFFA0FD1A2C69220065B15C /* iconBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconBack.png; sourceTree = "<group>"; };
+		DDFFA0FF1A2C74FC0065B15C /* contentsView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contentsView.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +267,7 @@
 				DDAD09A518F1568C0084C7A3 /* check.png */,
 				DDAD095E18EA9DF10084C7A3 /* batsu.png */,
 				DDAD09B318F161120084C7A3 /* noteS.png */,
+				DDFFA0FF1A2C74FC0065B15C /* contentsView.png */,
 				DDAD094818E946980084C7A3 /* icons */,
 				DDAD099F18F154570084C7A3 /* backgrounds */,
 			);
@@ -317,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				DDAD09B718F162D50084C7A3 /* note.png */,
+				DDFFA0FD1A2C69220065B15C /* iconBack.png */,
 				DDA86CBB1A2B59150052D35F /* setting_3.5.png */,
 				DDA86CBD1A2B5C2D0052D35F /* setting_iPad.png */,
 				DDA86CB91A2B54210052D35F /* setting.png */,
@@ -576,6 +582,7 @@
 				DDA86C9E1A2B45D00052D35F /* icon8_todo.png in Resources */,
 				DD04C6951A1F4DCB005B27AD /* icon6.png in Resources */,
 				DDA86CC11A2B5EAF0052D35F /* backView_iPadsize.png in Resources */,
+				DDFFA0FE1A2C69220065B15C /* iconBack.png in Resources */,
 				DDA86CA41A2B48550052D35F /* icon10_todo.png in Resources */,
 				DD1FBE6A18B6056200C7AB12 /* todoicon_76.png in Resources */,
 				DDA86CA81A2B4AD00052D35F /* icon11_todo.png in Resources */,
@@ -589,6 +596,7 @@
 				DDAD09B818F162D50084C7A3 /* note.png in Resources */,
 				DDAD09B418F161120084C7A3 /* noteS.png in Resources */,
 				DD464E1D18A50CD1003B9A21 /* ノート3.5.png in Resources */,
+				DDFFA1001A2C74FC0065B15C /* contentsView.png in Resources */,
 				DDA86C9C1A2B441F0052D35F /* icon7_todo.png in Resources */,
 				DDAD095F18EA9DF10084C7A3 /* batsu.png in Resources */,
 				DDDED97E17E9B28600DC97FA /* Storyboard_3.5.storyboard in Resources */,
