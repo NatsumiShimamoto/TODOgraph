@@ -9,14 +9,8 @@
 
 #import <UIKit/UIKit.h>
 
+@interface StampViewController : UIViewController{
 
-@interface StampViewController : UIViewController
-{
-    IBOutlet UILabel *label;
-    
-   UIImage *stmArray[12];
-    //int i;
 }
-
 
 @end

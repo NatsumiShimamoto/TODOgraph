@@ -153,10 +153,10 @@
     array = [ud objectForKey:@"hoge"]; //hogeでudをarrayに入れる
     NSLog(@"わんわんわん%@", array);
     
-    SetteiViewController *svc = [[self storyboard] instantiateViewControllerWithIdentifier:@"settei"];
+    /*SetteiViewController *svc = [[self storyboard] instantiateViewControllerWithIdentifier:@"settei"];
     NSUserDefaults *stampUd = [NSUserDefaults standardUserDefaults];
     svc.stampArrNum = [stampUd integerForKey:@"stamp"];
-    
+    */
     
     for(i = 0; i < [array count]; i++)
     {
@@ -560,7 +560,6 @@
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
     
     NSMutableArray *resaveMArray = [array mutableCopy];
-    //    resaveMArray = [[NSMutableArray alloc] init];
     
     if(textView.text) [resaveMDic setObject:textView.text forKey:@"contents"];
     
@@ -660,48 +659,6 @@
     sender.view.center = movedPoint;
     
     
-    /*
-     
-     //plusボタンに重なっていた(もぐっていた)場合
-     if([self isUnderPlusButton:movedPoint.x Y:movedPoint.y] ){
-     NSLog(@"もぐった！");
-     
-     //isUnderがnoのとき→座標を記録する
-     if(!isUnder){
-     isUnder = YES;
-     
-     NSLog(@"きろく！");
-     }
-     
-     //指を離したときにもぐっていた場合、動かす
-     if(sender.state == UIGestureRecognizerStateEnded && isUnder){
-     
-     //iPhoneの場合
-     if([[UIScreen mainScreen] bounds].size.height==480){
-     //iPhone4,4s,iPod Touch第4世代
-     sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-60);
-     }
-     else if([[UIScreen mainScreen] bounds].size.height==568){
-     //iPhone5,5s,iPhod Touch第5世代
-     sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-60);
-     }else if([[UIScreen mainScreen] bounds].size.height==1024){
-     //iPad
-     sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-150);
-     }
-     
-     movedPoint = sender.view.center;
-     
-     NSLog(@"うごいた");
-     }
-     
-     }else{
-     isUnder = NO;
-     NSLog(@"かぶってない");
-     
-     }
-     
-     */
-    
     
     /* ---　はじっこから脱出　--- */
     
@@ -721,11 +678,7 @@
         {
             sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+40);
         }
-        /*if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 460)
-         {
-         sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-80);
-         }
-         */
+       
         movedPoint = sender.view.center;
     }
     
@@ -754,12 +707,7 @@
         {
             sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+25);
         }
-        /*
-         if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 545)
-         {
-         sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-90);
-         }
-         */
+        
         movedPoint = sender.view.center;
     }
     
@@ -780,11 +728,7 @@
         {
             sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+80);
         }
-        /* if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= 980)
-         {
-         sender.view.center = CGPointMake(movedPoint.x, movedPoint.y-210);
-         }
-         */
+        
         movedPoint = sender.view.center;
     }
     

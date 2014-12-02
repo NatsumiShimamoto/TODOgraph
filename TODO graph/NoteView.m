@@ -38,6 +38,7 @@
 
 
 // NoteViewには３通りの初期化方法があるが、どの初期化方法でもcommonInitを呼び出すようにする
+
 - (id)init
 {
     self = [super init];

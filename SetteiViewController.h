@@ -42,6 +42,9 @@
     
     IBOutlet UIButton *checkButton;
     IBOutlet UIButton *backButton;
+    
+    
+    int stampArrNum;
 }
 
 - (IBAction)doText; //TextFieldに入力する
@@ -49,7 +52,7 @@
 -(IBAction)hozon; //設定完了ボタンを押す
 
 @property int editIndex; //スタンプを作った順番
-@property int stampArrNum;//スタンプの番号
+//@property int stampArrNum;//スタンプの番号
 
 
 @end

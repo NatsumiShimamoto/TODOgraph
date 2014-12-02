@@ -13,7 +13,7 @@
 @implementation SetteiViewController
 
 @synthesize editIndex; //スタンプの順番
-@synthesize stampArrNum; //スタンプの番号
+//@synthesize stampArrNum; //スタンプの番号
 
 
 -(void)viewDidLoad{
@@ -27,25 +27,10 @@
     
     if(screenSize.width == 320.0 && screenSize.height == 568.0)
     {
-        [kigenLabel setFont:[UIFont fontWithName:@"azuki_font" size:20]];
-        [juyouLabel setFont:[UIFont fontWithName:@"azuki_font" size:20]];
-        [settingLabel setFont:[UIFont fontWithName:@"azuki_font" size:35]];
-        [kinLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-        [enLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-        [kouLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-        [teiLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-        [lineLabel setFont:[UIFont fontWithName:@"azuki_font" size:20]];
     }
     else if(screenSize.width == 320.0 && screenSize.height == 480.0)
     {
-        [kigenLabel setFont:[UIFont fontWithName:@"azuki_font" size:20]];
-        [juyouLabel setFont:[UIFont fontWithName:@"azuki_font" size:20]];
-        [settingLabel setFont:[UIFont fontWithName:@"azuki_font" size:35]];
-        [kinLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-        [enLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-        [kouLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-        [teiLabel setFont:[UIFont fontWithName:@"azuki_font" size:13]];
-        
+        /* segmentedcontrollのサイズ変更 */
         CGRect kigenSegFrame= kigenSeg.frame;
         kigenSeg.frame = CGRectMake(kigenSegFrame.origin.x, kigenSegFrame.origin.y,
                                     kigenSegFrame.size.width, kigenSegFrame.size.height-3) ;
@@ -54,16 +39,7 @@
                                     juyouSegFrame.size.width, juyouSegFrame.size.height-3) ;
     }
     else{
-        [kigenLabel setFont:[UIFont fontWithName:@"azuki_font" size:45]];
-        [juyouLabel setFont:[UIFont fontWithName:@"azuki_font" size:40]];
-        [settingLabel setFont:[UIFont fontWithName:@"azuki_font" size:70]];
-        [kinLabel setFont:[UIFont fontWithName:@"azuki_font" size:25]];
-        [enLabel setFont:[UIFont fontWithName:@"azuki_font" size:25]];
-        [kouLabel setFont:[UIFont fontWithName:@"azuki_font" size:25]];
-        [teiLabel setFont:[UIFont fontWithName:@"azuki_font" size:25]];
- 
         
-        /* segmentedcontrollのサイズ変更 */
         CGRect kigenSegFrame= kigenSeg.frame;
         kigenSeg.frame = CGRectMake(kigenSegFrame.origin.x, kigenSegFrame.origin.y,
                                   kigenSegFrame.size.width+210, kigenSegFrame.size.height+40) ;
@@ -76,19 +52,7 @@
         textField.frame = CGRectMake(textFieldFrame.origin.x, textFieldFrame.origin.y,
                                     textFieldFrame.size.width, textFieldFrame.size.height+40) ;
         
-
     }
-    
-    
-    //[button setImage:[UIImage imageNamed:@"icon4.png"] forState:UIControlStateNormal];
-    
-    //[button.layer setShadowOpacity:0.05f];
-    [button.layer setShadowOffset:CGSizeMake(0.05, 0.05)];
-    [checkButton.layer setShadowOpacity:0.1f];
-    [checkButton.layer setShadowOffset:CGSizeMake(0.1, 0.1)];
-    [backButton.layer setShadowOpacity:0.1f];
-    [backButton.layer setShadowOffset:CGSizeMake(0.1, 0.1)];
-
     
     
     /* -- 各種情報の呼び出し -- */
@@ -98,8 +62,6 @@
         NSArray *array = [ud objectForKey:@"hoge"]; //hogeというキーでudという格納場所にarrayに入れる
         NSDictionary *dic = array[self.editIndex];
         
-        //        strtime = [dic objectForKey:@"date"];
-        //        [dateButton setTitle:strtime forState:UIControlStateNormal];
         
         textField.text = [dic objectForKey:@"contents"];
         
@@ -114,8 +76,8 @@
         
         
     }
-    textField.delegate = self;
     
+    textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
 }
 
@@ -137,7 +99,6 @@
     
     stampArrNum = [sta integerForKey:@"stamp"]; //@"stamp"のkeyにはアイコンのタグが入ってる(0から)
 
-    //stampNum = [sta integerForKey:@"stamp"];
     
     UIImage *icon1 = [UIImage imageNamed:@"icon1_todo.png"];
     UIImage *icon2 = [UIImage imageNamed:@"icon2_todo.png"];
@@ -151,8 +112,6 @@
     UIImage *icon10 = [UIImage imageNamed:@"icon10_todo.png"];
     UIImage *icon11 = [UIImage imageNamed:@"icon11_todo.png"];
     UIImage *icon12 = [UIImage imageNamed:@"icon12_todo.png"];
-
-
 
 
     NSArray *iconArray =  [[NSArray alloc] initWithObjects:icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,icon9,icon10,icon11,icon12,nil];
@@ -186,8 +145,8 @@
      iconView.userInteractionEnabled = YES;
     iconView.tag = 1;
     
-    
 }
+
 
 /* --- やるべきことの入力 --- */
 - (IBAction)doText{
@@ -196,9 +155,6 @@
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     
     naiyo = textField.text;
-    
-    
-    
 }
 
 
