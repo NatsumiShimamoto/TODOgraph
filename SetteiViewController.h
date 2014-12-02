@@ -43,7 +43,7 @@
     IBOutlet UIButton *checkButton;
     IBOutlet UIButton *backButton;
     
-    
+    NSString *stStampArrNum;
     int stampArrNum;
 }
 

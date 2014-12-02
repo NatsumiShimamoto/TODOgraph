@@ -97,8 +97,8 @@
     
     NSUserDefaults *sta = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
     
-    stampArrNum = [sta integerForKey:@"stamp"]; //@"stamp"のkeyにはアイコンのタグが入ってる(0から)
-
+    stStampArrNum = [sta objectForKey:@"stamp"]; //@"stamp"のkeyにはアイコンのタグが入ってる(0から)
+    stampArrNum = [stStampArrNum intValue];
     
     UIImage *icon1 = [UIImage imageNamed:@"icon1_todo.png"];
     UIImage *icon2 = [UIImage imageNamed:@"icon2_todo.png"];
