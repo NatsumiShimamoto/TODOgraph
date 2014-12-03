@@ -225,6 +225,9 @@
 		AF1682A017F3F8A200973991 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DDAD09A018F154920084C7A3 /* stamps */,
+				DDAD099F18F154570084C7A3 /* backgrounds */,
+				DDAD094818E946980084C7A3 /* icons */,
 				DDA86CAB1A2B4CE30052D35F /* backView.png */,
 				DDA86CAC1A2B4CE30052D35F /* okView.png */,
 				DDA86CBF1A2B5EAF0052D35F /* backView_iPadsize.png */,
@@ -237,8 +240,6 @@
 				DDAD098C18F022590084C7A3 /* clock.png */,
 				DDAD095E18EA9DF10084C7A3 /* batsu.png */,
 				DDAD09B318F161120084C7A3 /* noteS.png */,
-				DDAD094818E946980084C7A3 /* icons */,
-				DDAD099F18F154570084C7A3 /* backgrounds */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -375,7 +376,6 @@
 				DDD1041918A2528C006DD1BD /* MainStoryboard.storyboard */,
 				DDDED97D17E9B28600DC97FA /* Storyboard_3.5.storyboard */,
 				DDDED97F17E9B37700DC97FA /* Storyboard_iPad.storyboard */,
-				DDAD09A018F154920084C7A3 /* stamps */,
 				AF1682A017F3F8A200973991 /* Images */,
 				DDA86C3D1A232D270052D35F /* Images.xcassets */,
 				DDE8E6AB17AA042400B8AA4F /* Supporting Files */,
