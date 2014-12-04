@@ -344,8 +344,8 @@
             
             NSLog(@"画面遷移");
             
-            [_noteView removeFromSuperview];
-            _noteView = nil;
+            [_contentsView removeFromSuperview];
+            _contentsView = nil;
             
             break;
             
@@ -378,7 +378,7 @@
     resaveMArray = [[NSMutableArray alloc] init];
     
     
-    if(_noteView) {
+    if(_contentsView) {
         if([[UIScreen mainScreen] bounds].size.height==480){
             //iPhone4,4s,iPod Touch第4世代
             [textView setFont:[UIFont fontWithName:@"azuki_font" size:25]];
@@ -386,12 +386,12 @@
         }
         else if([[UIScreen mainScreen] bounds].size.height==568){
             //iPhone5,5s,iPhod Touch第5世代
-            [textView setFont:[UIFont fontWithName:@"azuki_font" size:25]];
+            [textView setFont:[UIFont fontWithName:@"azuki_font" size:23]];
             
             
             //iPadの場合
         }else if([[UIScreen mainScreen] bounds].size.height==1024){
-            [textView setFont:[UIFont fontWithName:@"azuki_font" size:60]];
+            [textView setFont:[UIFont fontWithName:@"azuki_font" size:50]];
         }
         
         
@@ -408,61 +408,61 @@
         //stamp画像を書き換える
         todoStamp.image = button.currentImage;
         
-        cancelButton.tag = button.tag;
-        NSLog(@"キャンセルボタンのタグ！！！%d",(int)cancelButton.tag);
+        closeButton.tag = button.tag;
+        
         NSLog(@"ボタンのタグ！！！%d",(int)button.tag);
         
     }else {
         
-        //NoteViewの初期化
-        _noteView = [[NoteView alloc] init];
-        [self.view addSubview:_noteView];
+        //contentsViewの初期化
+        _contentsView = [[ContentsView alloc] init];
+        [self.view addSubview:_contentsView];
         NSLog(@"うわあああああああ");
         
-        //キャンセルボタンを表示
-        batsu = [UIImage imageNamed:@"batsu.png"];
-        batsuView = [[UIImageView alloc] initWithImage:batsu];
-        cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        //closeボタンを表示
+        close = [UIImage imageNamed:@"closeView.png"];
+        closeView = [[UIImageView alloc] initWithImage:close];
+        closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         
         if([[UIScreen mainScreen] bounds].size.height==480){
             //iPhone4,4s,iPod Touch第4世代
-            cancelButton.frame = CGRectMake(219, 222, 45, 45);
+            closeButton.frame = CGRectMake(211, 0, 60, 60);
             
         }else if([[UIScreen mainScreen] bounds].size.height==568){
             //iPhone5,5s,iPhod Touch第5世代
-            cancelButton.frame = CGRectMake(225, 225, 45, 45);
+            closeButton.frame = CGRectMake(211, 0, 70, 70);
         }else if([[UIScreen mainScreen] bounds].size.height==1024){
             //iPadの場合
-            cancelButton.frame = CGRectMake(485, 490, 90, 90);
+            closeButton.frame = CGRectMake(481, 0, 120, 120);
         }
         
         
-        cancelButton.tag = button.tag;
-        NSLog(@"キャンセルボタンのタグ！！！%d",(int)cancelButton.tag);
+        closeButton.tag = button.tag;
+        
         NSLog(@"ボタンのタグ！！！%d",(int)button.tag);
         
-        [_noteView addSubview:cancelButton];
-        [cancelButton setImage:batsu forState:UIControlStateNormal];
-        [cancelButton addTarget:self action:@selector(cancelButtonPushed:)forControlEvents:UIControlEventTouchUpInside];
-        _noteView.userInteractionEnabled = YES; //タッチの検知をする
+        [_contentsView addSubview:closeButton];
+        [closeButton setImage:close forState:UIControlStateNormal];
+        [closeButton addTarget:self action:@selector(closeButtonPushed:)forControlEvents:UIControlEventTouchUpInside];
+        _contentsView.userInteractionEnabled = YES; //タッチの検知をする
         
         
         //labelを表示する部分
         
         if([[UIScreen mainScreen] bounds].size.height==480){
             //iPhone4,4s,iPod Touch第4世代
-            textView = [[UITextView alloc] initWithFrame:CGRectMake(60,120,180,135)];
+            textView = [[UITextView alloc] initWithFrame:CGRectMake(45,115,180,135)];
             [textView setFont:[UIFont fontWithName:@"azuki_font" size:25]];
         }
         else if([[UIScreen mainScreen] bounds].size.height==568){
             //iPhone5,5s,iPhod Touch第5世代
-            textView = [[UITextView alloc] initWithFrame:CGRectMake(60,110,170,145)];
-            [textView setFont:[UIFont fontWithName:@"azuki_font" size:25]];
+            textView = [[UITextView alloc] initWithFrame:CGRectMake(60,117,170,145)];
+            [textView setFont:[UIFont fontWithName:@"azuki_font" size:22]];
             
         }else if([[UIScreen mainScreen] bounds].size.height==1024){
             //iPad
-            textView = [[UITextView alloc] initWithFrame:CGRectMake(125,255,400,250)];
-            [textView setFont:[UIFont fontWithName:@"azuki_font" size:60]];
+            textView = [[UITextView alloc] initWithFrame:CGRectMake(100,250,400,550)];
+            [textView setFont:[UIFont fontWithName:@"azuki_font" size:50]];
         }
         
         if(!resaveMArray){
@@ -475,27 +475,30 @@
         [textView setScrollEnabled:NO];
         textView.backgroundColor = [UIColor clearColor];
         
-        [_noteView addSubview:textView];
+        [_contentsView addSubview:textView];
         [self.view bringSubviewToFront:textView];
         
+        
         //とどの上にstampの画像を表示
+        
         if([[UIScreen mainScreen] bounds].size.height==480){
             //iPhone4,4s,iPod Touch第4世代
-            todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(45, 38, 50, 50)];
-        }
-        else if([[UIScreen mainScreen] bounds].size.height==568){
+            todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(110, 30, 50, 50)];
+            
+        }else if([[UIScreen mainScreen] bounds].size.height==568){
             //iPhone5,5s,iPhod Touch第5世代
-            todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(45, 38, 50, 50)];
+            todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(115, 33, 50, 50)];
+            
         }else if([[UIScreen mainScreen] bounds].size.height==1024){
             //iPad
-            todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(80, 60, 140, 140)];
+            todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(245, 70, 110, 110)];
         }
         
         todoStamp.image = button.currentImage;
-        [_noteView addSubview:todoStamp];
+        [_contentsView addSubview:todoStamp];
         
         
-        [self noteImageFadeIn];
+        [self closeImageFadeIn];
     }
     
     [self.view bringSubviewToFront:stampButton];
@@ -503,12 +506,12 @@
 }
 
 
--(void)cancelButtonPushed:(UIButton *)sender
+-(void)closeButtonPushed:(UIButton *)sender
 {
     [self saveEdit:(int)sender.tag];
-    [self noteImageFadeOut];
-    [_noteView removeFromSuperview];
-    _noteView = nil;
+    [self closeImageFadeOut];
+    [_contentsView removeFromSuperview];
+    _contentsView = nil;
     textView = nil;
     
 }
@@ -516,19 +519,46 @@
 
 - (BOOL)textView:(UITextView *)lenTextView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    int maxInputLength = 30;
-    
     // 入力済みのテキストを取得
     NSMutableString *mText = [lenTextView.text mutableCopy];
     
     // 入力済みのテキストと入力が行われたテキストを結合
     [mText replaceCharactersInRange:range withString:text];
     
-    if ([mText length] > maxInputLength) {
+    
+    
+
+    if([[UIScreen mainScreen] bounds].size.height==480){
+        //iPhone4,4s,iPod Touch第4世代
+        
+        int maxInputLength = 52;
+        
+        if ([mText length] > maxInputLength) {
+            
+            /*--- 文字数制限アラート ---*/
+            UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"文字数オーバー"
+                                                          message:@"52字まで入力できます。"
+                                                         delegate:nil
+                                                cancelButtonTitle:nil
+                                                otherButtonTitles:@"OK", nil
+                                 
+                                 ];
+            [alert show];
+            
+            return NO;
+        }
+
+    }
+    else if([[UIScreen mainScreen] bounds].size.height==568){
+        //iPhone5,5s,iPhod Touch第5世代
+        
+        int maxInputLength = 35;
+        
+        if ([mText length] > maxInputLength) {
         
         /*--- 文字数制限アラート ---*/
         UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"文字数オーバー"
-                                                      message:@"30字まで入力できます。"
+                                                      message:@"35字まで入力できます。"
                                                      delegate:nil
                                             cancelButtonTitle:nil
                                             otherButtonTitles:@"OK", nil
@@ -538,7 +568,36 @@
         
         return NO;
     }
+
+        
+    }else if([[UIScreen mainScreen] bounds].size.height==1024){
+        //iPad
+        
+        
+        int maxInputLength = 75;
+        
+        if ([mText length] > maxInputLength) {
+            
+            /*--- 文字数制限アラート ---*/
+            UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"文字数オーバー"
+                                                          message:@"75字まで入力できます。"
+                                                         delegate:nil
+                                                cancelButtonTitle:nil
+                                                otherButtonTitles:@"OK", nil
+                                 
+                                 ];
+            [alert show];
+            
+            return NO;
+
+    }
+
+    }
     
+    
+    
+    
+           
     return YES;
 }
 
@@ -770,8 +829,8 @@
                 [self.view addSubview:mainView];
                 [self.view bringSubviewToFront:plusView];
                 
-                if(_noteView){
-                    [self.view bringSubviewToFront:_noteView];
+                if(_contentsView){
+                    [self.view bringSubviewToFront:_contentsView];
                 }
                 
                 
@@ -858,23 +917,23 @@
 
 
 //フェードイン
-- (void)noteImageFadeIn{
+- (void)closeImageFadeIn{
     
-    _noteView.alpha = 0;
+    _contentsView.alpha = 0;
     [UIView beginAnimations:@"fadeIn" context:nil]; //アニメーションのタイプを指定
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut]; //イージング指定
     [UIView setAnimationDuration:0.15]; //アニメーション秒数を指定
-    _noteView.alpha = 1; //目標のアルファ値を指定
+    _contentsView.alpha = 1; //目標のアルファ値を指定
     [UIView commitAnimations]; //アニメーション実行
 }
 
 //フェードアウト
-- (void)noteImageFadeOut
+- (void)closeImageFadeOut
 {
     [UIView beginAnimations:@"fadeOut" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut]; //イージング指定
     [UIView setAnimationDuration:0.3];  //アニメーション秒数を指定
-    _noteView.alpha = 0; //目標のアルファ値を指定
+    _contentsView.alpha = 0; //目標のアルファ値を指定
     [UIView commitAnimations]; //アニメーション実行
 }
 

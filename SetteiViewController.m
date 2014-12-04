@@ -160,28 +160,84 @@
 
 - (BOOL)textField:(UITextField *)lenTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    // 最大入力文字数
-    int maxInputLength = 31;
-    
     // 入力済みのテキストを取得
-    NSMutableString *mTextField = [lenTextField.text mutableCopy];
+    NSMutableString *mText = [lenTextField.text mutableCopy];
     
     // 入力済みのテキストと入力が行われたテキストを結合
-    [mTextField replaceCharactersInRange:range withString:string];
+    [mText replaceCharactersInRange:range withString:string];
     
-    if ([mTextField length] > maxInputLength) {
-       
-        UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"文字数オーバー"
-                                                  message:@"30字まで入力できます。"
-                                                 delegate:nil
-                                        cancelButtonTitle:nil
-                                        otherButtonTitles:@"OK", nil
-                         
-                         ];
-    [alert show];
-
-        return NO;
+    
+    
+    
+    if([[UIScreen mainScreen] bounds].size.height==480){
+        //iPhone4,4s,iPod Touch第4世代
+        
+        int maxInputLength = 52;
+        
+        if ([mText length] > maxInputLength) {
+            
+            /*--- 文字数制限アラート ---*/
+            UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"文字数オーバー"
+                                                          message:@"52字まで入力できます。"
+                                                         delegate:nil
+                                                cancelButtonTitle:nil
+                                                otherButtonTitles:@"OK", nil
+                                 
+                                 ];
+            [alert show];
+            
+            return NO;
+        }
+        
     }
+    else if([[UIScreen mainScreen] bounds].size.height==568){
+        //iPhone5,5s,iPhod Touch第5世代
+        
+        int maxInputLength = 35;
+        
+        if ([mText length] > maxInputLength) {
+            
+            /*--- 文字数制限アラート ---*/
+            UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"文字数オーバー"
+                                                          message:@"35字まで入力できます。"
+                                                         delegate:nil
+                                                cancelButtonTitle:nil
+                                                otherButtonTitles:@"OK", nil
+                                 
+                                 ];
+            [alert show];
+            
+            return NO;
+        }
+        
+        
+    }else if([[UIScreen mainScreen] bounds].size.height==1024){
+        //iPad
+        
+        
+        int maxInputLength = 75;
+        
+        if ([mText length] > maxInputLength) {
+            
+            /*--- 文字数制限アラート ---*/
+            UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"文字数オーバー"
+                                                          message:@"75字まで入力できます。"
+                                                         delegate:nil
+                                                cancelButtonTitle:nil
+                                                otherButtonTitles:@"OK", nil
+                                 
+                                 ];
+            [alert show];
+            
+            return NO;
+            
+        }
+        
+    }
+    
+    
+    
+    
     
     return YES;
 }
@@ -299,8 +355,8 @@
     }
     
     GraphViewController *prevController = [self.navigationController.viewControllers objectAtIndex:0];
-    [prevController.noteView removeFromSuperview];
-    prevController.noteView = nil;
+    [prevController.contentsView removeFromSuperview];
+    prevController.contentsView = nil;
     
     /* -- 戻る -- */
     //[self.navigationController popViewControllerAnimated:YES];

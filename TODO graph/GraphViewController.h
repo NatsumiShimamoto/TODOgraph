@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
 #import "SetteiViewController.h"//設定画面に、選んだスタンプのアイコン画像を送る
-#import "NoteView.h"
+#import "ContentsView.h"
 
 @interface GraphViewController : UIViewController<UITextViewDelegate>{
     
@@ -32,10 +32,10 @@
     
     BOOL loaded;
     
-    UIImage *noteImage;
-    UIImage *batsu;
-    UIImageView *batsuView;
-    IBOutlet UIButton *cancelButton;
+    UIImage *contentsImage;
+    UIImage *close;
+    UIImageView *closeView;
+    IBOutlet UIButton *closeButton;
     IBOutlet UILabel *todoLabel;
     UIImageView *todoStamp;
     
@@ -51,7 +51,7 @@
     UIImageView *trashView;
 }
 
-@property (nonatomic) NoteView *noteView;
+@property (nonatomic) ContentsView *contentsView;
 //@property UIView *mainView;
 
 
