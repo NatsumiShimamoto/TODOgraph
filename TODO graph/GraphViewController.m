@@ -327,8 +327,12 @@
 {
     //キーボードを閉じる
     [textView resignFirstResponder];
-    
-    
+
+}
+
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
     UITouch *touch = [touches anyObject];
     SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
     
@@ -354,6 +358,7 @@
             break;
     }
 }
+
 
 
 

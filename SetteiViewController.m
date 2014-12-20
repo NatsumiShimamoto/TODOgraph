@@ -249,8 +249,12 @@
     //キーボードを閉じる
     [textField resignFirstResponder];
     
+   }
+
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     
-    UITouch *touch = [touches anyObject];
+     UITouch *touch = [touches anyObject];
     StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     
     
@@ -265,6 +269,7 @@
         default:
             break;
     }
+
 }
 
 
