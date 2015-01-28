@@ -241,9 +241,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD2BC32C1A78F1C800176691 /* ParseUI.framework in Frameworks */,
 				DD174CB41A78DF0F004695E0 /* libsqlite3.dylib in Frameworks */,
 				DD174CB21A78DF03004695E0 /* libz.dylib in Frameworks */,
+				DD2BC32C1A78F1C800176691 /* ParseUI.framework in Frameworks */,
 				DD174CB01A78DEF4004695E0 /* SystemConfiguration.framework in Frameworks */,
 				DD174CAE1A78DEE8004695E0 /* StoreKit.framework in Frameworks */,
 				DD2BC32B1A78F1C800176691 /* ParseFacebookUtils.framework in Frameworks */,
@@ -805,7 +805,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c1fa60f3-ec7a-4d8a-b8e0-367587753f41";
+				PROVISIONING_PROFILE = "6e80c062-b2cf-4606-beb5-680f5e8a679c";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7s armv7";
 				WRAPPER_EXTENSION = app;
@@ -824,7 +824,7 @@
 				INFOPLIST_FILE = "TODO graph/TODO graph-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c1fa60f3-ec7a-4d8a-b8e0-367587753f41";
+				PROVISIONING_PROFILE = "6e80c062-b2cf-4606-beb5-680f5e8a679c";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7s armv7";
 				WRAPPER_EXTENSION = app;
