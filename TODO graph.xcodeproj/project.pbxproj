@@ -796,8 +796,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/parse-library";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TODO graph/TODO graph-Prefix.pch";
@@ -805,7 +805,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6e80c062-b2cf-4606-beb5-680f5e8a679c";
+				PROVISIONING_PROFILE = "15dddd96-54f8-4a26-9076-2095e845287a";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7s armv7";
 				WRAPPER_EXTENSION = app;
@@ -816,15 +816,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/parse-library";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TODO graph/TODO graph-Prefix.pch";
 				INFOPLIST_FILE = "TODO graph/TODO graph-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6e80c062-b2cf-4606-beb5-680f5e8a679c";
+				PROVISIONING_PROFILE = "15dddd96-54f8-4a26-9076-2095e845287a";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7s armv7";
 				WRAPPER_EXTENSION = app;
