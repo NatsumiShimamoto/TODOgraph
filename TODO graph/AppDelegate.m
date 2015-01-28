@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @implementation AppDelegate
 
@@ -50,8 +51,61 @@
     
     // Override point for customization after application launch.
     return YES;
+    
+   
+
+    
+    /* --- Parse --- */
+    
+    [Parse setApplicationId:@"D2zSnWaRftB00rjUsilBqznEgETBOIU7pHAJTAct"
+                  clientKey:@"E6Hh9dXYV2jza2qaHhNrGeaf0U7zqpVgokTKt5Uj"];
+    
+    // OSのバージョンを取得
+    CGFloat currentVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if (currentVersion >= 8.0) {
+        // iOS 8 以降の処理
+        
+        // User Notificationの種類（バッヂ、アラート、サウンド）
+        UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound;
+        
+        // User Notificationの設定を登録
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [application registerUserNotificationSettings:settings];
+        
+        // Remote Notificationの設定を登録
+        [application registerForRemoteNotifications];
+        
+        NSLog(@"Push");
+        
+    } else {
+        
+        // iOS 7 以前の処理
+        
+        // Remote Notificationの種類（バッヂ、アラート、サウンド）
+        UIRemoteNotificationType types = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+        
+        // Remote Notificationの設定を登録
+        [application registerForRemoteNotificationTypes:types];
+        
+        NSLog(@"Push");
+    }
 }
-							
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
+}
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
