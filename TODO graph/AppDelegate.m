@@ -48,12 +48,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = mainViewController;
     [self.window makeKeyAndVisible];
-    
-    // Override point for customization after application launch.
-    return YES;
-    
-   
 
+    return YES;
     
     /* --- Parse --- */
     
@@ -90,6 +86,9 @@
         
         NSLog(@"Push");
     }
+    
+    // Override point for customization after application launch.
+    return YES;
 }
 
 - (void)application:(UIApplication *)application

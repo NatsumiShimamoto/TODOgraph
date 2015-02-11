@@ -37,7 +37,7 @@
     UIImageView *closeView;
     IBOutlet UIButton *closeButton;
     IBOutlet UILabel *todoLabel;
-    UIImageView *todoStamp;
+    UIImageView *contentsStamp;
     
     int h;
     int w;

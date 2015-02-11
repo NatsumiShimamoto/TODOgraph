@@ -8,6 +8,7 @@
 
 #import "GraphViewController.h"
 #import "SetteiViewController.h"
+#import "StampViewController.h"
 
 @implementation GraphViewController
 //@synthesize mainView;
@@ -335,6 +336,7 @@
 {
     UITouch *touch = [touches anyObject];
     SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
+    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     
     NSLog(@"タッチ");
     NSLog(@"%d",(int)plusView.tag);
@@ -346,10 +348,17 @@
             
             [self presentViewController:setteiVC animated:YES completion:nil];
             
-            NSLog(@"画面遷移");
+            NSLog(@"設定画面遷移");
             
             [_contentsView removeFromSuperview];
             _contentsView = nil;
+            
+            break;
+            
+        case 2:
+            [self presentViewController:stampVC animated:YES completion:nil];
+            
+            NSLog(@"スタンプ画面遷移");
             
             break;
             
@@ -411,7 +420,7 @@
         [textView setScrollEnabled:NO];
         
         //stamp画像を書き換える
-        todoStamp.image = button.currentImage;
+        contentsStamp.image = button.currentImage;
         
         closeButton.tag = button.tag;
         
@@ -484,23 +493,24 @@
         [self.view bringSubviewToFront:textView];
         
         
-        //とどの上にstampの画像を表示
+        //contentsViewの上にstampの画像を表示
         
         if([[UIScreen mainScreen] bounds].size.height==480){
             //iPhone4,4s,iPod Touch第4世代
-            todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(110, 30, 50, 50)];
+            contentsStamp = [[UIImageView alloc] initWithFrame:CGRectMake(110, 30, 50, 50)];
             
         }else if([[UIScreen mainScreen] bounds].size.height==568){
             //iPhone5,5s,iPhod Touch第5世代
-            todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(115, 33, 50, 50)];
+            contentsStamp = [[UIImageView alloc] initWithFrame:CGRectMake(115, 33, 50, 50)];
             
         }else if([[UIScreen mainScreen] bounds].size.height==1024){
             //iPad
-            todoStamp = [[UIImageView alloc] initWithFrame:CGRectMake(245, 70, 110, 110)];
+            contentsStamp = [[UIImageView alloc] initWithFrame:CGRectMake(245, 70, 110, 110)];
         }
         
-        todoStamp.image = button.currentImage;
-        [_contentsView addSubview:todoStamp];
+        contentsStamp.image = button.currentImage;
+        contentsStamp.tag = 2;
+        [_contentsView addSubview:contentsStamp];
         
         
         [self closeImageFadeIn];
