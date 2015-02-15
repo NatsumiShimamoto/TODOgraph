@@ -31,6 +31,7 @@
 		DD174CB41A78DF0F004695E0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CB31A78DF0F004695E0 /* libsqlite3.dylib */; };
 		DD1A03AE1A31B08200C89E1A /* checkView_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DD1A03AC1A31B08200C89E1A /* checkView_iPad.png */; };
 		DD1A03AF1A31B08200C89E1A /* checkView.png in Resources */ = {isa = PBXBuildFile; fileRef = DD1A03AD1A31B08200C89E1A /* checkView.png */; };
+		DD1AFF651A90A7F8001276B5 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1AFF641A90A7F8001276B5 /* libGoogleAnalyticsServices.a */; };
 		DD1FBE6118B6056200C7AB12 /* todoicon_29.png in Resources */ = {isa = PBXBuildFile; fileRef = DD1FBE4F18B6056200C7AB12 /* todoicon_29.png */; };
 		DD1FBE6318B6056200C7AB12 /* todoicon_40.png in Resources */ = {isa = PBXBuildFile; fileRef = DD1FBE5118B6056200C7AB12 /* todoicon_40.png */; };
 		DD1FBE6418B6056200C7AB12 /* todoicon_50.png in Resources */ = {isa = PBXBuildFile; fileRef = DD1FBE5218B6056200C7AB12 /* todoicon_50.png */; };
@@ -55,7 +56,6 @@
 		DD6A68A81A3063BE00EE68E5 /* contentsView.png in Resources */ = {isa = PBXBuildFile; fileRef = DD6A68A71A3063BE00EE68E5 /* contentsView.png */; };
 		DD6A68AA1A306F2100EE68E5 /* normalTodo.png in Resources */ = {isa = PBXBuildFile; fileRef = DD6A68A91A306F2100EE68E5 /* normalTodo.png */; };
 		DD6A68C01A307A4700EE68E5 /* iconTodo.png in Resources */ = {isa = PBXBuildFile; fileRef = DD6A68BF1A307A4700EE68E5 /* iconTodo.png */; };
-		DD6CD8711A90776300477907 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6CD8701A90776300477907 /* libGoogleAnalyticsServices.a */; };
 		DD6CD8731A90777A00477907 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6CD8721A90777A00477907 /* AdSupport.framework */; };
 		DD6CD8751A90778900477907 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6CD8741A90778800477907 /* CoreData.framework */; };
 		DD6E155C17B90BD000D24891 /* SetteiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6E155B17B90BD000D24891 /* SetteiViewController.m */; };
@@ -151,6 +151,13 @@
 		DD174CB31A78DF0F004695E0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		DD1A03AC1A31B08200C89E1A /* checkView_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkView_iPad.png; sourceTree = "<group>"; };
 		DD1A03AD1A31B08200C89E1A /* checkView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkView.png; sourceTree = "<group>"; };
+		DD1AFF5E1A90A799001276B5 /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		DD1AFF5F1A90A7B8001276B5 /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		DD1AFF601A90A7C0001276B5 /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		DD1AFF611A90A7CA001276B5 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		DD1AFF621A90A7DC001276B5 /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		DD1AFF631A90A7E3001276B5 /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		DD1AFF641A90A7F8001276B5 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		DD1FBE4F18B6056200C7AB12 /* todoicon_29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = todoicon_29.png; path = ../todoicon_29.png; sourceTree = "<group>"; };
 		DD1FBE5118B6056200C7AB12 /* todoicon_40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = todoicon_40.png; path = ../todoicon_40.png; sourceTree = "<group>"; };
 		DD1FBE5218B6056200C7AB12 /* todoicon_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = todoicon_50.png; path = ../todoicon_50.png; sourceTree = "<group>"; };
@@ -175,13 +182,6 @@
 		DD6A68A71A3063BE00EE68E5 /* contentsView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contentsView.png; sourceTree = "<group>"; };
 		DD6A68A91A306F2100EE68E5 /* normalTodo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normalTodo.png; sourceTree = "<group>"; };
 		DD6A68BF1A307A4700EE68E5 /* iconTodo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconTodo.png; sourceTree = "<group>"; };
-		DD6CD86A1A90770400477907 /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		DD6CD86B1A90771500477907 /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		DD6CD86C1A90772000477907 /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		DD6CD86D1A90772A00477907 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		DD6CD86E1A90773400477907 /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
-		DD6CD86F1A90773F00477907 /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
-		DD6CD8701A90776300477907 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		DD6CD8721A90777A00477907 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		DD6CD8741A90778800477907 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DD6E155A17B90BD000D24891 /* SetteiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetteiViewController.h; path = ../SetteiViewController.h; sourceTree = "<group>"; };
@@ -269,8 +269,8 @@
 				DD174CA41A78DEAA004695E0 /* CFNetwork.framework in Frameworks */,
 				DD174CA21A78DEA2004695E0 /* AudioToolbox.framework in Frameworks */,
 				DDE8E6A517AA042400B8AA4F /* UIKit.framework in Frameworks */,
-				DD6CD8711A90776300477907 /* libGoogleAnalyticsServices.a in Frameworks */,
 				DDE8E6A717AA042400B8AA4F /* Foundation.framework in Frameworks */,
+				DD1AFF651A90A7F8001276B5 /* libGoogleAnalyticsServices.a in Frameworks */,
 				DDE8E6A917AA042400B8AA4F /* CoreGraphics.framework in Frameworks */,
 				DD2BC3281A78F1C800176691 /* Bolts.framework in Frameworks */,
 				DD2BC32A1A78F1C800176691 /* ParseCrashReporting.framework in Frameworks */,
@@ -317,6 +317,20 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		DD1AFF661A90A81A001276B5 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				DD1AFF5E1A90A799001276B5 /* GAI.h */,
+				DD1AFF5F1A90A7B8001276B5 /* GAITracker.h */,
+				DD1AFF601A90A7C0001276B5 /* GAITrackedViewController.h */,
+				DD1AFF611A90A7CA001276B5 /* GAIDictionaryBuilder.h */,
+				DD1AFF621A90A7DC001276B5 /* GAIFields.h */,
+				DD1AFF631A90A7E3001276B5 /* GAILogger.h */,
+				DD1AFF641A90A7F8001276B5 /* libGoogleAnalyticsServices.a */,
+			);
+			name = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
 		DD2BC3201A78E5A000176691 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,20 +353,6 @@
 				DD2BC3271A78F1C800176691 /* ParseUI.framework */,
 			);
 			path = "parse-library";
-			sourceTree = "<group>";
-		};
-		DD6CD8761A90816500477907 /* GoogleAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				DD6CD86A1A90770400477907 /* GAI.h */,
-				DD6CD86B1A90771500477907 /* GAITracker.h */,
-				DD6CD86C1A90772000477907 /* GAITrackedViewController.h */,
-				DD6CD86D1A90772A00477907 /* GAIDictionaryBuilder.h */,
-				DD6CD86F1A90773F00477907 /* GAILogger.h */,
-				DD6CD86E1A90773400477907 /* GAIFields.h */,
-				DD6CD8701A90776300477907 /* libGoogleAnalyticsServices.a */,
-			);
-			name = GoogleAnalytics;
 			sourceTree = "<group>";
 		};
 		DDAD094818E946980084C7A3 /* icons */ = {
@@ -446,7 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				DD4C7B5B187D49FE00A7FC53 /* azuki.ttf */,
-				DD6CD8761A90816500477907 /* GoogleAnalytics */,
+				DD1AFF661A90A81A001276B5 /* GoogleAnalytics */,
 				DDE8E6AA17AA042400B8AA4F /* TODO graph */,
 				DDE8E6CE17AA042400B8AA4F /* TODO graphTests */,
 				DDE8E6A317AA042400B8AA4F /* Frameworks */,
@@ -780,7 +780,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -795,6 +796,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "c91878e6-1202-493a-b3b4-444f3a8fe9c5";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -811,7 +813,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -819,6 +822,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "c91878e6-1202-493a-b3b4-444f3a8fe9c5";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -840,8 +844,9 @@
 					"$(PROJECT_DIR)",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6e80c062-b2cf-4606-beb5-680f5e8a679c";
+				PROVISIONING_PROFILE = "c91878e6-1202-493a-b3b4-444f3a8fe9c5";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7s armv7";
 				WRAPPER_EXTENSION = app;
@@ -863,8 +868,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6e80c062-b2cf-4606-beb5-680f5e8a679c";
+				PROVISIONING_PROFILE = "c91878e6-1202-493a-b3b4-444f3a8fe9c5";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7s armv7";
 				WRAPPER_EXTENSION = app;

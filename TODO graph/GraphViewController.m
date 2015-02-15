@@ -169,21 +169,9 @@
         int ypoint =[[dic objectForKey:@"y"] floatValue];
         
         /* --- スタンプの条件分け ---*/
-        if([GVstStampNum intValue] == 0) [stampButton setImage:[UIImage imageNamed:@"icon1.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 1) [stampButton setImage:[UIImage imageNamed:@"icon2.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 2) [stampButton setImage:[UIImage imageNamed:@"icon3.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 3) [stampButton setImage:[UIImage imageNamed:@"icon4.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 4) [stampButton setImage:[UIImage imageNamed:@"icon5.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 5) [stampButton setImage:[UIImage imageNamed:@"icon6.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 6) [stampButton setImage:[UIImage imageNamed:@"icon7.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 7) [stampButton setImage:[UIImage imageNamed:@"icon8.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 8) [stampButton setImage:[UIImage imageNamed:@"icon9.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 9) [stampButton setImage:[UIImage imageNamed:@"icon10.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 10) [stampButton setImage:[UIImage imageNamed:@"icon11.png"] forState:UIControlStateNormal];
-        if([GVstStampNum intValue] == 11) [stampButton setImage:[UIImage imageNamed:@"icon12.png"] forState:UIControlStateNormal];
-        
-        
-        
+        int number = [GVstStampNum intValue] + 1;
+        NSString* imageName = [NSString stringWithFormat: @"icon%d.png", number];
+        [stampButton setImage:[UIImage imageNamed: imageName] forState:UIControlStateNormal];
         
         [stampButton addTarget:self action:@selector(buttonPushed:) forControlEvents:UIControlEventTouchUpInside];
         //stampButtonが押されたらbuttonPushedが呼び出される

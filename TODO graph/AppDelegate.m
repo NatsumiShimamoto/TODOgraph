@@ -99,11 +99,11 @@
      
      // Optional: set Logger to VERBOSE for debug information.
      [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-     
+
      // Initialize tracker. Replace with your tracking ID.
      [[GAI sharedInstance] trackerWithTrackingId:@"UA-59766853-1"];
     
-    //id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     
     
     // Override point for customization after application launch.
