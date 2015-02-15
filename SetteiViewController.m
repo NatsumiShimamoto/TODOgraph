@@ -19,9 +19,9 @@
 -(void)viewDidLoad{
     
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
     
-
+    
     /* -- フォントの設定 */
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
     
@@ -42,15 +42,15 @@
         
         CGRect kigenSegFrame= kigenSeg.frame;
         kigenSeg.frame = CGRectMake(kigenSegFrame.origin.x, kigenSegFrame.origin.y,
-                                  kigenSegFrame.size.width+210, kigenSegFrame.size.height+40) ;
+                                    kigenSegFrame.size.width+210, kigenSegFrame.size.height+40) ;
         CGRect juyouSegFrame= juyouSeg.frame;
         juyouSeg.frame = CGRectMake(juyouSegFrame.origin.x, juyouSegFrame.origin.y,
-                                juyouSegFrame.size.width+210, juyouSegFrame.size.height+40) ;
+                                    juyouSegFrame.size.width+210, juyouSegFrame.size.height+40) ;
         
         /* textFieldのサイズ変更 */
         CGRect textFieldFrame= textField.frame;
         textField.frame = CGRectMake(textFieldFrame.origin.x, textFieldFrame.origin.y,
-                                    textFieldFrame.size.width, textFieldFrame.size.height+40) ;
+                                     textFieldFrame.size.width, textFieldFrame.size.height+40) ;
         
     }
     
@@ -92,7 +92,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-
+    
     [super viewWillAppear:animated];
     
     NSUserDefaults *sta = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
@@ -112,10 +112,10 @@
     UIImage *icon10 = [UIImage imageNamed:@"icon10_todo.png"];
     UIImage *icon11 = [UIImage imageNamed:@"icon11_todo.png"];
     UIImage *icon12 = [UIImage imageNamed:@"icon12_todo.png"];
-
-
+    
+    
     NSArray *iconArray =  [[NSArray alloc] initWithObjects:icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,icon9,icon10,icon11,icon12,nil];
-        
+    
     UIImage *icon = [[UIImage alloc] init];
     icon = iconArray[stampArrNum];
     
@@ -126,24 +126,25 @@
     
     if([[UIScreen mainScreen] bounds].size.height==480){ //iPhone4,4s,iPod Touch第4世代
         
-       iconView.frame = CGRectMake(132, 105, 55, 55);
+        iconView.frame = CGRectMake(132, 105, 55, 55);
         
     }else if([[UIScreen mainScreen] bounds].size.height==568){ //iPhone5,5s,iPod Touch第5世代
         
         iconView.frame = CGRectMake(127, 130, 70, 70);
         
     }else if([[UIScreen mainScreen] bounds].size.height==1024){
-      
+        
         iconView.frame = CGRectMake(318, 218, 120, 120);
     }
-
-   
     
     [self.view addSubview:iconView];
     
     
-     iconView.userInteractionEnabled = YES;
+    iconView.userInteractionEnabled = YES;
     iconView.tag = 1;
+    
+    
+    self.screenName = @"SettingScreen";
     
 }
 
@@ -225,20 +226,12 @@
                                                          delegate:nil
                                                 cancelButtonTitle:nil
                                                 otherButtonTitles:@"OK", nil
-                                 
                                  ];
             [alert show];
             
             return NO;
-            
         }
-        
     }
-    
-    
-    
-    
-    
     return YES;
 }
 
@@ -249,12 +242,12 @@
     //キーボードを閉じる
     [textField resignFirstResponder];
     
-   }
+}
 
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     
-     UITouch *touch = [touches anyObject];
+    UITouch *touch = [touches anyObject];
     StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     
     
@@ -269,13 +262,10 @@
         default:
             break;
     }
-
+    
 }
 
 
-    
-
-    
 #pragma mark - 切り替え
 - (IBAction)SegChanged:(UISegmentedControl *)sender
 {
@@ -366,7 +356,7 @@
     /* -- 戻る -- */
     //[self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
-
+    
     NSLog(@"もどったよ");
 }
 
@@ -376,7 +366,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
 }
-
 
 
 @end

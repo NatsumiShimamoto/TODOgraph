@@ -341,6 +341,20 @@
 			path = "parse-library";
 			sourceTree = "<group>";
 		};
+		DD6CD8761A90816500477907 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				DD6CD86A1A90770400477907 /* GAI.h */,
+				DD6CD86B1A90771500477907 /* GAITracker.h */,
+				DD6CD86C1A90772000477907 /* GAITrackedViewController.h */,
+				DD6CD86D1A90772A00477907 /* GAIDictionaryBuilder.h */,
+				DD6CD86F1A90773F00477907 /* GAILogger.h */,
+				DD6CD86E1A90773400477907 /* GAIFields.h */,
+				DD6CD8701A90776300477907 /* libGoogleAnalyticsServices.a */,
+			);
+			name = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
 		DDAD094818E946980084C7A3 /* icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,13 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				DD4C7B5B187D49FE00A7FC53 /* azuki.ttf */,
-				DD6CD86A1A90770400477907 /* GAI.h */,
-				DD6CD86B1A90771500477907 /* GAITracker.h */,
-				DD6CD86C1A90772000477907 /* GAITrackedViewController.h */,
-				DD6CD86D1A90772A00477907 /* GAIDictionaryBuilder.h */,
-				DD6CD86F1A90773F00477907 /* GAILogger.h */,
-				DD6CD86E1A90773400477907 /* GAIFields.h */,
-				DD6CD8701A90776300477907 /* libGoogleAnalyticsServices.a */,
+				DD6CD8761A90816500477907 /* GoogleAnalytics */,
 				DDE8E6AA17AA042400B8AA4F /* TODO graph */,
 				DDE8E6CE17AA042400B8AA4F /* TODO graphTests */,
 				DDE8E6A317AA042400B8AA4F /* Frameworks */,

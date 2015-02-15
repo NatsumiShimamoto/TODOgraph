@@ -33,7 +33,7 @@
             storyBoardName = @"Storyboard_3.5";
         }else{
             // NSLog(@"New iPhone");
-            storyBoardName =@"MainStoryboard";
+            storyBoardName = @"MainStoryboard";
         }
     }else{
         // NSLog(@"iPad");
@@ -89,10 +89,6 @@
         NSLog(@"Push");
     }
     
-    // Override point for customization after application launch.
-    return YES;
-    
-    
     /* --- Google Analytics --- */
     
      // Optional: automatically send uncaught exceptions to Google Analytics.
@@ -105,9 +101,13 @@
      [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
      
      // Initialize tracker. Replace with your tracking ID.
-     [[GAI sharedInstance] trackerWithTrackingId:@"UA-XXXX-Y"];
-     
+     [[GAI sharedInstance] trackerWithTrackingId:@"UA-59766853-1"];
     
+    //id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    
+    // Override point for customization after application launch.
+    return YES;
 }
 
 

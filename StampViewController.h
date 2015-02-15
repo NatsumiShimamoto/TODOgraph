@@ -8,8 +8,9 @@
 //スタンプ
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface StampViewController : UIViewController{
+@interface StampViewController : GAITrackedViewController{
 
 }
 

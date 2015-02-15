@@ -89,7 +89,6 @@
 
 
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -108,31 +107,7 @@
     
     NSLog(@"%f",[[UIScreen mainScreen] bounds].size.height);
     
-    
-    
-    /*
-     if([[UIScreen mainScreen] bounds].size.height==480){
-     //iPhone4,4s,iPod Touch第4世代
-     gomi.frame = CGRectMake(60,420,48,48);
-     // plusButton.frame = CGRectMake(plusButton.frame.origin.x, 425, 40, 25);
-     [self.view addSubview:gomi];
-     
-     }else if([[UIScreen mainScreen] bounds].size.height==568){
-     //iPhone5,5s,iPod Touch第5世代
-     NSLog(@"あいふぉん");
-     gomi.frame = CGRectMake(55,491,62,62);
-     [self.view addSubview:gomi];
-     
-     }else if([[UIScreen mainScreen] bounds].size.height==1024){
-     NSLog(@"iPad");
-     //iPad
-     gomi.frame = CGRectMake(145,875,120,120);
-     [self.view addSubview:gomi];
-     }
-     */
-    
-    
-    //一回mainViewを全部消す
+        //一回mainViewを全部消す
     [mainView removeFromSuperview];
     mainView = [self createView];//-------------スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
     
@@ -142,7 +117,7 @@
     
     [self.view bringSubviewToFront:stampButton];
     
-    
+     self.screenName = @"SettingScreen";
 }
 
 
@@ -159,11 +134,6 @@
     
     array = [ud objectForKey:@"hoge"]; //hogeでudをarrayに入れる
     NSLog(@"わんわんわん%@", array);
-    
-    /*SetteiViewController *svc = [[self storyboard] instantiateViewControllerWithIdentifier:@"settei"];
-    NSUserDefaults *stampUd = [NSUserDefaults standardUserDefaults];
-    svc.stampArrNum = [stampUd integerForKey:@"stamp"];
-    */
     
     for(i = 0; i < [array count]; i++)
     {
@@ -538,6 +508,7 @@
 }
 
 
+
 - (BOOL)textView:(UITextView *)lenTextView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     // 入力済みのテキストを取得
@@ -614,11 +585,6 @@
     }
 
     }
-    
-    
-    
-    
-           
     return YES;
 }
 
@@ -683,9 +649,6 @@
         
         
         NSLog(@"青でてくる");
-        
-        
-        
     }
     
     if(upRed){
@@ -792,8 +755,6 @@
     }
     
     
-    
-    
     else if([[UIScreen mainScreen] bounds].size.height==1024){
         //iPad
         if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 20)
@@ -812,6 +773,7 @@
         movedPoint = sender.view.center;
     }
     
+    
     //指を離した時
     if(sender.state == UIGestureRecognizerStateEnded)
     {
@@ -822,13 +784,11 @@
         mArray[sender.view.tag] = mDic;
         
         
-        
         [ud setObject:mArray forKey:@"hoge"];
         [ud synchronize];
         
         
         if(upBlue){
-            
             
             height = [[UIScreen mainScreen] bounds].size.height;
             
@@ -854,9 +814,6 @@
                     [self.view bringSubviewToFront:_contentsView];
                 }
                 
-                
-                
-                
                 [UIView animateWithDuration:0.4f
                                       delay:0.1f
                                     options:UIViewAnimationOptionCurveEaseInOut
@@ -870,7 +827,6 @@
                                  }];
                 
                 NSLog(@"赤でてくる");
-                
             }
             
             
@@ -896,11 +852,9 @@
                                  upBlue = NO;
                              }];
             NSLog(@"青消える");
-            
         }
         
         if(!upRed){
-            
             
             [UIView animateWithDuration:0.4f
                                   delay:0.1f
@@ -915,16 +869,13 @@
                              }];
             
             NSLog(@"赤でてくる");
-            
         }
-        
     }
-    
     // ドラッグで移動した距離を初期化する
     [sender setTranslation:CGPointZero inView:self.view];
     [self.view bringSubviewToFront:stampButton];
-    
 }
+
 
 //もぐったかどうかを判定する
 -(BOOL) isUnderPlusButton:(float)x Y:(float)y {
@@ -960,7 +911,6 @@
 
 
 
-
 /**
  * バージョン判定
  * ユーザのバージョンが前のバージョンの場合はアラートを表示
@@ -979,7 +929,6 @@
     NSData *data = [NSURLConnection sendSynchronousRequest:request
                                          returningResponse:&response
                                                      error:&error];
-    
     
     
     NSDictionary *dataDic  = [NSJSONSerialization JSONObjectWithData:data
@@ -1025,6 +974,7 @@
         [[UIApplication sharedApplication] openURL:url];
     }
 }
+
 
 /**
  *  実行中の環境がiOS7以上かどうかを判定する

@@ -10,8 +10,9 @@
 #import <UIKit/UIKit.h>
 #import "SetteiViewController.h"//設定画面に、選んだスタンプのアイコン画像を送る
 #import "ContentsView.h"
+#import "GAITrackedViewController.h"
 
-@interface GraphViewController : UIViewController<UITextViewDelegate>{
+@interface GraphViewController :  GAITrackedViewController<UITextViewDelegate>{
     
     int height;
     

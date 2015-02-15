@@ -9,8 +9,9 @@
 
 #import <UIKit/UIKit.h>
 #import "GraphViewController.h"//スタンプの画像情報を受け取る用
+#import "GAITrackedViewController.h"
 
-@interface SetteiViewController : UIViewController<UITextFieldDelegate>
+@interface SetteiViewController : GAITrackedViewController<UITextFieldDelegate>
 
 {
     IBOutlet UISegmentedControl *kigenSeg;
