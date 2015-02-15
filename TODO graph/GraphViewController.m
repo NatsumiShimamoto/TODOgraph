@@ -10,6 +10,9 @@
 #import "SetteiViewController.h"
 #import "StampViewController.h"
 
+#define APP_ID 824743666
+
+
 @implementation GraphViewController
 //@synthesize mainView;
 
@@ -17,6 +20,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkVersionNotification:) name:@"CheckVersion" object:nil];
+
     
     // 全画面のサイズを取得する
     height = [[UIScreen mainScreen] bounds].size.height;
@@ -951,5 +957,85 @@
     _contentsView.alpha = 0; //目標のアルファ値を指定
     [UIView commitAnimations]; //アニメーション実行
 }
+
+
+
+
+/**
+ * バージョン判定
+ * ユーザのバージョンが前のバージョンの場合はアラートを表示
+ */
+- (void)checkVersionNotification:(NSNotification *)notification{
+    NSString *url = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%d",824743666
+];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]
+                             
+                                             cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                         timeoutInterval:60.0];
+    
+    NSURLResponse *response;
+    NSError *error;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request
+                                         returningResponse:&response
+                                                     error:&error];
+    
+    
+    
+    NSDictionary *dataDic  = [NSJSONSerialization JSONObjectWithData:data
+                                                             options:NSJSONReadingAllowFragments
+                                                               error:&error];
+    
+    
+    NSDictionary *results = [[dataDic objectForKey:@"results"] objectAtIndex:0];
+    NSString *latestVersion = [results objectForKey:@"version"];
+    NSString *currentVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    
+    if (![currentVersion isEqualToString:latestVersion]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"お知らせ"
+                                                        message:@"最新バージョンが入手可能です。アップデートしますか？"
+                                                       delegate:self
+                                              cancelButtonTitle:@"キャンセル"
+                                              otherButtonTitles:@"アップデート", nil];
+        [alert show];
+    }
+}
+
+
+/**
+ * AlertViewで"アップデート"を選択した際の処理
+ * AppStoreに遷移
+ */
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        
+        NSString* urlString;
+        
+        //iOSのバージョンでAppStoreに遷移するURLスキームの変更
+        if( [self isIOS7]){
+            //iOS7以上
+            urlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%d",824743666
+];
+        }else{
+            urlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%d&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software",824743666
+];
+        }
+        
+        NSURL* url= [NSURL URLWithString:urlString];
+        [[UIApplication sharedApplication] openURL:url];
+    }
+}
+
+/**
+ *  実行中の環境がiOS7以上かどうかを判定する
+ *  ios7以上ならTRUEを返す
+ */
+- (BOOL)isIOS7
+{
+    NSArray  *aOsVersions = [[[UIDevice currentDevice]systemVersion] componentsSeparatedByString:@"."];
+    NSInteger iOsVersionMajor  = [[aOsVersions objectAtIndex:0] intValue];
+    return (iOsVersionMajor <= 7);
+}
+
 
 @end

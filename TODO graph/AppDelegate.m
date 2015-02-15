@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "GAI.h"
 
 @implementation AppDelegate
 
@@ -90,7 +91,26 @@
     
     // Override point for customization after application launch.
     return YES;
+    
+    
+    /* --- Google Analytics --- */
+    
+     // Optional: automatically send uncaught exceptions to Google Analytics.
+     [GAI sharedInstance].trackUncaughtExceptions = YES;
+     
+     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+     [GAI sharedInstance].dispatchInterval = 20;
+     
+     // Optional: set Logger to VERBOSE for debug information.
+     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+     
+     // Initialize tracker. Replace with your tracking ID.
+     [[GAI sharedInstance] trackerWithTrackingId:@"UA-XXXX-Y"];
+     
+    
 }
+
+
 
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
@@ -126,6 +146,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"CheckVersion" object:nil]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

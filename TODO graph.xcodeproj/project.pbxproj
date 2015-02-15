@@ -55,6 +55,9 @@
 		DD6A68A81A3063BE00EE68E5 /* contentsView.png in Resources */ = {isa = PBXBuildFile; fileRef = DD6A68A71A3063BE00EE68E5 /* contentsView.png */; };
 		DD6A68AA1A306F2100EE68E5 /* normalTodo.png in Resources */ = {isa = PBXBuildFile; fileRef = DD6A68A91A306F2100EE68E5 /* normalTodo.png */; };
 		DD6A68C01A307A4700EE68E5 /* iconTodo.png in Resources */ = {isa = PBXBuildFile; fileRef = DD6A68BF1A307A4700EE68E5 /* iconTodo.png */; };
+		DD6CD8711A90776300477907 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6CD8701A90776300477907 /* libGoogleAnalyticsServices.a */; };
+		DD6CD8731A90777A00477907 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6CD8721A90777A00477907 /* AdSupport.framework */; };
+		DD6CD8751A90778900477907 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6CD8741A90778800477907 /* CoreData.framework */; };
 		DD6E155C17B90BD000D24891 /* SetteiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6E155B17B90BD000D24891 /* SetteiViewController.m */; };
 		DD8B6E5917BB191A00414607 /* StampViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8B6E5817BB191A00414607 /* StampViewController.m */; };
 		DDA86C3E1A232D270052D35F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDA86C3D1A232D270052D35F /* Images.xcassets */; };
@@ -172,6 +175,15 @@
 		DD6A68A71A3063BE00EE68E5 /* contentsView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contentsView.png; sourceTree = "<group>"; };
 		DD6A68A91A306F2100EE68E5 /* normalTodo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normalTodo.png; sourceTree = "<group>"; };
 		DD6A68BF1A307A4700EE68E5 /* iconTodo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconTodo.png; sourceTree = "<group>"; };
+		DD6CD86A1A90770400477907 /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		DD6CD86B1A90771500477907 /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		DD6CD86C1A90772000477907 /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		DD6CD86D1A90772A00477907 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		DD6CD86E1A90773400477907 /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		DD6CD86F1A90773F00477907 /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		DD6CD8701A90776300477907 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		DD6CD8721A90777A00477907 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		DD6CD8741A90778800477907 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DD6E155A17B90BD000D24891 /* SetteiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetteiViewController.h; path = ../SetteiViewController.h; sourceTree = "<group>"; };
 		DD6E155B17B90BD000D24891 /* SetteiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetteiViewController.m; path = ../SetteiViewController.m; sourceTree = "<group>"; };
 		DD8B6E5717BB191A00414607 /* StampViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StampViewController.h; path = ../StampViewController.h; sourceTree = "<group>"; };
@@ -241,10 +253,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD174CB41A78DF0F004695E0 /* libsqlite3.dylib in Frameworks */,
 				DD174CB21A78DF03004695E0 /* libz.dylib in Frameworks */,
-				DD2BC32C1A78F1C800176691 /* ParseUI.framework in Frameworks */,
 				DD174CB01A78DEF4004695E0 /* SystemConfiguration.framework in Frameworks */,
+				DD6CD8751A90778900477907 /* CoreData.framework in Frameworks */,
+				DD6CD8731A90777A00477907 /* AdSupport.framework in Frameworks */,
+				DD174CB41A78DF0F004695E0 /* libsqlite3.dylib in Frameworks */,
+				DD2BC32C1A78F1C800176691 /* ParseUI.framework in Frameworks */,
 				DD174CAE1A78DEE8004695E0 /* StoreKit.framework in Frameworks */,
 				DD2BC32B1A78F1C800176691 /* ParseFacebookUtils.framework in Frameworks */,
 				DD2BC32D1A78F32B00176691 /* Parse.framework in Frameworks */,
@@ -255,6 +269,7 @@
 				DD174CA41A78DEAA004695E0 /* CFNetwork.framework in Frameworks */,
 				DD174CA21A78DEA2004695E0 /* AudioToolbox.framework in Frameworks */,
 				DDE8E6A517AA042400B8AA4F /* UIKit.framework in Frameworks */,
+				DD6CD8711A90776300477907 /* libGoogleAnalyticsServices.a in Frameworks */,
 				DDE8E6A717AA042400B8AA4F /* Foundation.framework in Frameworks */,
 				DDE8E6A917AA042400B8AA4F /* CoreGraphics.framework in Frameworks */,
 				DD2BC3281A78F1C800176691 /* Bolts.framework in Frameworks */,
@@ -417,6 +432,13 @@
 			isa = PBXGroup;
 			children = (
 				DD4C7B5B187D49FE00A7FC53 /* azuki.ttf */,
+				DD6CD86A1A90770400477907 /* GAI.h */,
+				DD6CD86B1A90771500477907 /* GAITracker.h */,
+				DD6CD86C1A90772000477907 /* GAITrackedViewController.h */,
+				DD6CD86D1A90772A00477907 /* GAIDictionaryBuilder.h */,
+				DD6CD86F1A90773F00477907 /* GAILogger.h */,
+				DD6CD86E1A90773400477907 /* GAIFields.h */,
+				DD6CD8701A90776300477907 /* libGoogleAnalyticsServices.a */,
 				DDE8E6AA17AA042400B8AA4F /* TODO graph */,
 				DDE8E6CE17AA042400B8AA4F /* TODO graphTests */,
 				DDE8E6A317AA042400B8AA4F /* Frameworks */,
@@ -436,6 +458,8 @@
 		DDE8E6A317AA042400B8AA4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD6CD8741A90778800477907 /* CoreData.framework */,
+				DD6CD8721A90777A00477907 /* AdSupport.framework */,
 				DD174CB31A78DF0F004695E0 /* libsqlite3.dylib */,
 				DD174CB11A78DF03004695E0 /* libz.dylib */,
 				DD2BC3221A78F1C800176691 /* parse-library */,
@@ -803,6 +827,10 @@
 				GCC_PREFIX_HEADER = "TODO graph/TODO graph-Prefix.pch";
 				INFOPLIST_FILE = "TODO graph/TODO graph-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6e80c062-b2cf-4606-beb5-680f5e8a679c";
@@ -823,6 +851,10 @@
 				GCC_PREFIX_HEADER = "TODO graph/TODO graph-Prefix.pch";
 				INFOPLIST_FILE = "TODO graph/TODO graph-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6e80c062-b2cf-4606-beb5-680f5e8a679c";
 				TARGETED_DEVICE_FAMILY = "1,2";
