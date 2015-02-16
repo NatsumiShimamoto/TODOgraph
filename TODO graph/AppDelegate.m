@@ -49,8 +49,6 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = mainViewController;
     [self.window makeKeyAndVisible];
-
-    return YES;
     
     
     /* --- Parse --- */
@@ -105,6 +103,7 @@
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     
+    NSLog(@"tracker == %@", tracker);
     
     // Override point for customization after application launch.
     return YES;

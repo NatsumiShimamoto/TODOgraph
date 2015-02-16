@@ -12,6 +12,11 @@
 
 #define APP_ID 824743666
 
+#define STAMP_WIDTH_PHONE   50
+#define STAMP_HEIGHT_PHONE  50
+
+#define STAMP_WIDTH_PAD     85
+#define STAMP_HEIGHT_PAD    85
 
 @implementation GraphViewController
 //@synthesize mainView;
@@ -23,70 +28,12 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkVersionNotification:) name:@"CheckVersion" object:nil];
 
-    
-    // 全画面のサイズを取得する
-    height = [[UIScreen mainScreen] bounds].size.height;
-    NSLog(@"%d",height);
-    
-    if([[UIScreen mainScreen] bounds].size.height==480){ //iPhone4,4s,iPod Touch第4世代
-        //プラスボタン生成
-        plus = [UIImage imageNamed:@"plusView_iPhone.png"];
-        plusView = [[UIImageView alloc] initWithImage:plus];
-        
-        //ゴミ箱生成
-        trash = [UIImage imageNamed:@"trashView_iPhone.png"];
-        trashView = [[UIImageView alloc] initWithImage:trash];
-
-    }else if([[UIScreen mainScreen] bounds].size.height==568){ //iPhone5,5s,iPod Touch第5世代
-        //プラスボタン生成
-        plus = [UIImage imageNamed:@"plusView_iPhone.png"];
-        plusView = [[UIImageView alloc] initWithImage:plus];
-        
-        //ゴミ箱生成
-        trash = [UIImage imageNamed:@"trashView_iPhone.png"];
-        trashView = [[UIImageView alloc] initWithImage:trash];
-
-    }else if([[UIScreen mainScreen] bounds].size.height==1024){ //iPad
-        //プラスボタン生成
-        plus = [UIImage imageNamed:@"plusView_iPad.png"];
-        plusView = [[UIImageView alloc] initWithImage:plus];
-        
-        //ゴミ箱生成
-        trash = [UIImage imageNamed:@"trashView_iPad.png"];
-        trashView = [[UIImageView alloc] initWithImage:trash];
-        
-    }
-    
-    
-    
-    if([[UIScreen mainScreen] bounds].size.height==480){ //iPhone4,4s,iPod Touch第4世代
-        
-        plusView.frame = CGRectMake(0, 420, 320, 60);
-        trashView.frame = CGRectMake(0,480,320,60);
-        
-    }else if([[UIScreen mainScreen] bounds].size.height==568){ //iPhone5,5s,iPod Touch第5世代
-        
-        plusView.frame = CGRectMake(0, 503, 320, 65);
-        trashView.frame = CGRectMake(0,568,320,65);
-        
-    }else if([[UIScreen mainScreen] bounds].size.height==1024){ //iPad
-        
-        plusView.frame = CGRectMake(0, 894, 768, 130);
-        trashView.frame = CGRectMake(0,1024,768,130);
-    }
-    
-    
-    [self.view addSubview:plusView];
-    [self.view addSubview:trashView];
-    
-    plusView.userInteractionEnabled = YES;
-    plusView.tag = 1;
+    [self size];
     
     upRed = YES;
     upBlue = NO;
     
 }
-
 
 
 - (void)didReceiveMemoryWarning
@@ -107,17 +54,15 @@
     
     NSLog(@"%f",[[UIScreen mainScreen] bounds].size.height);
     
-        //一回mainViewを全部消す
+    //一回mainViewを全部消す
     [mainView removeFromSuperview];
-    mainView = [self createView];//-------------スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
+    mainView = [self createView];//スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
     
     [self.view addSubview:mainView];
     [self.view bringSubviewToFront:plusView];
- 
-    
     [self.view bringSubviewToFront:stampButton];
     
-     self.screenName = @"SettingScreen";
+     self.screenName = @"GraphViewController";
 }
 
 
@@ -125,7 +70,6 @@
 - (void)viewDidAppear:(BOOL)animated{
     
 }
-
 
 
 - (UIView *)createView{
@@ -142,15 +86,15 @@
         
         if([[UIScreen mainScreen] bounds].size.height==480){
             //iPhone4,4s,iPod Touch第4世代
-            stampButton.frame = CGRectMake(0, 0, 42, 42);
+            stampButton.frame = CGRectMake(0, 0, STAMP_WIDTH_PHONE, STAMP_HEIGHT_PHONE);
         }else if([[UIScreen mainScreen] bounds].size.height==568){
             //iPhone5,5s,iPhod Touch第5世代
-            stampButton.frame = CGRectMake(0, 0, 45, 45);
+            stampButton.frame = CGRectMake(0, 0, STAMP_WIDTH_PHONE, STAMP_HEIGHT_PHONE);
             
         }else if([[UIScreen mainScreen] bounds].size.height==1024)
             //iPad
         {
-            stampButton.frame = CGRectMake(0, 0, 85, 85);
+            stampButton.frame = CGRectMake(0, 0, STAMP_WIDTH_PAD, STAMP_HEIGHT_PAD);
         }
         
         
@@ -201,7 +145,7 @@
             
             if(xpoint==0&&ypoint==0){
                 
-                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,42, 42);
+                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,50, 50);
                 
             }else{
                 stampButton.center = CGPointMake(xpoint, ypoint);
@@ -236,7 +180,7 @@
             
             if(xpoint==0&&ypoint==0){
                 
-                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,45, 45);
+                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,50, 50);
                 
             }else{
                 stampButton.center = CGPointMake(xpoint, ypoint);
@@ -270,7 +214,7 @@
             
             if(xpoint==0&&ypoint==0){
                 
-                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,85, 85);
+                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h, 85, 85);
                 
             }else{
                 stampButton.center = CGPointMake(xpoint, ypoint);
@@ -286,7 +230,70 @@
     return view;
 }
 
+#pragma mark -ボタンのサイズ
+-(void)size{
 
+    // 全画面のサイズを取得する
+    height = [[UIScreen mainScreen] bounds].size.height;
+    NSLog(@"%d",height);
+    
+    if([[UIScreen mainScreen] bounds].size.height==480){ //iPhone4,4s,iPod Touch第4世代
+        //プラスボタン生成
+        plus = [UIImage imageNamed:@"plusView_iPhone.png"];
+        plusView = [[UIImageView alloc] initWithImage:plus];
+        
+        //ゴミ箱生成
+        trash = [UIImage imageNamed:@"trashView_iPhone.png"];
+        trashView = [[UIImageView alloc] initWithImage:trash];
+        
+    }else if([[UIScreen mainScreen] bounds].size.height==568){ //iPhone5,5s,iPod Touch第5世代
+        //プラスボタン生成
+        plus = [UIImage imageNamed:@"plusView_iPhone.png"];
+        plusView = [[UIImageView alloc] initWithImage:plus];
+        
+        //ゴミ箱生成
+        trash = [UIImage imageNamed:@"trashView_iPhone.png"];
+        trashView = [[UIImageView alloc] initWithImage:trash];
+        
+    }else if([[UIScreen mainScreen] bounds].size.height==1024){ //iPad
+        //プラスボタン生成
+        plus = [UIImage imageNamed:@"plusView_iPad.png"];
+        plusView = [[UIImageView alloc] initWithImage:plus];
+        
+        //ゴミ箱生成
+        trash = [UIImage imageNamed:@"trashView_iPad.png"];
+        trashView = [[UIImageView alloc] initWithImage:trash];
+        
+    }
+    
+    
+    
+    if([[UIScreen mainScreen] bounds].size.height==480){ //iPhone4,4s,iPod Touch第4世代
+        
+        plusView.frame = CGRectMake(0, 420, 320, 60);
+        trashView.frame = CGRectMake(0,480,320,60);
+        
+    }else if([[UIScreen mainScreen] bounds].size.height==568){ //iPhone5,5s,iPod Touch第5世代
+        
+        plusView.frame = CGRectMake(0, 503, 320, 65);
+        trashView.frame = CGRectMake(0,568,320,65);
+        
+    }else if([[UIScreen mainScreen] bounds].size.height==1024){ //iPad
+        
+        plusView.frame = CGRectMake(0, 894, 768, 130);
+        trashView.frame = CGRectMake(0,1024,768,130);
+    }
+    
+    
+    [self.view addSubview:plusView];
+    [self.view addSubview:trashView];
+    
+    plusView.userInteractionEnabled = YES;
+    plusView.tag = 1;
+    
+
+    
+}
 #pragma mark - タッチ
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
