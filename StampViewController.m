@@ -5,8 +5,6 @@
 //  Created by 嶋本夏海 on 2013/08/14.
 //  Copyright (c) 2013年 嶋本夏海. All rights reserved.
 
-//スタンプ
-
 #import "StampViewController.h"
 
 @implementation StampViewController
@@ -15,7 +13,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-   
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,20 +34,13 @@
 -(IBAction)stamp:(UIButton *)button
 {
     NSUserDefaults *sta = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
-    NSLog(@"button is %d", (int)button.tag);
-    
     [sta setInteger:button.tag forKey:@"stamp"];
-
     [sta synchronize];
     
     /* -- 戻る --*/
-    //[self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 
-        
     NSLog(@"戻る");
 }
-
-
 
 @end

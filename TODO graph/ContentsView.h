@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContentsView : UIImageView
+@interface ContentsView : UIImageView{
+    int screenHeight;
+}
 
 @end

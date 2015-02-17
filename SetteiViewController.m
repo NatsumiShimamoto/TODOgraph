@@ -5,10 +5,12 @@
 //  Created by 嶋本夏海 on 2013/08/12.
 //  Copyright (c) 2013年 嶋本夏海. All rights reserved.
 
-//設定画面
-
 #import "SetteiViewController.h"
 #import "StampViewController.h"
+
+#define SCREEN_HEIGHT_4     460 //iPhone4,4s,iPod Touch第4世代
+#define SCREEN_HEIGHT_5     568 //iPhone5,5s,iPhod Touch第5世代
+#define SCREEN_HEIGHT_PAD   1024 //iPad
 
 @implementation SetteiViewController
 
@@ -22,13 +24,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    /* -- フォントの設定 */
-    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-    
-    if(screenSize.width == 320.0 && screenSize.height == 568.0)
+    if(screenHeight == SCREEN_HEIGHT_5)
     {
-    }
-    else if(screenSize.width == 320.0 && screenSize.height == 480.0)
+    }else if(screenHeight == SCREEN_HEIGHT_4)
     {
         /* segmentedcontrollのサイズ変更 */
         CGRect kigenSegFrame= kigenSeg.frame;
@@ -37,9 +35,7 @@
         CGRect juyouSegFrame= juyouSeg.frame;
         juyouSeg.frame = CGRectMake(juyouSegFrame.origin.x, juyouSegFrame.origin.y,
                                     juyouSegFrame.size.width, juyouSegFrame.size.height-3) ;
-    }
-    else{
-        
+    }else if(screenHeight == SCREEN_HEIGHT_PAD){
         CGRect kigenSegFrame= kigenSeg.frame;
         kigenSeg.frame = CGRectMake(kigenSegFrame.origin.x, kigenSegFrame.origin.y,
                                     kigenSegFrame.size.width+210, kigenSegFrame.size.height+40) ;
@@ -50,8 +46,7 @@
         /* textFieldのサイズ変更 */
         CGRect textFieldFrame= textField.frame;
         textField.frame = CGRectMake(textFieldFrame.origin.x, textFieldFrame.origin.y,
-                                     textFieldFrame.size.width, textFieldFrame.size.height+40) ;
-        
+                                     textFieldFrame.size.width, textFieldFrame.size.height+40);
     }
     
     
@@ -76,7 +71,6 @@
         
         
     }
-    
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
 }
@@ -89,16 +83,17 @@
 }
 
 
-
 -(void)viewWillAppear:(BOOL)animated
 {
-    
     [super viewWillAppear:animated];
+    
+    screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     NSUserDefaults *sta = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
     
     stStampArrNum = [sta objectForKey:@"stamp"]; //@"stamp"のkeyにはアイコンのタグが入ってる(0から)
     stampArrNum = [stStampArrNum intValue];
+    
     
     UIImage *icon1 = [UIImage imageNamed:@"icon1_todo.png"];
     UIImage *icon2 = [UIImage imageNamed:@"icon2_todo.png"];
@@ -124,15 +119,13 @@
     iconView = [[UIImageView alloc] initWithImage:icon];
     
     
-    if([[UIScreen mainScreen] bounds].size.height==480){ //iPhone4,4s,iPod Touch第4世代
-        
+    if(screenHeight == SCREEN_HEIGHT_4){
         iconView.frame = CGRectMake(132, 105, 55, 55);
         
-    }else if([[UIScreen mainScreen] bounds].size.height==568){ //iPhone5,5s,iPod Touch第5世代
-        
+    }else if(screenHeight == SCREEN_HEIGHT_5){
         iconView.frame = CGRectMake(127, 130, 70, 70);
         
-    }else if([[UIScreen mainScreen] bounds].size.height==1024){
+    }else if(screenHeight == SCREEN_HEIGHT_PAD){
         
         iconView.frame = CGRectMake(318, 218, 120, 120);
     }
@@ -143,9 +136,7 @@
     iconView.userInteractionEnabled = YES;
     iconView.tag = 1;
     
-    
     self.screenName = @"SettingScreen";
-    
 }
 
 
@@ -161,6 +152,9 @@
 
 - (BOOL)textField:(UITextField *)lenTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    
+    
     // 入力済みのテキストを取得
     NSMutableString *mText = [lenTextField.text mutableCopy];
     
@@ -168,9 +162,7 @@
     [mText replaceCharactersInRange:range withString:string];
     
     
-    
-    
-    if([[UIScreen mainScreen] bounds].size.height==480){
+    if(screenHeight == SCREEN_HEIGHT_4){
         //iPhone4,4s,iPod Touch第4世代
         
         int maxInputLength = 52;
@@ -183,15 +175,12 @@
                                                          delegate:nil
                                                 cancelButtonTitle:nil
                                                 otherButtonTitles:@"OK", nil
-                                 
                                  ];
             [alert show];
             
             return NO;
         }
-        
-    }
-    else if([[UIScreen mainScreen] bounds].size.height==568){
+    }else if(screenHeight == SCREEN_HEIGHT_5){
         //iPhone5,5s,iPhod Touch第5世代
         
         int maxInputLength = 35;
@@ -210,11 +199,7 @@
             
             return NO;
         }
-        
-        
-    }else if([[UIScreen mainScreen] bounds].size.height==1024){
-        //iPad
-        
+    }else if(screenHeight == SCREEN_HEIGHT_PAD){
         
         int maxInputLength = 75;
         

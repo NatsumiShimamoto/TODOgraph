@@ -69,7 +69,6 @@
 
 #pragma mark - ViewDidAppear
 - (void)viewDidAppear:(BOOL)animated{
-    
 }
 
 
@@ -95,7 +94,6 @@
         }else if(screenHeight == SCREEN_HEIGHT_PAD){
             stampButton.frame = CGRectMake(0, 0, STAMP_WIDTH_PAD, STAMP_HEIGHT_PAD);
         }
-        
         
         stampButton.tag = i;
         

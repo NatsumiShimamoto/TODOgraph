@@ -14,43 +14,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    /* -- 画面サイズ(StoryBoard)の判定 -- */
-    
-    UIStoryboard *storyboard; // StoryBoardの型宣言
-    NSString * storyBoardName; // StoryBoardの名称設定用
-    
-    // 機種の取得
-    NSString *modelname = [ [ UIDevice currentDevice] model];
-    
-    // iPadかどうか判断する
-    if ( ![modelname hasPrefix:@"iPad"] ) {
-        
-        // Windowスクリーンのサイズを取得
-        CGRect r = [[UIScreen mainScreen] bounds];
-        // 縦の長さが480の場合、古いiPhoneだと判定
-        if(r.size.height == 480){
-            // NSLog(@"Old iPhone");
-            storyBoardName = @"Storyboard_3.5";
-        }else{
-            // NSLog(@"New iPhone");
-            storyBoardName = @"MainStoryboard";
-        }
-    }else{
-        // NSLog(@"iPad");
-        storyBoardName =@"Storyboard_iPad";
-    }
-    // StoryBoardのインスタンス化
-    storyboard = [UIStoryboard storyboardWithName:storyBoardName bundle:nil];
-    
-    // 画面の生成
-    UIViewController *mainViewController = [storyboard instantiateInitialViewController];
-    
-    // ルートウィンドウにひっつける
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = mainViewController;
-    [self.window makeKeyAndVisible];
-    
-    
     /* --- Parse --- */
     
     [Parse setApplicationId:@"D2zSnWaRftB00rjUsilBqznEgETBOIU7pHAJTAct"

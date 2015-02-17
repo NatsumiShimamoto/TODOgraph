@@ -14,6 +14,8 @@
 @interface SetteiViewController : GAITrackedViewController<UITextFieldDelegate>
 
 {
+    int screenHeight;
+    
     IBOutlet UISegmentedControl *kigenSeg;
     IBOutlet UISegmentedControl *juyouSeg;
 
