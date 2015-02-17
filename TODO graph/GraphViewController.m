@@ -115,7 +115,7 @@
         /* --- スタンプの条件分け ---*/
         int number = [GVstStampNum intValue] + 1;
         NSString* imageName = [NSString stringWithFormat: @"icon%d.png", number];
-        [stampButton setImage:[UIImage imageNamed: imageName] forState:UIControlStateNormal];
+        [stampButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
         
         //stampButtonが押されたらbuttonPushedが呼び出される
         [stampButton addTarget:self action:@selector(buttonPushed:) forControlEvents:UIControlEventTouchUpInside];
@@ -144,7 +144,7 @@
             }
             
             if(xpoint==0&&ypoint==0){
-                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,50, 50);
+                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,STAMP_WIDTH_PHONE, STAMP_HEIGHT_PHONE);
                 
             }else{
                 stampButton.center = CGPointMake(xpoint, ypoint);
@@ -173,7 +173,7 @@
             }
             
             if(xpoint==0&&ypoint==0){
-                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,50, 50);
+                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,STAMP_WIDTH_PHONE,STAMP_HEIGHT_PHONE);
                 
             }else{
                 stampButton.center = CGPointMake(xpoint, ypoint);
@@ -203,19 +203,17 @@
             
             
             if(xpoint==0&&ypoint==0){
-                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h, 85, 85);
+                stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,STAMP_WIDTH_PAD,STAMP_HEIGHT_PAD);
                 
             }else{
                 stampButton.center = CGPointMake(xpoint, ypoint);
             }
-            
             
             [view addSubview:stampButton];
             [self.view bringSubviewToFront:stampButton];
             
         }
     }
-    
     return view;
 }
 
@@ -234,14 +232,12 @@
     SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
     StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     
-    NSLog(@"タッチ");
     NSLog(@"%d",(int)plusView.tag);
     NSLog(@"%d",(int)touch.view.tag);
     
     
     switch (touch.view.tag) {
         case 1:
-            
             [self presentViewController:setteiVC animated:YES completion:nil];
             
             NSLog(@"設定画面遷移");
@@ -255,7 +251,6 @@
             [self presentViewController:stampVC animated:YES completion:nil];
             
             NSLog(@"スタンプ画面遷移");
-            
             break;
             
         default:
@@ -278,6 +273,7 @@
     
     NSMutableArray *resaveMArray = [array mutableCopy];
     resaveMArray = [[NSMutableArray alloc] init];
+    
     
     //labelの中身を書き換える
     if(screenHeight == SCREEN_HEIGHT_4){
@@ -313,12 +309,11 @@
     
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
-    
     ud = [NSUserDefaults standardUserDefaults];
     array = [ud objectForKey:@"hoge"];
     NSDictionary *dic = array[button.tag];
-    NSLog(@"%@",dic[@"contents"]);
     
+    NSLog(@"%@",dic[@"contents"]);
     
     NSDictionary *resaveDic = array[button.tag];
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
@@ -412,7 +407,7 @@
     if(_contentsView) {
         [self changeStamp:(UIButton *)button];
         
-    }else {
+    }else{
         [self makeContentsView:(UIButton *)button];
     }
     
@@ -440,50 +435,44 @@
     // 入力済みのテキストと入力が行われたテキストを結合
     [mText replaceCharactersInRange:range withString:text];
     
+    int maxInputLength;
     
     if(screenHeight == SCREEN_HEIGHT_4){
         
-        int maxInputLength = 52;
+        maxInputLength = 52;
         
         if ([mText length] > maxInputLength) {
-            
             /*--- 文字数制限アラート ---*/
             UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"文字数オーバー"
                                                           message:@"52字まで入力できます。"
                                                          delegate:nil
                                                 cancelButtonTitle:nil
                                                 otherButtonTitles:@"OK", nil
-                                 
                                  ];
             [alert show];
             
             return NO;
         }
+    }else if(screenHeight == SCREEN_HEIGHT_5){
         
-    }
-    else if(screenHeight == SCREEN_HEIGHT_5){
-        
-        int maxInputLength = 35;
+        maxInputLength = 35;
         
         if ([mText length] > maxInputLength) {
-            
             /*--- 文字数制限アラート ---*/
             UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"文字数オーバー"
                                                           message:@"35字まで入力できます。"
                                                          delegate:nil
                                                 cancelButtonTitle:nil
                                                 otherButtonTitles:@"OK", nil
-                                 
                                  ];
             [alert show];
             
             return NO;
         }
         
-        
     }else if(screenHeight == SCREEN_HEIGHT_PAD){
         
-        int maxInputLength = 75;
+        maxInputLength = 75;
         
         if ([mText length] > maxInputLength) {
             
@@ -493,7 +482,6 @@
                                                          delegate:nil
                                                 cancelButtonTitle:nil
                                                 otherButtonTitles:@"OK", nil
-                                 
                                  ];
             [alert show];
             
@@ -653,7 +641,7 @@
            trashView.frame.size.height)
         {
             NSLog(@"消えろ");
-            //ゴミ箱と重なっていたら削除！　消えろ！　うら！
+            //ゴミ箱と重なっていたら削除！消えろ！うら！
             NSMutableArray *mArray = [array mutableCopy];
             NSLog(@"%d %d",(int)sender.view.tag,(int)[mArray count]);
             [mArray removeObjectAtIndex:sender.view.tag];
@@ -692,15 +680,13 @@
                          animations:^{
                              // アニメーションをする処理
                              if(screenHeight == SCREEN_HEIGHT_4){
-                                 //iPhone4,4s,iPod Touch第4世代
-                                 trashView.transform = CGAffineTransformMakeTranslation(0, 60);
+                                trashView.transform = CGAffineTransformMakeTranslation(0, 60);
+                                 
                              }else if(screenHeight == SCREEN_HEIGHT_5){
-                                 //iPhone5,5s,iPod Touch第5世代
-                                 trashView.transform = CGAffineTransformMakeTranslation(0, 65);
+                                trashView.transform = CGAffineTransformMakeTranslation(0, 65);
                                  
                              }else if(screenHeight == SCREEN_HEIGHT_PAD){
                                  trashView.transform = CGAffineTransformMakeTranslation(0, 130);
-                                 
                              }
                          }
                          completion:^(BOOL finished){
@@ -729,6 +715,7 @@
 }
 
 
+//プラスボタン、ゴミ箱のアニメーション
 -(void)functionViewAnimation{
     
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
@@ -782,9 +769,7 @@
         
         NSLog(@"赤消える");
     }
-    
 }
-
 
 
 #pragma mark -ボタンのサイズ
@@ -792,59 +777,40 @@
     
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
-    if(screenHeight == SCREEN_HEIGHT_4){ //iPhone4,4s,iPod Touch第4世代
-        //プラスボタン生成
+    if(screenHeight == SCREEN_HEIGHT_4){
         plus = [UIImage imageNamed:@"plusView_iPhone.png"];
         plusView = [[UIImageView alloc] initWithImage:plus];
-        
-        //ゴミ箱生成
-        trash = [UIImage imageNamed:@"trashView_iPhone.png"];
-        trashView = [[UIImageView alloc] initWithImage:trash];
-        
-    }else if(screenHeight == SCREEN_HEIGHT_5){ //iPhone5,5s,iPod Touch第5世代
-        //プラスボタン生成
-        plus = [UIImage imageNamed:@"plusView_iPhone.png"];
-        plusView = [[UIImageView alloc] initWithImage:plus];
-        
-        //ゴミ箱生成
-        trash = [UIImage imageNamed:@"trashView_iPhone.png"];
-        trashView = [[UIImageView alloc] initWithImage:trash];
-        
-    }else if(screenHeight == SCREEN_HEIGHT_PAD){ //iPad
-        //プラスボタン生成
-        plus = [UIImage imageNamed:@"plusView_iPad.png"];
-        plusView = [[UIImageView alloc] initWithImage:plus];
-        
-        //ゴミ箱生成
-        trash = [UIImage imageNamed:@"trashView_iPad.png"];
-        trashView = [[UIImageView alloc] initWithImage:trash];
-        
-    }
-    
-    
-    if(screenHeight == SCREEN_HEIGHT_4){ //iPhone4,4s,iPod Touch第4世代
-        
         plusView.frame = CGRectMake(0, 420, 320, 60);
+        
+        trash = [UIImage imageNamed:@"trashView_iPhone.png"];
+        trashView = [[UIImageView alloc] initWithImage:trash];
         trashView.frame = CGRectMake(0,480,320,60);
         
-    }else if(screenHeight == SCREEN_HEIGHT_5){ //iPhone5,5s,iPod Touch第5世代
-        
+    }else if(screenHeight == SCREEN_HEIGHT_5){
+        plus = [UIImage imageNamed:@"plusView_iPhone.png"];
+        plusView = [[UIImageView alloc] initWithImage:plus];
         plusView.frame = CGRectMake(0, 503, 320, 65);
+        
+        trash = [UIImage imageNamed:@"trashView_iPhone.png"];
+        trashView = [[UIImageView alloc] initWithImage:trash];
         trashView.frame = CGRectMake(0,568,320,65);
         
-    }else if(screenHeight == SCREEN_HEIGHT_PAD){ //iPad
-        
+    }else if(screenHeight == SCREEN_HEIGHT_PAD){
+        plus = [UIImage imageNamed:@"plusView_iPad.png"];
+        plusView = [[UIImageView alloc] initWithImage:plus];
         plusView.frame = CGRectMake(0, 894, 768, 130);
+        
+        trash = [UIImage imageNamed:@"trashView_iPad.png"];
+        trashView = [[UIImageView alloc] initWithImage:trash];
         trashView.frame = CGRectMake(0,1024,768,130);
     }
     
-    [self.view addSubview:plusView];
-    [self.view addSubview:trashView];
-    
     plusView.userInteractionEnabled = YES;
     plusView.tag = 1;
+    
+    [self.view addSubview:plusView];
+    [self.view addSubview:trashView];
 }
-
 
 
 #pragma mark -ContentsViewのアニメーション
@@ -875,7 +841,7 @@
 #pragma mark -強制アップデート
 /* --- バージョン判定(ユーザのバージョンが前のバージョンの場合はアラートを表示) --- */
 - (void)checkVersionNotification:(NSNotification *)notification{
-    NSString *url = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%d",824743666
+    NSString *url = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%d",APP_ID
                      ];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]
