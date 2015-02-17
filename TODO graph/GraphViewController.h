@@ -14,10 +14,10 @@
 
 @interface GraphViewController :  GAITrackedViewController<UITextViewDelegate>{
     
-    int height;
+    int screenHeight;
     
     IBOutlet UIButton *plusButton;
-    BOOL isUnder;//あんべ追加
+    BOOL isUnder;
     NSUserDefaults *ud;
     
     NSArray *array;
