@@ -39,8 +39,6 @@
     
     /* -- 戻る --*/
     [self dismissViewControllerAnimated:YES completion:nil];
-
-    NSLog(@"戻る");
 }
 
 @end

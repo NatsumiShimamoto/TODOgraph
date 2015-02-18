@@ -57,18 +57,13 @@
         NSArray *array = [ud objectForKey:@"hoge"]; //hogeというキーでudという格納場所にarrayに入れる
         NSDictionary *dic = array[self.editIndex];
         
-        
         textField.text = [dic objectForKey:@"contents"];
         
         kigenNum = [[dic objectForKey:@"kigen"] intValue];
-        
-        NSLog(@"ーーーーーーーーーーーー%d",kigenNum);
         [kigenSeg setSelectedSegmentIndex:kigenNum];
         
         juyouNum = [[dic objectForKey:@"juyou"] intValue];
-        
         juyouSeg.selectedSegmentIndex = juyouNum;
-        
         
     }
     textField.delegate = self;
@@ -83,41 +78,33 @@
 }
 
 
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated{
+    
     [super viewWillAppear:animated];
     
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
-    NSUserDefaults *sta = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
+    NSUserDefaults *stampUD = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
     
-    stStampArrNum = [sta objectForKey:@"stamp"]; //@"stamp"のkeyにはアイコンのタグが入ってる(0から)
+    stStampArrNum = [stampUD objectForKey:@"stamp"]; //@"stamp"のkeyにはアイコンのタグが入ってる(0から)
     stampArrNum = [stStampArrNum intValue];
     
-    
-    UIImage *icon1 = [UIImage imageNamed:@"icon1_todo.png"];
-    UIImage *icon2 = [UIImage imageNamed:@"icon2_todo.png"];
-    UIImage *icon3 = [UIImage imageNamed:@"icon3_todo.png"];
-    UIImage *icon4 = [UIImage imageNamed:@"icon4_todo.png"];
-    UIImage *icon5 = [UIImage imageNamed:@"icon5_todo.png"];
-    UIImage *icon6 = [UIImage imageNamed:@"icon6_todo.png"];
-    UIImage *icon7 = [UIImage imageNamed:@"icon7_todo.png"];
-    UIImage *icon8 = [UIImage imageNamed:@"icon8_todo.png"];
-    UIImage *icon9 = [UIImage imageNamed:@"icon9_todo.png"];
-    UIImage *icon10 = [UIImage imageNamed:@"icon10_todo.png"];
-    UIImage *icon11 = [UIImage imageNamed:@"icon11_todo.png"];
-    UIImage *icon12 = [UIImage imageNamed:@"icon12_todo.png"];
-    
-    
-    NSArray *iconArray =  [[NSArray alloc] initWithObjects:icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,icon9,icon10,icon11,icon12,nil];
+    if(!iconArray){
+        
+        iconArray = [[NSMutableArray alloc] init];
+        
+        for(int i=0; i<=11; i++){
+            
+            NSString *iconName = [NSString stringWithFormat:@"icon%d_todo.png",i+1];
+            UIImage *iconImage = [UIImage imageNamed:iconName];
+            
+            [iconArray addObject:iconImage];
+        }
+    }
     
     UIImage *icon = [[UIImage alloc] init];
     icon = iconArray[stampArrNum];
-    
-    NSLog(@"stampArrNum == %d",stampArrNum);
-    
     iconView = [[UIImageView alloc] initWithImage:icon];
-    
     
     if(screenHeight == SCREEN_HEIGHT_4){
         iconView.frame = CGRectMake(132, 105, 55, 55);
@@ -126,15 +113,12 @@
         iconView.frame = CGRectMake(127, 130, 70, 70);
         
     }else if(screenHeight == SCREEN_HEIGHT_PAD){
-        
         iconView.frame = CGRectMake(318, 218, 120, 120);
     }
     
-    [self.view addSubview:iconView];
-    
-    
     iconView.userInteractionEnabled = YES;
     iconView.tag = 1;
+    [self.view addSubview:iconView];
     
     self.screenName = @"SettingScreen";
 }
@@ -222,11 +206,9 @@
 
 
 #pragma mark - タッチ
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     //キーボードを閉じる
     [textField resignFirstResponder];
-    
 }
 
 
@@ -243,11 +225,9 @@
             [iconView removeFromSuperview];
             break;
             
-            
         default:
             break;
     }
-    
 }
 
 
@@ -256,7 +236,6 @@
 {
     if(sender.tag == 1) kigenNum = (int)sender.selectedSegmentIndex; //tag1のSegmentedControlが選択されたら、選択された値をkigenNumに入れる
     else juyouNum = (int)sender.selectedSegmentIndex;
-    NSLog(@"sender.tagは-------%d",(int)sender.selectedSegmentIndex);
 }
 
 
@@ -339,10 +318,7 @@
     prevController.contentsView = nil;
     
     /* -- 戻る -- */
-    //[self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-    NSLog(@"もどったよ");
 }
 
 

@@ -77,7 +77,6 @@
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     array = [ud objectForKey:@"hoge"]; //hogeでudをarrayに入れる
-    NSLog(@"わんわんわん%@", array);
     
     for(i = 0; i < [array count]; i++)
     {
@@ -98,8 +97,7 @@
         stampButton.userInteractionEnabled = YES; //タッチの検知をするかしないかの設定
         
         NSDictionary *dic = array[i];
-        NSLog(@"dic is %@", dic);
-        
+
         NSString *GVstStampNum = [dic objectForKey:@"stamp"];
         kigenNum = [[dic objectForKey:@"kigen"] intValue]; //０だったら近い
         juyouNum = [[dic objectForKey:@"juyou"] intValue]; //０だったら重要
@@ -228,10 +226,7 @@
     SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
     StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     
-    NSLog(@"%d",(int)plusView.tag);
-    NSLog(@"%d",(int)touch.view.tag);
-    
-    
+
     switch (touch.view.tag) {
         case 1:
             [self presentViewController:setteiVC animated:YES completion:nil];
@@ -296,8 +291,20 @@
     contentsStamp.image = button.currentImage;
     
     closeButton.tag = button.tag;
+}
+
+
+#pragma mark - スタンプの選択
+- (void)buttonPushed:(UIButton *)button //buttonとstampButtonは同じって考えていい
+{
+    if(_contentsView) {
+        [self changeStamp:(UIButton *)button];
+        
+    }else{
+        [self makeContentsView:(UIButton *)button];
+    }
     
-    NSLog(@"ボタンのタグ！！！%d",(int)button.tag);
+    [self.view bringSubviewToFront:stampButton];
 }
 
 
@@ -394,22 +401,6 @@
     [_contentsView addSubview:contentsStamp];
     
     [self closeImageFadeIn];
-}
-
-
-#pragma mark - スタンプの選択(移動)
-- (void)buttonPushed:(UIButton *)button //buttonとstampButtonは同じって考えていい
-{
-    NSLog(@"%d番目に作られたやつ",(int)button.tag);
-    
-    if(_contentsView) {
-        [self changeStamp:(UIButton *)button];
-        
-    }else{
-        [self makeContentsView:(UIButton *)button];
-    }
-    
-    [self.view bringSubviewToFront:stampButton];
 }
 
 
@@ -517,8 +508,6 @@
     [ud synchronize];
     
 }
-
-
 #pragma mark - スタンプの移動
 - (void)panAction:(UIPanGestureRecognizer *)sender {
     
@@ -531,72 +520,8 @@
     
     NSLog(@"%d番目のスタンプが動かされたよ",(int)sender.view.tag);
     
-    CGPoint p = [sender translationInView:sender.view];
+    [self escape:(UIPanGestureRecognizer *)sender];
     
-    
-    // 移動した距離だけ、UIImageViewのcenterポジションを移動させる
-    CGPoint movedPoint = CGPointMake(sender.view.center.x + p.x, sender.view.center.y + p.y);
-    sender.view.center = movedPoint;
-    
-    
-    /* ---　はじっこから脱出　--- */
-    if(screenHeight == SCREEN_HEIGHT_4){
-        
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 13)
-        {
-            sender.view.center = CGPointMake(movedPoint.x+30, movedPoint.y);
-        }
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 300)
-        {
-            sender.view.center = CGPointMake(movedPoint.x-30, movedPoint.y);
-        }
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 45)
-        {
-            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+40);
-        }
-        movedPoint = sender.view.center;
-        
-    }else if(screenHeight == SCREEN_HEIGHT_5){
-        
-        if(movedPoint.x <= 0){
-            movedPoint.x = 0;
-        }
-        
-        if(movedPoint.y <= 0){
-            movedPoint.y = 0;
-        }
-        
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 13)
-        {
-            sender.view.center = CGPointMake(movedPoint.x+25, movedPoint.y);
-        }
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 300)
-        {
-            sender.view.center = CGPointMake(movedPoint.x-30, movedPoint.y);
-        }
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 22)
-        {
-            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+25);
-        }
-        
-        movedPoint = sender.view.center;
-        
-    }else if(screenHeight == SCREEN_HEIGHT_PAD){
-        
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 20)
-        {
-            sender.view.center = CGPointMake(movedPoint.x+85, movedPoint.y);
-        }
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 750)
-        {
-            sender.view.center = CGPointMake(movedPoint.x-100, movedPoint.y);
-        }
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 45)
-        {
-            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+80);
-        }
-        movedPoint = sender.view.center;
-    }
     
     //指を離した時
     if(sender.state == UIGestureRecognizerStateEnded)
@@ -609,6 +534,7 @@
 }
 
 
+ //指を離した時
 -(void)dragEnded:(UIPanGestureRecognizer *)sender{
     
     ud = [NSUserDefaults standardUserDefaults];
@@ -635,13 +561,10 @@
     if(upBlue){
         
         /* --- ゴミ箱 --- */
-        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y >= screenHeight -
-           trashView.frame.size.height)
+        if(movedPoint.y >= screenHeight - trashView.frame.size.height)
         {
-            NSLog(@"消えろ");
             //ゴミ箱と重なっていたら削除！消えろ！うら！
             NSMutableArray *mArray = [array mutableCopy];
-            NSLog(@"%d %d",(int)sender.view.tag,(int)[mArray count]);
             [mArray removeObjectAtIndex:sender.view.tag];
             
             [ud setObject:mArray forKey:@"hoge"];
@@ -710,6 +633,78 @@
         
         NSLog(@"赤でてくる");
     }
+}
+
+
+/* ---　はじっこから脱出　--- */
+-(void)escape:(UIPanGestureRecognizer *)sender {
+    
+    CGPoint p = [sender translationInView:sender.view];
+    
+    // 移動した距離だけ、UIImageViewのcenterポジションを移動させる
+    CGPoint movedPoint = CGPointMake(sender.view.center.x + p.x, sender.view.center.y + p.y);
+    sender.view.center = movedPoint;
+    
+    
+    if(screenHeight == SCREEN_HEIGHT_4){
+        
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 13)
+        {
+            sender.view.center = CGPointMake(movedPoint.x+30, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 300)
+        {
+            sender.view.center = CGPointMake(movedPoint.x-30, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 45)
+        {
+            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+40);
+        }
+        movedPoint = sender.view.center;
+        
+    }else if(screenHeight == SCREEN_HEIGHT_5){
+        
+        if(movedPoint.x <= 0){
+            movedPoint.x = 0;
+        }
+        
+        if(movedPoint.y <= 0){
+            movedPoint.y = 0;
+        }
+        
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 13)
+        {
+            sender.view.center = CGPointMake(movedPoint.x+25, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 300)
+        {
+            sender.view.center = CGPointMake(movedPoint.x-30, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 22)
+        {
+            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+25);
+        }
+        
+        movedPoint = sender.view.center;
+        
+    }else if(screenHeight == SCREEN_HEIGHT_PAD){
+        
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x <= 20)
+        {
+            sender.view.center = CGPointMake(movedPoint.x+85, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.x >= 750)
+        {
+            sender.view.center = CGPointMake(movedPoint.x-100, movedPoint.y);
+        }
+        if(sender.state == UIGestureRecognizerStateEnded && movedPoint.y <= 45)
+        {
+            sender.view.center = CGPointMake(movedPoint.x, movedPoint.y+80);
+        }
+        movedPoint = sender.view.center;
+    }
+    
+
 }
 
 
