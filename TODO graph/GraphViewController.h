@@ -15,9 +15,7 @@
 @interface GraphViewController :  GAITrackedViewController<UITextViewDelegate>{
     
     int screenHeight;
-    
-    IBOutlet UIButton *plusButton;
-    BOOL isUnder;
+
     NSUserDefaults *ud;
     
     NSArray *array;
@@ -27,17 +25,12 @@
     int kigenNum;
     int juyouNum;
     
-    IBOutlet UIButton *stampButton;
-    IBOutlet UIImageView *haikeiView;
-    IBOutlet UITextView *textView;
-    
-    BOOL loaded;
+    UIButton *stampButton;
+    UITextView *textView;
     
     UIImage *contentsImage;
-    UIImage *close;
-    UIImageView *closeView;
-    IBOutlet UIButton *closeButton;
-    IBOutlet UILabel *todoLabel;
+    
+    UIButton *closeButton;
     UIImageView *contentsStamp;
     
     int h;
@@ -48,13 +41,13 @@
     
     UIImage *plus;
     UIImageView *plusView;
+    
     UIImage *trash;
     UIImageView *trashView;
+    
 }
 
 @property (nonatomic) ContentsView *contentsView;
-//@property UIView *mainView;
-
 
 @end
 

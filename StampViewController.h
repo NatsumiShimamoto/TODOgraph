@@ -11,7 +11,6 @@
 #import "GAITrackedViewController.h"
 
 @interface StampViewController : GAITrackedViewController{
-
 }
 
 @end

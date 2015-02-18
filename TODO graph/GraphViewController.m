@@ -53,8 +53,6 @@
     
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
     
-    isUnder = NO;
-    
     //一回mainViewを全部消す
     [mainView removeFromSuperview];
     mainView = [self createView];//スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
@@ -303,6 +301,7 @@
 }
 
 
+#pragma mark - ContentsView作成
 -(void)makeContentsView:(UIButton *)button{
     
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
@@ -327,9 +326,9 @@
     
     
     //closeボタンを表示
-    close = [UIImage imageNamed:@"closeView.png"];
-    closeView = [[UIImageView alloc] initWithImage:close];
+    UIImage *close = [UIImage imageNamed:@"closeView.png"];
     closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [closeButton setImage:close forState:UIControlStateNormal];
     
     if(screenHeight == SCREEN_HEIGHT_4){
         closeButton.frame = CGRectMake(211, 0, 60, 60);
@@ -344,8 +343,9 @@
     
     NSLog(@"ボタンのタグ！！！%d",(int)button.tag);
     
+    
     [_contentsView addSubview:closeButton];
-    [closeButton setImage:close forState:UIControlStateNormal];
+
     [closeButton addTarget:self action:@selector(closeButtonPushed:)forControlEvents:UIControlEventTouchUpInside];
     _contentsView.userInteractionEnabled = YES; //タッチの検知をする
     
@@ -770,12 +770,15 @@
 }
 
 
-#pragma mark -ボタンのサイズ
+#pragma mark - ボタンのサイズ
 -(void)size{
     
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     if(screenHeight == SCREEN_HEIGHT_4){
+        
+        
+        
         plus = [UIImage imageNamed:@"plusView_iPhone.png"];
         plusView = [[UIImageView alloc] initWithImage:plus];
         plusView.frame = CGRectMake(0, 420, 320, 60);
@@ -811,7 +814,7 @@
 }
 
 
-#pragma mark -ContentsViewのアニメーション
+#pragma mark - ContentsViewのアニメーション
 //フェードイン
 - (void)closeImageFadeIn{
     
@@ -836,7 +839,7 @@
 
 
 
-#pragma mark -強制アップデート
+#pragma mark - 強制アップデート
 /* --- バージョン判定(ユーザのバージョンが前のバージョンの場合はアラートを表示) --- */
 - (void)checkVersionNotification:(NSNotification *)notification{
     NSString *url = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%d",APP_ID
