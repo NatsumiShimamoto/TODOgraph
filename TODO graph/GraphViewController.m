@@ -508,6 +508,8 @@
     [ud synchronize];
     
 }
+
+
 #pragma mark - スタンプの移動
 - (void)panAction:(UIPanGestureRecognizer *)sender {
     
