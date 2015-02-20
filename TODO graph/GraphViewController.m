@@ -58,7 +58,7 @@
     mainView = [self createView];//スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
     
     [self.view addSubview:mainView];
-    [self.view bringSubviewToFront:plusView];
+    [self.view bringSubviewToFront:plusButton];
     [self.view bringSubviewToFront:stampButton];
     
     self.screenName = @"GraphViewController";
@@ -223,26 +223,17 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
-    SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
+
     StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     
 
     switch (touch.view.tag) {
         case 1:
-            [self presentViewController:setteiVC animated:YES completion:nil];
-            
-            NSLog(@"設定画面遷移");
-            
-            [_contentsView removeFromSuperview];
-            _contentsView = nil;
-            
-            break;
-            
-        case 2:
             [self presentViewController:stampVC animated:YES completion:nil];
-            
-            NSLog(@"スタンプ画面遷移");
+             NSLog(@"スタンプ画面遷移");
+
             break;
+            
             
         default:
             NSLog(@"mainView");
@@ -397,7 +388,7 @@
     }
     
     contentsStamp.image = button.currentImage;
-    contentsStamp.tag = 2;
+    contentsStamp.tag = 1;
     [_contentsView addSubview:contentsStamp];
     
     [self closeImageFadeIn];
@@ -489,6 +480,7 @@
  *
  */
 
+
 #pragma mark - 編集保存
 - (void)saveEdit:(int)editIndex
 {
@@ -575,7 +567,7 @@
             [mainView removeFromSuperview];
             mainView = [self createView];
             [self.view addSubview:mainView];
-            [self.view bringSubviewToFront:plusView];
+            [self.view bringSubviewToFront:plusButton];
             
             if(_contentsView){
                 [self.view bringSubviewToFront:_contentsView];
@@ -586,7 +578,7 @@
                                 options:UIViewAnimationOptionCurveEaseInOut
                              animations:^{
                                  // アニメーションをする処理
-                                 plusView.transform = CGAffineTransformMakeTranslation(0, 0);
+                                 plusButton.transform = CGAffineTransformMakeTranslation(0, 0);
                              }
                              completion:^(BOOL finished){
                                  // アニメーションが終わった後実行する処理
@@ -626,7 +618,7 @@
                             options:UIViewAnimationOptionCurveEaseInOut
                          animations:^{
                              // アニメーションをする処理
-                             plusView.transform = CGAffineTransformMakeTranslation(0, 0);
+                             plusButton.transform = CGAffineTransformMakeTranslation(0, 0);
                          }
                          completion:^(BOOL finished){
                              // アニメーションが終わった後実行する処理
@@ -748,13 +740,13 @@
                              // アニメーションをする処理
                              
                              if(screenHeight == SCREEN_HEIGHT_4){
-                                 plusView.transform = CGAffineTransformMakeTranslation(0, 60);
+                                 plusButton.transform = CGAffineTransformMakeTranslation(0, 60);
                                  
                              }else if(screenHeight == SCREEN_HEIGHT_5){
-                                 plusView.transform = CGAffineTransformMakeTranslation(0, 65);
+                                 plusButton.transform = CGAffineTransformMakeTranslation(0, 65);
                                  
                              }else if(screenHeight == SCREEN_HEIGHT_PAD){
-                                 plusView.transform = CGAffineTransformMakeTranslation(0, 130);
+                                 plusButton.transform = CGAffineTransformMakeTranslation(0, 130);
                              }
                          }
                          completion:^(BOOL finished){
@@ -766,7 +758,17 @@
     }
 }
 
+-(void)plus{
+     SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
+    [self presentViewController:setteiVC animated:YES completion:nil];
+    
+    NSLog(@"設定画面遷移");
+    
+    [_contentsView removeFromSuperview];
+    _contentsView = nil;
+    
 
+}
 #pragma mark - ボタンのサイズ
 -(void)size{
     
@@ -774,39 +776,45 @@
     
     if(screenHeight == SCREEN_HEIGHT_4){
         
-        
-        
-        plus = [UIImage imageNamed:@"plusView_iPhone.png"];
-        plusView = [[UIImageView alloc] initWithImage:plus];
-        plusView.frame = CGRectMake(0, 420, 320, 60);
-        
+        plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        plusButton.frame = CGRectMake(0, 420, 320, 60);
+        [plusButton setImage:[UIImage imageNamed:@"plusView_iPhone.png"] forState:UIControlStateNormal];
+        [plusButton addTarget:self action:@selector(plus)forControlEvents:UIControlEventTouchDown];
+       
+    
         trash = [UIImage imageNamed:@"trashView_iPhone.png"];
         trashView = [[UIImageView alloc] initWithImage:trash];
         trashView.frame = CGRectMake(0,480,320,60);
         
     }else if(screenHeight == SCREEN_HEIGHT_5){
-        plus = [UIImage imageNamed:@"plusView_iPhone.png"];
-        plusView = [[UIImageView alloc] initWithImage:plus];
-        plusView.frame = CGRectMake(0, 503, 320, 65);
         
+        plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        plusButton.frame = CGRectMake(0, 503, 320, 65);
+        [plusButton setImage:[UIImage imageNamed:@"plusView_iPhone.png"] forState:UIControlStateNormal];
+        [plusButton addTarget:self action:@selector(plus)forControlEvents:UIControlEventTouchDown];
+        
+
         trash = [UIImage imageNamed:@"trashView_iPhone.png"];
         trashView = [[UIImageView alloc] initWithImage:trash];
         trashView.frame = CGRectMake(0,568,320,65);
         
     }else if(screenHeight == SCREEN_HEIGHT_PAD){
-        plus = [UIImage imageNamed:@"plusView_iPad.png"];
-        plusView = [[UIImageView alloc] initWithImage:plus];
-        plusView.frame = CGRectMake(0, 894, 768, 130);
+
+        plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        plusButton.frame = CGRectMake(0, 894, 768, 130);
+        [plusButton setImage:[UIImage imageNamed:@"plusView_iPhone.png"] forState:UIControlStateNormal];
+        [plusButton addTarget:self action:@selector(plus)forControlEvents:UIControlEventTouchDown];
+    
         
         trash = [UIImage imageNamed:@"trashView_iPad.png"];
         trashView = [[UIImageView alloc] initWithImage:trash];
         trashView.frame = CGRectMake(0,1024,768,130);
     }
     
-    plusView.userInteractionEnabled = YES;
-    plusView.tag = 1;
+    plusButton.userInteractionEnabled = YES;
+    plusButton.tag = 1;
     
-    [self.view addSubview:plusView];
+    [self.view addSubview:plusButton];
     [self.view addSubview:trashView];
 }
 
@@ -843,7 +851,6 @@
                      ];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]
-                             
                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
                                          timeoutInterval:60.0];
     
@@ -852,7 +859,6 @@
     NSData *data = [NSURLConnection sendSynchronousRequest:request
                                          returningResponse:&response
                                                      error:&error];
-    
     
     NSDictionary *dataDic  = [NSJSONSerialization JSONObjectWithData:data
                                                              options:NSJSONReadingAllowFragments

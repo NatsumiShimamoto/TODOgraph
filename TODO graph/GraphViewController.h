@@ -39,8 +39,7 @@
     BOOL upRed;
     BOOL upBlue;
     
-    UIImage *plus;
-    UIImageView *plusView;
+    UIButton *plusButton;
     
     UIImage *trash;
     UIImageView *trashView;
