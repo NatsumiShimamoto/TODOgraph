@@ -389,6 +389,7 @@
     
     contentsStamp.image = button.currentImage;
     contentsStamp.tag = 1;
+    contentsStamp.userInteractionEnabled = YES;
     [_contentsView addSubview:contentsStamp];
     
     [self closeImageFadeIn];
@@ -758,6 +759,8 @@
     }
 }
 
+
+#pragma mark - 追加
 -(void)plus{
      SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
     [self presentViewController:setteiVC animated:YES completion:nil];
@@ -766,9 +769,9 @@
     
     [_contentsView removeFromSuperview];
     _contentsView = nil;
-    
-
 }
+
+
 #pragma mark - ボタンのサイズ
 -(void)size{
     
@@ -779,7 +782,7 @@
         plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
         plusButton.frame = CGRectMake(0, 420, 320, 60);
         [plusButton setImage:[UIImage imageNamed:@"plusView_iPhone.png"] forState:UIControlStateNormal];
-        [plusButton addTarget:self action:@selector(plus)forControlEvents:UIControlEventTouchDown];
+        [plusButton addTarget:self action:@selector(plus)forControlEvents:UIControlEventTouchUpInside];
        
     
         trash = [UIImage imageNamed:@"trashView_iPhone.png"];
@@ -791,7 +794,7 @@
         plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
         plusButton.frame = CGRectMake(0, 503, 320, 65);
         [plusButton setImage:[UIImage imageNamed:@"plusView_iPhone.png"] forState:UIControlStateNormal];
-        [plusButton addTarget:self action:@selector(plus)forControlEvents:UIControlEventTouchDown];
+        [plusButton addTarget:self action:@selector(plus)forControlEvents:UIControlEventTouchUpInside];
         
 
         trash = [UIImage imageNamed:@"trashView_iPhone.png"];
@@ -803,16 +806,13 @@
         plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
         plusButton.frame = CGRectMake(0, 894, 768, 130);
         [plusButton setImage:[UIImage imageNamed:@"plusView_iPhone.png"] forState:UIControlStateNormal];
-        [plusButton addTarget:self action:@selector(plus)forControlEvents:UIControlEventTouchDown];
+        [plusButton addTarget:self action:@selector(plus)forControlEvents:UIControlEventTouchUpInside];
     
         
         trash = [UIImage imageNamed:@"trashView_iPad.png"];
         trashView = [[UIImageView alloc] initWithImage:trash];
         trashView.frame = CGRectMake(0,1024,768,130);
     }
-    
-    plusButton.userInteractionEnabled = YES;
-    plusButton.tag = 1;
     
     [self.view addSubview:plusButton];
     [self.view addSubview:trashView];
