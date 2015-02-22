@@ -15,9 +15,8 @@
 @interface GraphViewController :  GAITrackedViewController<UITextViewDelegate>{
     
     int screenHeight;
-
     NSUserDefaults *ud;
-    
+        
     NSArray *array;
     UIView *mainView;
     
@@ -46,6 +45,8 @@
     
     BOOL showedContentsView;
     NSString *GVstStampNum;
+    
+    NSString *imageName;
 }
 
 @property (nonatomic) ContentsView *contentsView;

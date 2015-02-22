@@ -53,32 +53,36 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    //NSLog(@"???%@",showedContentsView);
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
     
-    //一回mainViewを全部消す
-    [mainView removeFromSuperview];
-    mainView = [self createView];//スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
-    
-    [self.view addSubview:mainView];
-    [self.view bringSubviewToFront:plusButton];
-    [self.view bringSubviewToFront:stampButton];
-    
-    self.screenName = @"GraphViewController";
-    
     if(showedContentsView == YES){
-#warning GVstStampNum is alway 0!!!oh,noooo
-        NSDictionary *dic = array[stampButton.tag];
-        NSLog(@"stampButton.tag = %d",(int)stampButton.tag);
-        GVstStampNum = [dic objectForKey:@"stamp"];
-        NSLog(@"GVstStampNum = %d",[GVstStampNum intValue]);
-        int number = [GVstStampNum intValue] + 1;
         
-        NSString *imageName = [NSString stringWithFormat: @"icon%d.png", number];
+        GVstStampNum = [ud objectForKey:@"stamp"];
+        NSLog(@"GVstStampNum = %d",[GVstStampNum intValue]);
+        
+        int number = [GVstStampNum intValue] + 1;
+        NSLog(@"number = %d",number);
+        
+        imageName = [NSString stringWithFormat: @"icon%d.png", number];
         [stampButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-        NSLog(@"見えてる");
-        NSLog(@"おおお%@",imageName);
+        
+        
+        UIImage *iconImage = [UIImage imageNamed:imageName];
+        contentsStamp.image = iconImage;
+        
+    }else{
+        
+        //一回mainViewを全部消す
+        [mainView removeFromSuperview];
+        mainView = [self createView];//スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
+        
+        [self.view addSubview:mainView];
+        [self.view bringSubviewToFront:plusButton];
+        [self.view bringSubviewToFront:stampButton];
+        
+        
     }
+    self.screenName = @"GraphViewController";
 }
 
 
@@ -115,19 +119,21 @@
         
         //stampButton.userInteractionEnabled = YES; //タッチの検知をするかしないかの設定
         
-        NSDictionary *dic = array[i];
         
-        GVstStampNum = [dic objectForKey:@"stamp"];
-        kigenNum = [[dic objectForKey:@"kigen"] intValue]; //０だったら近い
-        juyouNum = [[dic objectForKey:@"juyou"] intValue]; //０だったら重要
+        NSDictionary *stampDic = array[i];
         
-        int xpoint =[[dic objectForKey:@"x"] floatValue];
-        int ypoint =[[dic objectForKey:@"y"] floatValue];
+        GVstStampNum = [stampDic objectForKey:@"stamp"];
+        
+        kigenNum = [[stampDic objectForKey:@"kigen"] intValue]; //０だったら近い
+        juyouNum = [[stampDic objectForKey:@"juyou"] intValue]; //０だったら重要
+        
+        int xpoint =[[stampDic objectForKey:@"x"] floatValue];
+        int ypoint =[[stampDic objectForKey:@"y"] floatValue];
         
         
         /* --- スタンプの条件分け ---*/
         int number = [GVstStampNum intValue] + 1;
-        NSString *imageName = [NSString stringWithFormat: @"icon%d.png", number];
+        imageName = [NSString stringWithFormat: @"icon%d.png", number];
         [stampButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
         
         //stampButtonが押されたらbuttonPushedが呼び出される
@@ -251,7 +257,9 @@
             [self presentViewController:stampVC animated:YES completion:nil];
             showedContentsView = YES;
             GVstStampNum = nil;
-            NSLog(@"GV = %@",GVstStampNum);
+            imageName = nil;
+            
+            NSLog(@"GVstStampNum nil = %@",GVstStampNum);
             
             NSLog(@"スタンプ画面遷移");
             
@@ -271,7 +279,6 @@
     
     ud = [NSUserDefaults standardUserDefaults];
     array = [ud objectForKey:@"hoge"];
-    NSDictionary *dic = array[button.tag];
     
     NSDictionary *resaveDic = array[button.tag];
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
@@ -293,7 +300,7 @@
     
     
     if(!resaveMArray){
-        textView.text = dic[@"contents"];
+        textView.text = resaveDic[@"contents"];
     }else{
         textView.text = resaveMDic[@"contents"];
     }
@@ -303,6 +310,9 @@
     
     //stamp画像を書き換える
     contentsStamp.image = button.currentImage;
+    
+    //UIImage *iconImage = [UIImage imageNamed:imageName];
+    //contentsStamp = [[UIImageView alloc] initWithImage:iconImage];
     
     closeButton.tag = button.tag;
 }
