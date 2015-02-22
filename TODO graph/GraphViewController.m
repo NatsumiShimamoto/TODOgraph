@@ -57,17 +57,26 @@
     
     if(showedContentsView == YES){
         
+        //array = [ud objectForKey:@"hoge"]; //hogeでudをarrayに入れる
+        //stampDic = array[stampButton.tag];
+        
+//タッチしたボタンのタグがほしい
+//stampButton.tagにはi(最新のボタンのタグ=個数)が入っちゃってる）
+        NSLog(@"ボタンのタグ！！！%d",(int)stampButton.tag);
+        
+        
         GVstStampNum = [ud objectForKey:@"stamp"];
+        
         NSLog(@"GVstStampNum = %d",[GVstStampNum intValue]);
         
         int number = [GVstStampNum intValue] + 1;
         NSLog(@"number = %d",number);
         
         imageName = [NSString stringWithFormat: @"icon%d.png", number];
-        [stampButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-        
         
         UIImage *iconImage = [UIImage imageNamed:imageName];
+        
+        [stampButton setImage:iconImage forState:UIControlStateNormal];
         contentsStamp.image = iconImage;
         
     }else{
@@ -99,7 +108,7 @@
     
     array = [ud objectForKey:@"hoge"]; //hogeでudをarrayに入れる
     
-    
+
     for(i = 0; i < [array count]; i++)
     {
         stampButton = [[UIButton alloc] init];
@@ -114,13 +123,7 @@
             stampButton.frame = CGRectMake(0, 0, STAMP_WIDTH_PAD, STAMP_HEIGHT_PAD);
         }
         
-        
-        stampButton.tag = i;
-        
-        //stampButton.userInteractionEnabled = YES; //タッチの検知をするかしないかの設定
-        
-        
-        NSDictionary *stampDic = array[i];
+        stampDic = array[i];
         
         GVstStampNum = [stampDic objectForKey:@"stamp"];
         
@@ -233,6 +236,7 @@
             
         }
     }
+    
     return view;
 }
 
@@ -256,8 +260,8 @@
         case 1:
             [self presentViewController:stampVC animated:YES completion:nil];
             showedContentsView = YES;
-            GVstStampNum = nil;
-            imageName = nil;
+            //GVstStampNum = nil;
+            //imageName = nil;
             
             NSLog(@"GVstStampNum nil = %@",GVstStampNum);
             
@@ -586,9 +590,10 @@
     [ud synchronize];
     
     
+    
     if(upBlue){
         
-        /* --- ゴミ箱 --- */
+        /* --- 削除 --- */
         if(movedPoint.y >= screenHeight - trashView.frame.size.height)
         {
             //ゴミ箱と重なっていたら削除！消えろ！うら！
@@ -795,6 +800,7 @@
 
 #pragma mark - 追加
 -(void)plus{
+    showedContentsView = NO;
     SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
     [self presentViewController:setteiVC animated:YES completion:nil];
     
