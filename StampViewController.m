@@ -6,6 +6,7 @@
 //  Copyright (c) 2013年 嶋本夏海. All rights reserved.
 
 #import "StampViewController.h"
+#import "GraphViewController.h"
 
 @implementation StampViewController
 
@@ -13,6 +14,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

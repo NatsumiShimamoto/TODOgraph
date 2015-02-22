@@ -44,6 +44,8 @@
     UIImage *trash;
     UIImageView *trashView;
     
+    BOOL showedContentsView;
+    NSString *GVstStampNum;
 }
 
 @property (nonatomic) ContentsView *contentsView;

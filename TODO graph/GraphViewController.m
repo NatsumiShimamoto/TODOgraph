@@ -25,6 +25,7 @@
 
 @implementation GraphViewController
 
+
 #pragma mark - ViewDidLoad
 - (void)viewDidLoad
 {
@@ -36,6 +37,7 @@
     
     upRed = YES;
     upBlue = NO;
+    showedContentsView = NO;
 }
 
 
@@ -51,6 +53,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    //NSLog(@"???%@",showedContentsView);
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
     
     //一回mainViewを全部消す
@@ -62,6 +65,20 @@
     [self.view bringSubviewToFront:stampButton];
     
     self.screenName = @"GraphViewController";
+    
+    if(showedContentsView == YES){
+#warning GVstStampNum is alway 0!!!oh,noooo
+        NSDictionary *dic = array[stampButton.tag];
+        NSLog(@"stampButton.tag = %d",(int)stampButton.tag);
+        GVstStampNum = [dic objectForKey:@"stamp"];
+        NSLog(@"GVstStampNum = %d",[GVstStampNum intValue]);
+        int number = [GVstStampNum intValue] + 1;
+        
+        NSString *imageName = [NSString stringWithFormat: @"icon%d.png", number];
+        [stampButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+        NSLog(@"見えてる");
+        NSLog(@"おおお%@",imageName);
+    }
 }
 
 
@@ -78,6 +95,7 @@
     
     array = [ud objectForKey:@"hoge"]; //hogeでudをarrayに入れる
     
+    
     for(i = 0; i < [array count]; i++)
     {
         stampButton = [[UIButton alloc] init];
@@ -92,13 +110,14 @@
             stampButton.frame = CGRectMake(0, 0, STAMP_WIDTH_PAD, STAMP_HEIGHT_PAD);
         }
         
+        
         stampButton.tag = i;
         
-        stampButton.userInteractionEnabled = YES; //タッチの検知をするかしないかの設定
+        //stampButton.userInteractionEnabled = YES; //タッチの検知をするかしないかの設定
         
         NSDictionary *dic = array[i];
-
-        NSString *GVstStampNum = [dic objectForKey:@"stamp"];
+        
+        GVstStampNum = [dic objectForKey:@"stamp"];
         kigenNum = [[dic objectForKey:@"kigen"] intValue]; //０だったら近い
         juyouNum = [[dic objectForKey:@"juyou"] intValue]; //０だったら重要
         
@@ -108,7 +127,7 @@
         
         /* --- スタンプの条件分け ---*/
         int number = [GVstStampNum intValue] + 1;
-        NSString* imageName = [NSString stringWithFormat: @"icon%d.png", number];
+        NSString *imageName = [NSString stringWithFormat: @"icon%d.png", number];
         [stampButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
         
         //stampButtonが押されたらbuttonPushedが呼び出される
@@ -223,15 +242,19 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
-
+    
     StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     
-
+    
     switch (touch.view.tag) {
         case 1:
             [self presentViewController:stampVC animated:YES completion:nil];
-             NSLog(@"スタンプ画面遷移");
-
+            showedContentsView = YES;
+            GVstStampNum = nil;
+            NSLog(@"GV = %@",GVstStampNum);
+            
+            NSLog(@"スタンプ画面遷移");
+            
             break;
             
             
@@ -343,7 +366,7 @@
     
     
     [_contentsView addSubview:closeButton];
-
+    
     [closeButton addTarget:self action:@selector(closeButtonPushed:)forControlEvents:UIControlEventTouchUpInside];
     _contentsView.userInteractionEnabled = YES; //タッチの検知をする
     
@@ -529,7 +552,7 @@
 }
 
 
- //指を離した時
+//指を離した時
 -(void)dragEnded:(UIPanGestureRecognizer *)sender{
     
     ud = [NSUserDefaults standardUserDefaults];
@@ -596,10 +619,10 @@
                          animations:^{
                              // アニメーションをする処理
                              if(screenHeight == SCREEN_HEIGHT_4){
-                                trashView.transform = CGAffineTransformMakeTranslation(0, 60);
+                                 trashView.transform = CGAffineTransformMakeTranslation(0, 60);
                                  
                              }else if(screenHeight == SCREEN_HEIGHT_5){
-                                trashView.transform = CGAffineTransformMakeTranslation(0, 65);
+                                 trashView.transform = CGAffineTransformMakeTranslation(0, 65);
                                  
                              }else if(screenHeight == SCREEN_HEIGHT_PAD){
                                  trashView.transform = CGAffineTransformMakeTranslation(0, 130);
@@ -699,7 +722,7 @@
         movedPoint = sender.view.center;
     }
     
-
+    
 }
 
 
@@ -762,7 +785,7 @@
 
 #pragma mark - 追加
 -(void)plus{
-     SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
+    SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
     [self presentViewController:setteiVC animated:YES completion:nil];
     
     NSLog(@"設定画面遷移");
@@ -783,8 +806,8 @@
         plusButton.frame = CGRectMake(0, 420, 320, 60);
         [plusButton setImage:[UIImage imageNamed:@"plusView_iPhone.png"] forState:UIControlStateNormal];
         [plusButton addTarget:self action:@selector(plus)forControlEvents:UIControlEventTouchUpInside];
-       
-    
+        
+        
         trash = [UIImage imageNamed:@"trashView_iPhone.png"];
         trashView = [[UIImageView alloc] initWithImage:trash];
         trashView.frame = CGRectMake(0,480,320,60);
@@ -796,18 +819,18 @@
         [plusButton setImage:[UIImage imageNamed:@"plusView_iPhone.png"] forState:UIControlStateNormal];
         [plusButton addTarget:self action:@selector(plus)forControlEvents:UIControlEventTouchUpInside];
         
-
+        
         trash = [UIImage imageNamed:@"trashView_iPhone.png"];
         trashView = [[UIImageView alloc] initWithImage:trash];
         trashView.frame = CGRectMake(0,568,320,65);
         
     }else if(screenHeight == SCREEN_HEIGHT_PAD){
-
+        
         plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
         plusButton.frame = CGRectMake(0, 894, 768, 130);
         [plusButton setImage:[UIImage imageNamed:@"plusView_iPhone.png"] forState:UIControlStateNormal];
         [plusButton addTarget:self action:@selector(plus)forControlEvents:UIControlEventTouchUpInside];
-    
+        
         
         trash = [UIImage imageNamed:@"trashView_iPad.png"];
         trashView = [[UIImageView alloc] initWithImage:trash];
