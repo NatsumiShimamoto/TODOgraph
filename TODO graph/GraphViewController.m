@@ -88,8 +88,6 @@
         [self.view addSubview:mainView];
         [self.view bringSubviewToFront:plusButton];
         [self.view bringSubviewToFront:stampButton];
-        
-        
     }
     self.screenName = @"GraphViewController";
 }
