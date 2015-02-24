@@ -25,7 +25,6 @@
 		DD174CA81A78DEC3004695E0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CA71A78DEC3004695E0 /* MobileCoreServices.framework */; };
 		DD174CAA1A78DED3004695E0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CA91A78DED3004695E0 /* QuartzCore.framework */; };
 		DD174CAC1A78DEDE004695E0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CAB1A78DEDE004695E0 /* Security.framework */; };
-		DD174CAE1A78DEE8004695E0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CAD1A78DEE8004695E0 /* StoreKit.framework */; };
 		DD174CB01A78DEF4004695E0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CAF1A78DEF4004695E0 /* SystemConfiguration.framework */; };
 		DD174CB21A78DF03004695E0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CB11A78DF03004695E0 /* libz.dylib */; };
 		DD174CB41A78DF0F004695E0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CB31A78DF0F004695E0 /* libsqlite3.dylib */; };
@@ -142,7 +141,6 @@
 		DD174CA71A78DEC3004695E0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DD174CA91A78DED3004695E0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DD174CAB1A78DEDE004695E0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		DD174CAD1A78DEE8004695E0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		DD174CAF1A78DEF4004695E0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DD174CB11A78DF03004695E0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DD174CB31A78DF0F004695E0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -253,7 +251,6 @@
 				DD6CD8731A90777A00477907 /* AdSupport.framework in Frameworks */,
 				DD174CB41A78DF0F004695E0 /* libsqlite3.dylib in Frameworks */,
 				DD2BC32C1A78F1C800176691 /* ParseUI.framework in Frameworks */,
-				DD174CAE1A78DEE8004695E0 /* StoreKit.framework in Frameworks */,
 				DD2BC32B1A78F1C800176691 /* ParseFacebookUtils.framework in Frameworks */,
 				DD2BC32D1A78F32B00176691 /* Parse.framework in Frameworks */,
 				DD174CAC1A78DEDE004695E0 /* Security.framework in Frameworks */,
@@ -463,7 +460,6 @@
 				DD174CB11A78DF03004695E0 /* libz.dylib */,
 				DD2BC3221A78F1C800176691 /* parse-library */,
 				DD174CAF1A78DEF4004695E0 /* SystemConfiguration.framework */,
-				DD174CAD1A78DEE8004695E0 /* StoreKit.framework */,
 				DD174CAB1A78DEDE004695E0 /* Security.framework */,
 				DD174CA91A78DED3004695E0 /* QuartzCore.framework */,
 				DD174CA71A78DEC3004695E0 /* MobileCoreServices.framework */,
@@ -578,6 +574,11 @@
 				TargetAttributes = {
 					DDE8E6A017AA042400B8AA4F = {
 						DevelopmentTeam = SV24GV2B3T;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -784,7 +785,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "c91878e6-1202-493a-b3b4-444f3a8fe9c5";
+				PROVISIONING_PROFILE = "bf8d76d5-34ce-4ebe-bf88-b181caa13ec9";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -809,8 +810,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "c91878e6-1202-493a-b3b4-444f3a8fe9c5";
+				PROVISIONING_PROFILE = "bf8d76d5-34ce-4ebe-bf88-b181caa13ec9";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -834,7 +836,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c91878e6-1202-493a-b3b4-444f3a8fe9c5";
+				PROVISIONING_PROFILE = "bf8d76d5-34ce-4ebe-bf88-b181caa13ec9";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7s armv7";
 				WRAPPER_EXTENSION = app;
@@ -858,7 +860,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c91878e6-1202-493a-b3b4-444f3a8fe9c5";
+				PROVISIONING_PROFILE = "bf8d76d5-34ce-4ebe-bf88-b181caa13ec9";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7s armv7";
 				WRAPPER_EXTENSION = app;
