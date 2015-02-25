@@ -36,6 +36,7 @@
     int stampArrNum;
     
     NSMutableArray *iconArray;
+    UIButton *iconButton;
 }
 
 - (IBAction)doText; //TextFieldに入力する

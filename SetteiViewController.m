@@ -104,23 +104,32 @@
     
     UIImage *icon = [[UIImage alloc] init];
     icon = iconArray[stampArrNum];
-    iconView = [[UIImageView alloc] initWithImage:icon];
+    iconButton = [[UIButton alloc]init];
+    [iconButton setImage:icon forState:UIControlStateNormal];
+    [iconButton addTarget:self action:@selector(buttonPushed) forControlEvents:UIControlEventTouchUpInside];
     
     if(screenHeight == SCREEN_HEIGHT_4){
-        iconView.frame = CGRectMake(132, 105, 55, 55);
+        iconButton.frame = CGRectMake(132, 105, 55, 55);
         
     }else if(screenHeight == SCREEN_HEIGHT_5){
-        iconView.frame = CGRectMake(127, 130, 70, 70);
+        iconButton.frame = CGRectMake(127, 130, 70, 70);
         
     }else if(screenHeight == SCREEN_HEIGHT_PAD){
-        iconView.frame = CGRectMake(318, 218, 120, 120);
+        iconButton.frame = CGRectMake(318, 218, 120, 120);
     }
     
-    iconView.userInteractionEnabled = YES;
-    iconView.tag = 1;
-    [self.view addSubview:iconView];
+    [self.view addSubview:iconButton];
     
     self.screenName = @"SettingScreen";
+}
+
+
+-(void)buttonPushed{
+    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
+    
+    [self presentViewController:stampVC animated:YES completion:nil];
+    NSLog(@"画面遷移");
+    [iconButton removeFromSuperview];
 }
 
 
@@ -210,26 +219,6 @@
     //キーボードを閉じる
     [textField resignFirstResponder];
 }
-
-
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-    UITouch *touch = [touches anyObject];
-    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
-    
-    
-    switch (touch.view.tag) {
-        case 1:
-            [self presentViewController:stampVC animated:YES completion:nil];
-            NSLog(@"画面遷移");
-            [iconView removeFromSuperview];
-            break;
-            
-        default:
-            break;
-    }
-}
-
 
 #pragma mark - 切り替え
 - (IBAction)SegChanged:(UISegmentedControl *)sender

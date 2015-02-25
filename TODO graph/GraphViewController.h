@@ -30,7 +30,7 @@
     UIImage *contentsImage;
     
     UIButton *closeButton;
-    UIImageView *contentsStamp;
+    UIButton *contentsStamp;
     
     int h;
     int w;

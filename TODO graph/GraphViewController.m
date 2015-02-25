@@ -60,24 +60,27 @@
         //array = [ud objectForKey:@"hoge"]; //hogeでudをarrayに入れる
         //stampDic = array[stampButton.tag];
         
-//タッチしたボタンのタグがほしい
-//stampButton.tagにはi(最新のボタンのタグ=個数)が入っちゃってる）
-        NSLog(@"ボタンのタグ！！！%d",(int)stampButton.tag);
+        //タッチしたボタンのタグがほしい
+        //stampButton.tagにはi(最新のボタンのタグ=個数)が入っちゃってる）
         
         
         GVstStampNum = [ud objectForKey:@"stamp"];
         
-        NSLog(@"GVstStampNum = %d",[GVstStampNum intValue]);
-        
         int number = [GVstStampNum intValue] + 1;
-        NSLog(@"number = %d",number);
+        
         
         imageName = [NSString stringWithFormat: @"icon%d.png", number];
-        
         UIImage *iconImage = [UIImage imageNamed:imageName];
         
         [stampButton setImage:iconImage forState:UIControlStateNormal];
-        contentsStamp.image = iconImage;
+        [contentsStamp setImage:iconImage forState:UIControlStateNormal];
+        
+        [contentsStamp addTarget:self action:@selector(contentsStampPushed) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        NSLog(@"ボタンのタグ！！！%d",(int)stampButton.tag);
+        NSLog(@"GVstStampNum = %d",[GVstStampNum intValue]);
+        NSLog(@"number = %d",number);
         
     }else{
         
@@ -106,7 +109,7 @@
     
     array = [ud objectForKey:@"hoge"]; //hogeでudをarrayに入れる
     
-
+    
     for(i = 0; i < [array count]; i++)
     {
         stampButton = [[UIButton alloc] init];
@@ -246,34 +249,17 @@
     [textView resignFirstResponder];
 }
 
-
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [touches anyObject];
-    
+-(void)contentsStampPushed{
     StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     
+    [self presentViewController:stampVC animated:YES completion:nil];
+    showedContentsView = YES;
     
-    switch (touch.view.tag) {
-        case 1:
-            [self presentViewController:stampVC animated:YES completion:nil];
-            showedContentsView = YES;
-            //GVstStampNum = nil;
-            //imageName = nil;
-            
-            NSLog(@"GVstStampNum nil = %@",GVstStampNum);
-            
-            NSLog(@"スタンプ画面遷移");
-            
-            break;
-            
-            
-        default:
-            NSLog(@"mainView");
-            break;
-    }
+    NSLog(@"GVstStampNum nil = %@",GVstStampNum);
+    
+    NSLog(@"スタンプ画面遷移");
+    
 }
-
 
 -(void)changeStamp:(UIButton *)button{
     
@@ -311,12 +297,9 @@
     [textView setScrollEnabled:NO];
     
     //stamp画像を書き換える
-    contentsStamp.image = button.currentImage;
-    
-    //UIImage *iconImage = [UIImage imageNamed:imageName];
-    //contentsStamp = [[UIImageView alloc] initWithImage:iconImage];
-    
-    closeButton.tag = button.tag;
+    [contentsStamp setImage:button.currentImage forState:UIControlStateNormal];
+    [contentsStamp addTarget:self action:@selector(contentsStampPushed) forControlEvents:UIControlEventTouchUpInside];
+    //closeButton.tag = button.tag;
 }
 
 
@@ -412,19 +395,19 @@
     
     
     //contentsViewの上にstampの画像を表示
+    contentsStamp = [[UIButton alloc] init];
     if(screenHeight == SCREEN_HEIGHT_4){
-        contentsStamp = [[UIImageView alloc] initWithFrame:CGRectMake(110, 30, 50, 50)];
+        contentsStamp.frame = CGRectMake(110, 30, 50, 50);
         
     }else if(screenHeight == SCREEN_HEIGHT_5){
-        contentsStamp = [[UIImageView alloc] initWithFrame:CGRectMake(115, 33, 50, 50)];
+        contentsStamp.frame = CGRectMake(115, 33, 50, 50);
         
     }else if(screenHeight == SCREEN_HEIGHT_PAD){
-        contentsStamp = [[UIImageView alloc] initWithFrame:CGRectMake(245, 70, 110, 110)];
+        contentsStamp.frame = CGRectMake(245, 70, 110, 110);
     }
     
-    contentsStamp.image = button.currentImage;
-    contentsStamp.tag = 1;
-    contentsStamp.userInteractionEnabled = YES;
+    [contentsStamp setImage:button.currentImage forState:UIControlStateNormal];
+    [contentsStamp addTarget:self action:@selector(contentsStampPushed) forControlEvents:UIControlEventTouchUpInside];
     [_contentsView addSubview:contentsStamp];
     
     [self closeImageFadeIn];
