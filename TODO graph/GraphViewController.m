@@ -124,6 +124,7 @@
             stampButton.frame = CGRectMake(0, 0, STAMP_WIDTH_PAD, STAMP_HEIGHT_PAD);
         }
         
+         stampButton.tag = i;
         stampDic = array[i];
         
         GVstStampNum = [stampDic objectForKey:@"stamp"];
@@ -142,7 +143,7 @@
         
         //stampButtonが押されたらbuttonPushedが呼び出される
         [stampButton addTarget:self action:@selector(buttonPushed:) forControlEvents:UIControlEventTouchUpInside];
-        
+       
         
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)]; //ドラッグを検知してpanActionを呼び出す
         [stampButton addGestureRecognizer:pan]; //stampViewにpanを設定する
@@ -260,6 +261,7 @@
     NSLog(@"スタンプ画面遷移");
     
 }
+
 
 -(void)changeStamp:(UIButton *)button{
     
