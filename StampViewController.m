@@ -39,7 +39,7 @@
     NSUserDefaults *sta = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
     [sta setInteger:button.tag forKey:@"stamp"];
     [sta synchronize];
-    NSLog(@"button.tag = %d",(int)button.tag);
+    NSLog(@"ボタンの種類 = %d",(int)button.tag);
     /* -- 戻る --*/
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -48,6 +48,7 @@
     
     NSString *imageName;
     NSDictionary *stampDic;
+    int stampTag;
 }
 
 @property (nonatomic) ContentsView *contentsView;

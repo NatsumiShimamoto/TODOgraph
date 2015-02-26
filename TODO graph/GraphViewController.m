@@ -62,25 +62,22 @@
         
         //タッチしたボタンのタグがほしい
         //stampButton.tagにはi(最新のボタンのタグ=個数)が入っちゃってる）
+        /*
+         editIndex(スタンプの順番)番目のスタンプの@"stamp"(スタンプの内容)を変更
+         */
+        
+    ud = [NSUserDefaults standardUserDefaults];
+        NSArray *array = [ud objectForKey:@"hoge"];
+         NSDictionary *dic = array[i];
+        
+        stampTag = [[dic objectForKey:@"stampTag"]intValue];
+        
+        [self changeStamp:(int)stampTag];
         
         
-        GVstStampNum = [ud objectForKey:@"stamp"];
+        NSLog(@"ボタンの番号だよ！！！%d",(int)stampTag);
         
-        int number = [GVstStampNum intValue] + 1;
-        
-        
-        imageName = [NSString stringWithFormat: @"icon%d.png", number];
-        UIImage *iconImage = [UIImage imageNamed:imageName];
-        
-        [stampButton setImage:iconImage forState:UIControlStateNormal];
-        [contentsStamp setImage:iconImage forState:UIControlStateNormal];
-        
-        [contentsStamp addTarget:self action:@selector(contentsStampPushed) forControlEvents:UIControlEventTouchUpInside];
-        
-        
-        NSLog(@"ボタンのタグ！！！%d",(int)stampButton.tag);
-        NSLog(@"GVstStampNum = %d",[GVstStampNum intValue]);
-        NSLog(@"number = %d",number);
+        // NSLog(@"number = %d",number);
         
     }else{
         
@@ -93,8 +90,41 @@
         [self.view bringSubviewToFront:stampButton];
     }
     self.screenName = @"GraphViewController";
+    
 }
 
+-(void)changeStamp:(int)editIndex{
+    NSLog(@" おおお");
+    NSLog(@"%d",editIndex);
+    ud = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
+    
+    GVstStampNum = [ud objectForKey:@"stamp"]; //スタンプの種類の番号
+    
+    array = [ud objectForKey:@"hoge"];
+    NSDictionary *resaveDic = array[editIndex];
+    NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
+    
+    [resaveMDic setObject:[NSString stringWithFormat:@"%d",[GVstStampNum intValue]] forKey:@"stamp"];
+    
+    
+    NSMutableArray *resaveMArray = [array mutableCopy];
+    resaveMArray[editIndex] = resaveMDic;
+    
+    
+    int number = [GVstStampNum intValue] + 1;
+    imageName = [NSString stringWithFormat: @"icon%d.png", number];
+    UIImage *iconImage = [UIImage imageNamed:imageName];
+    
+    [stampButton setImage:iconImage forState:UIControlStateNormal];
+    [contentsStamp setImage:iconImage forState:UIControlStateNormal];
+    
+    [contentsStamp addTarget:self action:@selector(contentsStampPushed) forControlEvents:UIControlEventTouchUpInside];
+    
+    [ud setObject:resaveMArray forKey:@"hoge"];
+    [ud synchronize];
+    
+    
+}
 
 #pragma mark - ViewDidAppear
 - (void)viewDidAppear:(BOOL)animated{
@@ -108,6 +138,10 @@
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     array = [ud objectForKey:@"hoge"]; //hogeでudをarrayに入れる
+    NSMutableDictionary *mStampDic = [[NSMutableDictionary alloc] init];
+   
+
+    NSMutableArray *mArray = [[NSMutableArray alloc] init];
     
     
     for(i = 0; i < [array count]; i++)
@@ -124,8 +158,18 @@
             stampButton.frame = CGRectMake(0, 0, STAMP_WIDTH_PAD, STAMP_HEIGHT_PAD);
         }
         
-        stampButton.tag = i;
+        //stampButton.tag = i;
         stampDic = array[i];
+        mStampDic = [stampDic mutableCopy];
+        
+        [mStampDic setObject:[NSNumber numberWithInt:i] forKey:@"stampTag"];
+        
+        
+        mArray[i] = mStampDic;
+        NSLog(@"%@",mStampDic);
+        [ud setObject:mArray forKey:@"hoge"];
+        [ud synchronize];
+        
         
         GVstStampNum = [stampDic objectForKey:@"stamp"];
         
@@ -256,8 +300,6 @@
     [self presentViewController:stampVC animated:YES completion:nil];
     showedContentsView = YES;
     
-    NSLog(@"GVstStampNum nil = %@",GVstStampNum);
-    
     NSLog(@"スタンプ画面遷移");
     
 }
@@ -308,6 +350,15 @@
 #pragma mark - スタンプの選択
 - (void)buttonPushed:(UIButton *)button //buttonとstampButtonは同じって考えていい
 {
+    ud = [NSUserDefaults standardUserDefaults];
+    NSArray *array = [ud objectForKey:@"hoge"];
+    NSDictionary *dic = array[button.tag];
+
+    stampTag = [[stampDic objectForKey:@"stampTag"]intValue];
+    
+    NSLog(@"ここここおここお%d",stampTag);
+    
+
     if(_contentsView) {
         [self changeContents:(UIButton *)button];
         
@@ -359,7 +410,7 @@
     }
     closeButton.tag = sender.tag;
     
-    NSLog(@"ボタンのタグ！！！%d",(int)sender.tag);
+    NSLog(@"ボタンの順番！！！%d",(int)sender.tag);
     
     
     [_contentsView addSubview:closeButton];
