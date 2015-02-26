@@ -124,7 +124,7 @@
             stampButton.frame = CGRectMake(0, 0, STAMP_WIDTH_PAD, STAMP_HEIGHT_PAD);
         }
         
-         stampButton.tag = i;
+        stampButton.tag = i;
         stampDic = array[i];
         
         GVstStampNum = [stampDic objectForKey:@"stamp"];
@@ -143,7 +143,7 @@
         
         //stampButtonが押されたらbuttonPushedが呼び出される
         [stampButton addTarget:self action:@selector(buttonPushed:) forControlEvents:UIControlEventTouchUpInside];
-       
+        
         
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)]; //ドラッグを検知してpanActionを呼び出す
         [stampButton addGestureRecognizer:pan]; //stampViewにpanを設定する
@@ -263,14 +263,14 @@
 }
 
 
--(void)changeStamp:(UIButton *)button{
+-(void)changeContents:(UIButton *)sender{
     
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     ud = [NSUserDefaults standardUserDefaults];
     array = [ud objectForKey:@"hoge"];
     
-    NSDictionary *resaveDic = array[button.tag];
+    NSDictionary *resaveDic = array[sender.tag];
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
     
     NSMutableArray *resaveMArray = [array mutableCopy];
@@ -299,7 +299,7 @@
     [textView setScrollEnabled:NO];
     
     //stamp画像を書き換える
-    [contentsStamp setImage:button.currentImage forState:UIControlStateNormal];
+    [contentsStamp setImage:sender.currentImage forState:UIControlStateNormal];
     [contentsStamp addTarget:self action:@selector(contentsStampPushed) forControlEvents:UIControlEventTouchUpInside];
     //closeButton.tag = button.tag;
 }
@@ -309,7 +309,7 @@
 - (void)buttonPushed:(UIButton *)button //buttonとstampButtonは同じって考えていい
 {
     if(_contentsView) {
-        [self changeStamp:(UIButton *)button];
+        [self changeContents:(UIButton *)button];
         
     }else{
         [self makeContentsView:(UIButton *)button];
@@ -320,17 +320,17 @@
 
 
 #pragma mark - ContentsView作成
--(void)makeContentsView:(UIButton *)button{
+-(void)makeContentsView:(UIButton *)sender{
     
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     ud = [NSUserDefaults standardUserDefaults];
     array = [ud objectForKey:@"hoge"];
-    NSDictionary *dic = array[button.tag];
+    NSDictionary *dic = array[sender.tag];
     
     NSLog(@"%@",dic[@"contents"]);
     
-    NSDictionary *resaveDic = array[button.tag];
+    NSDictionary *resaveDic = array[sender.tag];
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
     
     textView.text = [ud stringForKey:@"contents"];
@@ -357,9 +357,9 @@
     }else if(screenHeight == SCREEN_HEIGHT_PAD){
         closeButton.frame = CGRectMake(481, 0, 120, 120);
     }
-    closeButton.tag = button.tag;
+    closeButton.tag = sender.tag;
     
-    NSLog(@"ボタンのタグ！！！%d",(int)button.tag);
+    NSLog(@"ボタンのタグ！！！%d",(int)sender.tag);
     
     
     [_contentsView addSubview:closeButton];
@@ -408,7 +408,7 @@
         contentsStamp.frame = CGRectMake(245, 70, 110, 110);
     }
     
-    [contentsStamp setImage:button.currentImage forState:UIControlStateNormal];
+    [contentsStamp setImage:sender.currentImage forState:UIControlStateNormal];
     [contentsStamp addTarget:self action:@selector(contentsStampPushed) forControlEvents:UIControlEventTouchUpInside];
     [_contentsView addSubview:contentsStamp];
     
