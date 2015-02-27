@@ -272,12 +272,12 @@
         NSDictionary *dic = array[self.editIndex];
         NSMutableDictionary * mDic = [dic mutableCopy];
         
-        //[mDic setObject:strtime forKey:@"date"];
+        
         [mDic setObject:textField.text forKey:@"contents"];
         [mDic setObject:[NSString stringWithFormat:@"%d",stampArrNum] forKey:@"stamp"];
         [mDic setObject:[NSString stringWithFormat:@"%d",kigenNum] forKey:@"kigen"];
         [mDic setObject:[NSString stringWithFormat:@"%d",juyouNum] forKey:@"juyou"];
-        
+        [mDic setObject:[NSString stringWithFormat:@"%d",editIndex]forKey:@"todoTag"];
         
         NSMutableArray *mArray = [array mutableCopy];
         mArray[self.editIndex] = mDic;//mDicをmArrayに入れます。
@@ -292,6 +292,7 @@
                               [NSString stringWithFormat:@"%d",stampArrNum],@"stamp",
                               [NSString stringWithFormat:@"%d",kigenNum],@"kigen",
                               [NSString stringWithFormat:@"%d",juyouNum],@"juyou",
+                              [NSString stringWithFormat:@"%d",editIndex],@"todoTag",
                               nil];
         
         
