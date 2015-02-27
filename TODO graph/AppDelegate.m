@@ -66,7 +66,7 @@
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     
-    NSLog(@"tracker == %@", tracker);
+    //NSLog(@"tracker == %@", tracker);
     
     // Override point for customization after application launch.
     

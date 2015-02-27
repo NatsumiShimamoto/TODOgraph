@@ -66,9 +66,10 @@
          editIndex(スタンプの順番)番目のスタンプの@"stamp"(スタンプの内容)を変更
          */
         [self changeStamp:(int)stampButton.tag];
-        NSLog(@"ボタンのタグだよ！！！%d",(int)stampButton.tag);
-        NSLog(@"GVstStampNum = %d",[GVstStampNum intValue]);
-        // NSLog(@"number = %d",number);
+        
+        NSLog(@"ViewWillAppear");
+        NSLog(@"ボタンの順番　== %d",(int)stampButton.tag);
+
         
     }else{
         
@@ -85,8 +86,10 @@
 }
 
 -(void)changeStamp:(int)editIndex{
-    NSLog(@" おおお");
+    NSLog(@"changeStamp");
     NSLog(@"%d",editIndex);
+    
+    
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
     
     GVstStampNum = [ud objectForKey:@"stamp"];
@@ -100,10 +103,7 @@
     [stampButton setImage:iconImage forState:UIControlStateNormal];
     [contentsStamp setImage:iconImage forState:UIControlStateNormal];
     
-    [contentsStamp addTarget:self action:@selector(contentsStampPushed) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    
+    [contentsStamp addTarget:self action:@selector(contentsStampPushed:) forControlEvents:UIControlEventTouchUpInside];
     
     
     array = [ud objectForKey:@"hoge"];
@@ -276,15 +276,16 @@
     [textView resignFirstResponder];
 }
 
--(void)contentsStampPushed{
+-(void)contentsStampPushed:(UIButton *)sender{
     StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     
     [self presentViewController:stampVC animated:YES completion:nil];
     showedContentsView = YES;
     
-    NSLog(@"GVstStampNum nil = %@",GVstStampNum);
-    
     NSLog(@"スタンプ画面遷移");
+    NSLog(@"%@",sender);
+    
+#warning sender.tag=0
     
 }
 
@@ -326,8 +327,9 @@
     
     //stamp画像を書き換える
     [contentsStamp setImage:sender.currentImage forState:UIControlStateNormal];
-    [contentsStamp addTarget:self action:@selector(contentsStampPushed) forControlEvents:UIControlEventTouchUpInside];
-    //closeButton.tag = button.tag;
+    [contentsStamp addTarget:self action:@selector(contentsStampPushed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSLog(@"ボタンの順番 == %d",(int)sender.tag);
 }
 
 
@@ -383,9 +385,9 @@
     }else if(screenHeight == SCREEN_HEIGHT_PAD){
         closeButton.frame = CGRectMake(481, 0, 120, 120);
     }
-    closeButton.tag = sender.tag;
+    //closeButton.tag = sender.tag;
     
-    NSLog(@"ボタンのタグ！！！%d",(int)sender.tag);
+    NSLog(@"ボタンの順番 == %d",(int)sender.tag);
     
     
     [_contentsView addSubview:closeButton];
@@ -435,7 +437,7 @@
     }
     
     [contentsStamp setImage:sender.currentImage forState:UIControlStateNormal];
-    [contentsStamp addTarget:self action:@selector(contentsStampPushed) forControlEvents:UIControlEventTouchUpInside];
+    [contentsStamp addTarget:self action:@selector(contentsStampPushed:) forControlEvents:UIControlEventTouchUpInside];
     [_contentsView addSubview:contentsStamp];
     
     [self closeImageFadeIn];
