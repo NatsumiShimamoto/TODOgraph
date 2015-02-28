@@ -96,6 +96,8 @@
     
     int number = [GVstStampNum intValue] + 1;
     
+    stampTag = [ud integerForKey:@"todoTag"];
+    NSLog(@"たg%d",stampTag);
     
     imageName = [NSString stringWithFormat: @"icon%d.png", number];
     UIImage *iconImage = [UIImage imageNamed:imageName];
@@ -113,6 +115,7 @@
     NSMutableArray *resaveMArray = [array mutableCopy];
     
     [resaveMDic setObject:[NSString stringWithFormat:@"%d",number] forKey:@"stamp"];
+    [resaveMDic setObject:[NSString stringWithFormat:@"%d",stampTag] forKey:@"todoTag"];
     
     resaveMArray[editIndex] = resaveMDic;
     
@@ -161,7 +164,8 @@
         int xpoint =[[stampDic objectForKey:@"x"] floatValue];
         int ypoint =[[stampDic objectForKey:@"y"] floatValue];
         
-        
+        stampTag =  [[stampDic objectForKey:@"todoTag"] intValue];
+        NSLog(@"おおおおお%d",stampTag);
         /* --- スタンプの条件分け ---*/
         int number = [GVstStampNum intValue] + 1;
         imageName = [NSString stringWithFormat: @"icon%d.png", number];
@@ -329,7 +333,10 @@
     [contentsStamp setImage:sender.currentImage forState:UIControlStateNormal];
     [contentsStamp addTarget:self action:@selector(contentsStampPushed:) forControlEvents:UIControlEventTouchUpInside];
     
-    NSLog(@"ボタンの順番 == %d",(int)sender.tag);
+    int hoo = [ud integerForKey:@"todoTag"];
+
+    NSLog(@"っほおお%d",hoo);
+    NSLog(@"スタンプの順番ああ == %d",(int)sender.tag);
 }
 
 
@@ -362,6 +369,7 @@
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
     
     textView.text = [ud stringForKey:@"contents"];
+    stampTag = [ud integerForKey:@"todoTag"];
     
     NSMutableArray *resaveMArray = [array mutableCopy];
     resaveMArray = [[NSMutableArray alloc] init];
@@ -387,7 +395,6 @@
     }
     //closeButton.tag = sender.tag;
     
-    NSLog(@"ボタンの順番 == %d",(int)sender.tag);
     
     
     [_contentsView addSubview:closeButton];
@@ -441,6 +448,11 @@
     [_contentsView addSubview:contentsStamp];
     
     [self closeImageFadeIn];
+    
+    NSLog(@"ボタンの順番 == %d",(int)sender.tag);
+    NSLog(@"ppp%d",stampTag);
+
+
 }
 
 

@@ -51,7 +51,7 @@
     
     
     /* -- 各種情報の呼び出し -- */
-    if(self.editIndex)
+   /* if(self.editIndex)
     {
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         NSArray *array = [ud objectForKey:@"hoge"]; //hogeというキーでudという格納場所にarrayに入れる
@@ -64,10 +64,12 @@
         
         juyouNum = [[dic objectForKey:@"juyou"] intValue];
         juyouSeg.selectedSegmentIndex = juyouNum;
-        
+        NSLog(@"ああああああああおj");
     }
+    */
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
+
 }
 
 
@@ -267,41 +269,42 @@
     
     
     /* -- 予定の作成 -- */
-    if(self.editIndex)
-    {
-        NSDictionary *dic = array[self.editIndex];
-        NSMutableDictionary * mDic = [dic mutableCopy];
-        
-        
-        [mDic setObject:textField.text forKey:@"contents"];
-        [mDic setObject:[NSString stringWithFormat:@"%d",stampArrNum] forKey:@"stamp"];
-        [mDic setObject:[NSString stringWithFormat:@"%d",kigenNum] forKey:@"kigen"];
-        [mDic setObject:[NSString stringWithFormat:@"%d",juyouNum] forKey:@"juyou"];
-        [mDic setObject:[NSString stringWithFormat:@"%d",editIndex]forKey:@"todoTag"];
-        
-        NSMutableArray *mArray = [array mutableCopy];
-        mArray[self.editIndex] = mDic;//mDicをmArrayに入れます。
-        
-        [ud setObject:mArray forKey:@"hoge"];
-        [ud synchronize];
-        NSLog(@"編集");
-        
-    }else{
-        NSDictionary *todo = [NSDictionary dictionaryWithObjectsAndKeys:
-                              textField.text,@"contents",
-                              [NSString stringWithFormat:@"%d",stampArrNum],@"stamp",
-                              [NSString stringWithFormat:@"%d",kigenNum],@"kigen",
-                              [NSString stringWithFormat:@"%d",juyouNum],@"juyou",
-                              [NSString stringWithFormat:@"%d",editIndex],@"todoTag",
-                              nil];
-        
-        
-        [marray addObject:todo];
-        [ud setObject:marray forKey:@"hoge"]; //udにhogeでmarrayをセットして保存
-        [ud synchronize]; //UserDefaultsに即時反映
-        
-        NSLog(@"新規作成");
-    }
+    /*if(self.editIndex)
+     {
+     NSDictionary *dic = array[self.editIndex];
+     NSMutableDictionary * mDic = [dic mutableCopy];
+     
+     
+     [mDic setObject:textField.text forKey:@"contents"];
+     [mDic setObject:[NSString stringWithFormat:@"%d",stampArrNum] forKey:@"stamp"];
+     [mDic setObject:[NSString stringWithFormat:@"%d",kigenNum] forKey:@"kigen"];
+     [mDic setObject:[NSString stringWithFormat:@"%d",juyouNum] forKey:@"juyou"];
+     [mDic setObject:[NSString stringWithFormat:@"%d",editIndex]forKey:@"todoTag"];
+     
+     NSMutableArray *mArray = [array mutableCopy];
+     mArray[self.editIndex] = mDic;//mDicをmArrayに入れます。
+     
+     [ud setObject:mArray forKey:@"hoge"];
+     [ud synchronize];
+     NSLog(@"編集");
+     NSLog(@"%@",mDic);
+     }else{
+     */
+    NSDictionary *todo = [NSDictionary dictionaryWithObjectsAndKeys:
+                          textField.text,@"contents",
+                          [NSString stringWithFormat:@"%d",stampArrNum],@"stamp",
+                          [NSString stringWithFormat:@"%d",kigenNum],@"kigen",
+                          [NSString stringWithFormat:@"%d",juyouNum],@"juyou",
+                          nil];
+    
+    
+    [marray addObject:todo];
+    [ud setObject:marray forKey:@"hoge"]; //udにhogeでmarrayをセットして保存
+    [ud synchronize]; //UserDefaultsに即時反映
+    
+    NSLog(@"新規作成");
+    
+    //}
     
     GraphViewController *prevController = [self.navigationController.viewControllers objectAtIndex:0];
     [prevController.contentsView removeFromSuperview];
