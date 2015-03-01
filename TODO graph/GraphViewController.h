@@ -44,11 +44,10 @@
     UIImageView *trashView;
     
     BOOL showedContentsView;
-    NSString *GVstStampNum;
+    NSString *resaveStamp;
     
     NSString *imageName;
     NSDictionary *stampDic;
-    int stampTag;
 }
 
 @property (nonatomic) ContentsView *contentsView;

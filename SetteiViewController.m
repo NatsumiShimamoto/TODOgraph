@@ -279,7 +279,6 @@
      [mDic setObject:[NSString stringWithFormat:@"%d",stampArrNum] forKey:@"stamp"];
      [mDic setObject:[NSString stringWithFormat:@"%d",kigenNum] forKey:@"kigen"];
      [mDic setObject:[NSString stringWithFormat:@"%d",juyouNum] forKey:@"juyou"];
-     [mDic setObject:[NSString stringWithFormat:@"%d",editIndex]forKey:@"todoTag"];
      
      NSMutableArray *mArray = [array mutableCopy];
      mArray[self.editIndex] = mDic;//mDicをmArrayに入れます。

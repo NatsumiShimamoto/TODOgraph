@@ -9,13 +9,14 @@
 #import "GraphViewController.h"
 
 @implementation StampViewController
+@synthesize buttonTag;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
     
-    
+    NSLog(@"ムムムッ%d",self.buttonTag);
 }
 
 - (void)didReceiveMemoryWarning
@@ -31,15 +32,35 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-     self.screenName = @"StampScreen";
+    self.screenName = @"StampScreen";
 }
 
--(IBAction)stamp:(UIButton *)button
+-(IBAction)stamp:(UIButton *)stamp
 {
-    NSUserDefaults *sta = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
-    [sta setInteger:button.tag forKey:@"stamp"];
-    [sta synchronize];
-    NSLog(@"ボタンの種類 = %d",(int)button.tag);
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
+    NSArray *array = [ud objectForKey:@"hoge"];
+    
+    NSDictionary *resaveDic = array[self.buttonTag];
+    NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
+    
+    [resaveMDic setObject:[NSString stringWithFormat:@"%d",(int)stamp.tag] forKey:@"stamp"];
+    
+    
+    NSLog(@"resaveMDic %@",resaveMDic);
+    
+    NSMutableArray *resaveMArray = [array mutableCopy];
+    resaveMArray[self.buttonTag] = resaveMDic;
+    
+    [ud setObject:resaveMArray forKey:@"hoge"];
+    [ud synchronize];
+    
+    
+    
+    
+    //    [ud setInteger:stamp.tag forKey:@"stamp"];
+    //  [ud synchronize];
+    
+    NSLog(@"ボタンの種類 = %d",(int)stamp.tag);
     /* -- 戻る --*/
     [self dismissViewControllerAnimated:YES completion:nil];
 }

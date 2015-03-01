@@ -24,6 +24,9 @@
 
 
 @implementation GraphViewController
+{
+    int checkNumber;
+}
 
 
 #pragma mark - ViewDidLoad
@@ -34,7 +37,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkVersionNotification:) name:@"CheckVersion" object:nil];
     
     [self size];
-    
+
     upRed = YES;
     upBlue = NO;
     showedContentsView = NO;
@@ -60,16 +63,15 @@
         //array = [ud objectForKey:@"hoge"]; //hogeでudをarrayに入れる
         //stampDic = array[stampButton.tag];
         
-        //タッチしたボタンのタグがほしい
-        //stampButton.tagにはi(最新のボタンのタグ=個数)が入っちゃってる）
-        /*
-         editIndex(スタンプの順番)番目のスタンプの@"stamp"(スタンプの内容)を変更
-         */
-        [self changeStamp:(int)stampButton.tag];
+        
+        StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
+        
+        
+#warning checkNumは画面遷移したら0になっちゃう！
+        [self changeStamp:(int)checkNumber];
         
         NSLog(@"ViewWillAppear");
-        NSLog(@"ボタンの順番　== %d",(int)stampButton.tag);
-
+        NSLog(@"ボタンの順番　== %d",stampVC.buttonTag);
         
     }else{
         
@@ -87,17 +89,12 @@
 
 -(void)changeStamp:(int)editIndex{
     NSLog(@"changeStamp");
-    NSLog(@"%d",editIndex);
-    
-    
+  
+
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
     
-    GVstStampNum = [ud objectForKey:@"stamp"];
-    
-    int number = [GVstStampNum intValue] + 1;
-    
-    stampTag = [ud integerForKey:@"todoTag"];
-    NSLog(@"たg%d",stampTag);
+    resaveStamp = [ud objectForKey:@"stamp"];
+    int number = [resaveStamp intValue] + 1;
     
     imageName = [NSString stringWithFormat: @"icon%d.png", number];
     UIImage *iconImage = [UIImage imageNamed:imageName];
@@ -107,22 +104,21 @@
     
     [contentsStamp addTarget:self action:@selector(contentsStampPushed:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    array = [ud objectForKey:@"hoge"];
-    NSDictionary *resaveDic = array[editIndex];
+    //MARK:むむっ
+   /* array = [ud objectForKey:@"hoge"];
+    NSDictionary *resaveDic = array[checkNumber];
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
     
     NSMutableArray *resaveMArray = [array mutableCopy];
     
     [resaveMDic setObject:[NSString stringWithFormat:@"%d",number] forKey:@"stamp"];
-    [resaveMDic setObject:[NSString stringWithFormat:@"%d",stampTag] forKey:@"todoTag"];
+
     
-    resaveMArray[editIndex] = resaveMDic;
+    resaveMArray[checkNumber] = resaveMDic;
     
     [ud setObject:resaveMArray forKey:@"hoge"];
     [ud synchronize];
-    
-    
+    */
 }
 
 #pragma mark - ViewDidAppear
@@ -156,18 +152,17 @@
         stampButton.tag = i;
         stampDic = array[i];
         
-        GVstStampNum = [stampDic objectForKey:@"stamp"];
+        resaveStamp = [stampDic objectForKey:@"stamp"];
         
         kigenNum = [[stampDic objectForKey:@"kigen"] intValue]; //０だったら近い
         juyouNum = [[stampDic objectForKey:@"juyou"] intValue]; //０だったら重要
         
         int xpoint =[[stampDic objectForKey:@"x"] floatValue];
         int ypoint =[[stampDic objectForKey:@"y"] floatValue];
+      
         
-        stampTag =  [[stampDic objectForKey:@"todoTag"] intValue];
-        NSLog(@"おおおおお%d",stampTag);
         /* --- スタンプの条件分け ---*/
-        int number = [GVstStampNum intValue] + 1;
+        int number = [resaveStamp intValue] + 1;
         imageName = [NSString stringWithFormat: @"icon%d.png", number];
         [stampButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
         
@@ -281,21 +276,17 @@
 }
 
 -(void)contentsStampPushed:(UIButton *)sender{
-    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     
-    [self presentViewController:stampVC animated:YES completion:nil];
+    [self performSegueWithIdentifier:@"toStamp" sender:nil];
     showedContentsView = YES;
     
     NSLog(@"スタンプ画面遷移");
-    NSLog(@"%@",sender);
-    
-#warning sender.tag=0
-    
 }
 
 
 -(void)changeContents:(UIButton *)sender{
     
+    NSLog(@"tag == %d",(int)sender.tag);
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     ud = [NSUserDefaults standardUserDefaults];
@@ -332,17 +323,19 @@
     //stamp画像を書き換える
     [contentsStamp setImage:sender.currentImage forState:UIControlStateNormal];
     [contentsStamp addTarget:self action:@selector(contentsStampPushed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    int hoo = [ud integerForKey:@"todoTag"];
 
-    NSLog(@"っほおお%d",hoo);
-    NSLog(@"スタンプの順番ああ == %d",(int)sender.tag);
+    NSLog(@"スタンプの順番 == %d",(int)sender.tag);
 }
 
 
 #pragma mark - スタンプの選択
 - (void)buttonPushed:(UIButton *)button //buttonとstampButtonは同じって考えていい
 {
+    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
+    stampVC.buttonTag = (int)button.tag;
+    checkNumber = stampVC.buttonTag;
+    NSLog(@"button === %d", (int)stampVC.buttonTag);
+    
     if(_contentsView) {
         [self changeContents:(UIButton *)button];
         
@@ -369,7 +362,6 @@
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
     
     textView.text = [ud stringForKey:@"contents"];
-    stampTag = [ud integerForKey:@"todoTag"];
     
     NSMutableArray *resaveMArray = [array mutableCopy];
     resaveMArray = [[NSMutableArray alloc] init];
@@ -450,7 +442,7 @@
     [self closeImageFadeIn];
     
     NSLog(@"ボタンの順番 == %d",(int)sender.tag);
-    NSLog(@"ppp%d",stampTag);
+
 
 
 }
@@ -970,6 +962,15 @@
     NSArray  *aOsVersions = [[[UIDevice currentDevice]systemVersion] componentsSeparatedByString:@"."];
     NSInteger iOsVersionMajor  = [[aOsVersions objectAtIndex:0] intValue];
     return (iOsVersionMajor <= 7);
+}
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    StampViewController *stampVC = segue.destinationViewController;
+    stampVC.buttonTag = checkNumber;
+    NSLog(@"prepare == %d", stampVC.buttonTag);
 }
 
 

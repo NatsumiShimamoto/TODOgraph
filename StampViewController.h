@@ -13,4 +13,6 @@
 @interface StampViewController : GAITrackedViewController{
 }
 
+@property (nonatomic)int buttonTag;
+
 @end

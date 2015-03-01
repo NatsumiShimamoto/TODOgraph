@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WnP-bv-VKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1006" y="47"/>
+            <point key="canvasLocation" x="1012" y="384"/>
         </scene>
         <!--Stamp View Controller-->
         <scene sceneID="dMs-WF-Iad">
@@ -284,6 +284,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="vLN-KS-W8z"/>
+                    <connections>
+                        <segue destination="kXg-2u-tm9" kind="modal" identifier="toStamp" id="RQp-Rt-6jf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahy-5G-veD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
