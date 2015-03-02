@@ -37,7 +37,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkVersionNotification:) name:@"CheckVersion" object:nil];
     
     [self size];
-
+    
     upRed = YES;
     upBlue = NO;
     showedContentsView = NO;
@@ -60,18 +60,10 @@
     
     if(showedContentsView == YES){
         
-        //array = [ud objectForKey:@"hoge"]; //hogeでudをarrayに入れる
-        //stampDic = array[stampButton.tag];
-        
-        
-        StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
-        
-        
-#warning checkNumは画面遷移したら0になっちゃう！
         [self changeStamp:(int)checkNumber];
         
         NSLog(@"ViewWillAppear");
-        NSLog(@"ボタンの順番　== %d",stampVC.buttonTag);
+        NSLog(@"checkNum = %d",checkNumber);
         
     }else{
         
@@ -89,11 +81,17 @@
 
 -(void)changeStamp:(int)editIndex{
     NSLog(@"changeStamp");
-  
-
-    ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
     
-    resaveStamp = [ud objectForKey:@"stamp"];
+    
+    ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
+    array = [ud objectForKey:@"hoge"];
+    
+    
+    
+    //MARK:むむっ
+    
+    NSDictionary *dic = array[checkNumber];
+    resaveStamp = [dic objectForKey:@"stamp"];
     int number = [resaveStamp intValue] + 1;
     
     imageName = [NSString stringWithFormat: @"icon%d.png", number];
@@ -104,21 +102,6 @@
     
     [contentsStamp addTarget:self action:@selector(contentsStampPushed:) forControlEvents:UIControlEventTouchUpInside];
     
-    //MARK:むむっ
-   /* array = [ud objectForKey:@"hoge"];
-    NSDictionary *resaveDic = array[checkNumber];
-    NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
-    
-    NSMutableArray *resaveMArray = [array mutableCopy];
-    
-    [resaveMDic setObject:[NSString stringWithFormat:@"%d",number] forKey:@"stamp"];
-
-    
-    resaveMArray[checkNumber] = resaveMDic;
-    
-    [ud setObject:resaveMArray forKey:@"hoge"];
-    [ud synchronize];
-    */
 }
 
 #pragma mark - ViewDidAppear
@@ -159,7 +142,7 @@
         
         int xpoint =[[stampDic objectForKey:@"x"] floatValue];
         int ypoint =[[stampDic objectForKey:@"y"] floatValue];
-      
+        
         
         /* --- スタンプの条件分け ---*/
         int number = [resaveStamp intValue] + 1;
@@ -323,7 +306,7 @@
     //stamp画像を書き換える
     [contentsStamp setImage:sender.currentImage forState:UIControlStateNormal];
     [contentsStamp addTarget:self action:@selector(contentsStampPushed:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     NSLog(@"スタンプの順番 == %d",(int)sender.tag);
 }
 
@@ -442,9 +425,9 @@
     [self closeImageFadeIn];
     
     NSLog(@"ボタンの順番 == %d",(int)sender.tag);
-
-
-
+    
+    
+    
 }
 
 
