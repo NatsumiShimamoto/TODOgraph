@@ -57,13 +57,13 @@
     [super viewWillAppear:animated];
     
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
+    NSLog(@"checkNum = %d",checkNumber);
     
     if(showedContentsView == YES){
         
-        [self changeStamp:(int)checkNumber];
-        
         NSLog(@"ViewWillAppear");
-        NSLog(@"checkNum = %d",checkNumber);
+        
+        [self changeStamp];
         
     }else{
         
@@ -79,7 +79,7 @@
     
 }
 
--(void)changeStamp:(int)editIndex{
+-(void)changeStamp{
     NSLog(@"changeStamp");
     
     
@@ -87,11 +87,13 @@
     array = [ud objectForKey:@"hoge"];
     
     
-    
     //MARK:むむっ
     
-    NSDictionary *dic = array[checkNumber];
-    resaveStamp = [dic objectForKey:@"stamp"];
+    stampDic = array[checkNumber];
+    
+    NSLog(@"checkNum = %d",checkNumber);
+    
+    resaveStamp = [stampDic objectForKey:@"stamp"];
     int number = [resaveStamp intValue] + 1;
     
     imageName = [NSString stringWithFormat: @"icon%d.png", number];
@@ -132,7 +134,7 @@
             stampButton.frame = CGRectMake(0, 0, STAMP_WIDTH_PAD, STAMP_HEIGHT_PAD);
         }
         
-        stampButton.tag = i;
+        //stampButton.tag = i;
         stampDic = array[i];
         
         resaveStamp = [stampDic objectForKey:@"stamp"];
@@ -244,6 +246,7 @@
             [view addSubview:stampButton];
             [self.view bringSubviewToFront:stampButton];
             
+            
         }
     }
     
@@ -333,6 +336,7 @@
 #pragma mark - ContentsView作成
 -(void)makeContentsView:(UIButton *)sender{
     
+    NSLog(@"おおお");
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     ud = [NSUserDefaults standardUserDefaults];

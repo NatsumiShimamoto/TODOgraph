@@ -27,7 +27,6 @@
     UIButton *stampButton;
     UITextView *textView;
     
-    UIImage *contentsImage;
     
     UIButton *closeButton;
     UIButton *contentsStamp;
