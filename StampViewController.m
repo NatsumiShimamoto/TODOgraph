@@ -5,6 +5,7 @@
 //  Created by 嶋本夏海 on 2013/08/14.
 //  Copyright (c) 2013年 嶋本夏海. All rights reserved.
 
+
 #import "StampViewController.h"
 #import "GraphViewController.h"
 
@@ -60,7 +61,7 @@
     //    [ud setInteger:stamp.tag forKey:@"stamp"];
     //  [ud synchronize];
     
-    NSLog(@"ボタンの種類 = %d",(int)stamp.tag);
+    NSLog(@"ボタンの種類 == %d",(int)stamp.tag);
     /* -- 戻る --*/
     [self dismissViewControllerAnimated:YES completion:nil];
 }

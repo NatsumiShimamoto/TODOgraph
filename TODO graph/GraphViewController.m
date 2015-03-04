@@ -85,14 +85,12 @@
     
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
     array = [ud objectForKey:@"hoge"];
-    
-    
-    //MARK:むむっ
-    
+
     stampDic = array[checkNumber];
     
     NSLog(@"checkNum = %d",checkNumber);
     
+    NSLog(@"%@",stampDic);
     resaveStamp = [stampDic objectForKey:@"stamp"];
     int number = [resaveStamp intValue] + 1;
     
@@ -134,7 +132,7 @@
             stampButton.frame = CGRectMake(0, 0, STAMP_WIDTH_PAD, STAMP_HEIGHT_PAD);
         }
         
-        //stampButton.tag = i;
+        stampButton.tag = i;
         stampDic = array[i];
         
         resaveStamp = [stampDic objectForKey:@"stamp"];
@@ -373,8 +371,6 @@
         closeButton.frame = CGRectMake(481, 0, 120, 120);
     }
     //closeButton.tag = sender.tag;
-    
-    
     
     [_contentsView addSubview:closeButton];
     
