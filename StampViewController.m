@@ -55,12 +55,7 @@
     [ud setObject:resaveMArray forKey:@"hoge"];
     [ud synchronize];
     
-    
-    
-    
-    //    [ud setInteger:stamp.tag forKey:@"stamp"];
-    //  [ud synchronize];
-    
+
     NSLog(@"ボタンの種類 == %d",(int)stamp.tag);
     /* -- 戻る --*/
     [self dismissViewControllerAnimated:YES completion:nil];

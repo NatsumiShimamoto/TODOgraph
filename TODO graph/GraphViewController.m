@@ -63,7 +63,14 @@
         
         NSLog(@"ViewWillAppear");
         
+        [mainView removeFromSuperview];
+        
         [self changeStamp];
+        
+        mainView = [self createView];//スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
+        [self.view addSubview:mainView];
+        [self.view bringSubviewToFront:_contentsView];
+        
         
     }else{
         
@@ -74,6 +81,8 @@
         [self.view addSubview:mainView];
         [self.view bringSubviewToFront:plusButton];
         [self.view bringSubviewToFront:stampButton];
+        
+        NSLog(@"mainViewけす");
     }
     self.screenName = @"GraphViewController";
     
@@ -82,10 +91,9 @@
 -(void)changeStamp{
     NSLog(@"changeStamp");
     
-    
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
     array = [ud objectForKey:@"hoge"];
-
+    
     stampDic = array[checkNumber];
     
     NSLog(@"checkNum = %d",checkNumber);
@@ -247,8 +255,10 @@
             
         }
     }
-    
+    NSLog(@"create");
     return view;
+    
+    
 }
 
 
@@ -270,13 +280,14 @@
 
 -(void)changeContents:(UIButton *)sender{
     
-    NSLog(@"tag == %d",(int)sender.tag);
+    NSLog(@"スタンプの順番 %d",checkNumber);
+    
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     ud = [NSUserDefaults standardUserDefaults];
     array = [ud objectForKey:@"hoge"];
     
-    NSDictionary *resaveDic = array[sender.tag];
+    NSDictionary *resaveDic = array[checkNumber];
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
     
     NSMutableArray *resaveMArray = [array mutableCopy];
@@ -307,13 +318,11 @@
     //stamp画像を書き換える
     [contentsStamp setImage:sender.currentImage forState:UIControlStateNormal];
     [contentsStamp addTarget:self action:@selector(contentsStampPushed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    NSLog(@"スタンプの順番 == %d",(int)sender.tag);
 }
 
 
 #pragma mark - スタンプの選択
-- (void)buttonPushed:(UIButton *)button //buttonとstampButtonは同じって考えていい
+- (void)buttonPushed:(UIButton *)button
 {
     StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     stampVC.buttonTag = (int)button.tag;

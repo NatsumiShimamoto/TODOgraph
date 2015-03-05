@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "GAITrackedViewController.h"
 
+
 @interface StampViewController : GAITrackedViewController{
 }
 
