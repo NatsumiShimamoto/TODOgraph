@@ -22,7 +22,6 @@
 #define STAMP_WIDTH_PAD     85
 #define STAMP_HEIGHT_PAD    85
 
-
 @implementation GraphViewController
 {
     int checkNumber;
@@ -40,7 +39,7 @@
     
     upRed = YES;
     upBlue = NO;
-    showedContentsView = NO;
+    self.showedContentsView = NO;
 }
 
 
@@ -59,17 +58,23 @@
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
     NSLog(@"checkNum = %d",checkNumber);
     
-    if(showedContentsView == YES){
+    if(self.showedContentsView == YES){
         
         NSLog(@"ViewWillAppear");
         
-        [mainView removeFromSuperview];
+        /*StampViewController *stampVC = [self.storyboard  instantiateViewControllerWithIdentifier:@"stamp"];
+
+        checkNumber = stampVC.buttonTag;
+        */
         
+        [mainView removeFromSuperview];
+
         [self changeStamp];
         
         mainView = [self createView];//スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
         [self.view addSubview:mainView];
         [self.view bringSubviewToFront:_contentsView];
+        [self.view bringSubviewToFront:plusButton];
         
         
     }else{
@@ -82,7 +87,6 @@
         [self.view bringSubviewToFront:plusButton];
         [self.view bringSubviewToFront:stampButton];
         
-        NSLog(@"mainViewけす");
     }
     self.screenName = @"GraphViewController";
     
@@ -272,7 +276,7 @@
 -(void)contentsStampPushed:(UIButton *)sender{
     
     [self performSegueWithIdentifier:@"toStamp" sender:nil];
-    showedContentsView = YES;
+    self.showedContentsView = YES;
     
     NSLog(@"スタンプ画面遷移");
 }
@@ -327,7 +331,7 @@
     StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     stampVC.buttonTag = (int)button.tag;
     checkNumber = stampVC.buttonTag;
-    NSLog(@"button === %d", (int)stampVC.buttonTag);
+    NSLog(@"押したスタンプの順番 %d", (int)stampVC.buttonTag);
     
     if(_contentsView) {
         [self changeContents:(UIButton *)button];
@@ -532,14 +536,17 @@
     ud = [NSUserDefaults standardUserDefaults];
     
     array = [ud objectForKey:@"hoge"];
-    NSDictionary *resaveDic = array[editIndex];
+    //NSDictionary *resaveDic = array[editIndex];
+    NSDictionary *resaveDic = array[checkNumber];
+
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
     
     NSMutableArray *resaveMArray = [array mutableCopy];
     
     if(textView.text) [resaveMDic setObject:textView.text forKey:@"contents"];
     
-    resaveMArray[editIndex] = resaveMDic;
+    //resaveMArray[editIndex] = resaveMDic;
+    resaveMArray[checkNumber] = resaveMDic;
     
     [ud setObject:resaveMArray forKey:@"hoge"];
     [ud synchronize];
@@ -807,7 +814,7 @@
 
 #pragma mark - 追加
 -(void)plus{
-    showedContentsView = NO;
+    self.showedContentsView = NO;
     SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
     [self presentViewController:setteiVC animated:YES completion:nil];
     

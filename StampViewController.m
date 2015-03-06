@@ -12,6 +12,7 @@
 @implementation StampViewController
 @synthesize buttonTag;
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -38,6 +39,11 @@
 
 -(IBAction)stamp:(UIButton *)stamp
 {
+    GraphViewController *graphVC = [self.storyboard instantiateViewControllerWithIdentifier:@"graph"];
+    
+    
+    if(graphVC.showedContentsView == YES){
+    
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
     NSArray *array = [ud objectForKey:@"hoge"];
     
@@ -54,7 +60,16 @@
     
     [ud setObject:resaveMArray forKey:@"hoge"];
     [ud synchronize];
-    
+        
+    }else{
+        
+        NSUserDefaults *sta = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
+        NSLog(@"button is %d", (int)stamp.tag);
+        
+        [sta setInteger:stamp.tag forKey:@"stamp"];
+        
+        [sta synchronize];
+    }
 
     NSLog(@"ボタンの種類 == %d",(int)stamp.tag);
     /* -- 戻る --*/

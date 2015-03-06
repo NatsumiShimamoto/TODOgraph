@@ -41,16 +41,18 @@
     
     UIImage *trash;
     UIImageView *trashView;
-    
-    BOOL showedContentsView;
+
     NSString *resaveStamp;
     
     NSString *imageName;
     NSDictionary *stampDic;
-
+    
+    
 }
 
 @property (nonatomic) ContentsView *contentsView;
+@property (nonatomic) BOOL showedContentsView;
+
 
 @end
 

@@ -51,25 +51,25 @@
     
     
     /* -- 各種情報の呼び出し -- */
-   /* if(self.editIndex)
-    {
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        NSArray *array = [ud objectForKey:@"hoge"]; //hogeというキーでudという格納場所にarrayに入れる
-        NSDictionary *dic = array[self.editIndex];
-        
-        textField.text = [dic objectForKey:@"contents"];
-        
-        kigenNum = [[dic objectForKey:@"kigen"] intValue];
-        [kigenSeg setSelectedSegmentIndex:kigenNum];
-        
-        juyouNum = [[dic objectForKey:@"juyou"] intValue];
-        juyouSeg.selectedSegmentIndex = juyouNum;
-        NSLog(@"ああああああああおj");
-    }
-    */
+    /* if(self.editIndex)
+     {
+     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+     NSArray *array = [ud objectForKey:@"hoge"]; //hogeというキーでudという格納場所にarrayに入れる
+     NSDictionary *dic = array[self.editIndex];
+     
+     textField.text = [dic objectForKey:@"contents"];
+     
+     kigenNum = [[dic objectForKey:@"kigen"] intValue];
+     [kigenSeg setSelectedSegmentIndex:kigenNum];
+     
+     juyouNum = [[dic objectForKey:@"juyou"] intValue];
+     juyouSeg.selectedSegmentIndex = juyouNum;
+     NSLog(@"ああああああああおj");
+     }
+     */
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
-
+    
 }
 
 
@@ -87,6 +87,13 @@
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     NSUserDefaults *stampUD = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
+        
+    
+    
+    
+    
+    
+    
     
     stStampArrNum = [stampUD objectForKey:@"stamp"]; //@"stamp"のkeyにはアイコンのタグが入ってる(0から)
     stampArrNum = [stStampArrNum intValue];
