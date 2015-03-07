@@ -986,6 +986,7 @@
     StampViewController *stampVC = segue.destinationViewController;
     stampVC.buttonTag = checkNumber;
     NSLog(@"prepare == %d", stampVC.buttonTag);
+    stampVC.showedContentsView = YES;
 }
 
 

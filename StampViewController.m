@@ -61,6 +61,8 @@
         [ud setObject:resaveMArray forKey:@"hoge"];
         [ud synchronize];
         
+        self.showedContentsView = YES;
+        
     }else{
         NSLog(@"NO");
         NSUserDefaults *sta = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
