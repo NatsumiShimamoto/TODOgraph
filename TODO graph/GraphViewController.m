@@ -40,7 +40,6 @@
     
     upRed = YES;
     upBlue = NO;
-    stampVC.showedContentsView = NO;
 }
 
 
@@ -59,14 +58,13 @@
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
     NSLog(@"checkNum = %d",checkNumber);
     
-    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
-    if(stampVC.showedContentsView == YES){
+    if(_contentsView){
         
         NSLog(@"ViewWillAppear");
         
-
+        
         [mainView removeFromSuperview];
-
+        
         [self changeStamp];
         
         mainView = [self createView];//スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
@@ -275,16 +273,7 @@
 -(void)contentsStampPushed:(UIButton *)sender{
     
     [self performSegueWithIdentifier:@"toStamp" sender:nil];
-    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
-   
-    stampVC.showedContentsView = YES;
     
-     if(stampVC.showedContentsView==YES){
-        NSLog(@"YEEEES");
-    }else{
-        NSLog(@"NOOO");
-        
-    }
     NSLog(@"スタンプ画面遷移");
 }
 
@@ -339,7 +328,6 @@
     stampVC.buttonTag = (int)button.tag;
     checkNumber = stampVC.buttonTag;
     
-    stampVC.showedContentsView = YES;
     
     NSLog(@"押したスタンプの順番 %d", (int)stampVC.buttonTag);
     
@@ -462,9 +450,6 @@
     [_contentsView removeFromSuperview];
     _contentsView = nil;
     textView = nil;
-    
-    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
-    stampVC.showedContentsView = NO;
 }
 
 
@@ -552,7 +537,7 @@
     array = [ud objectForKey:@"hoge"];
     //NSDictionary *resaveDic = array[editIndex];
     NSDictionary *resaveDic = array[checkNumber];
-
+    
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
     
     NSMutableArray *resaveMArray = [array mutableCopy];
@@ -828,9 +813,7 @@
 
 #pragma mark - 追加
 -(void)plus{
-    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
-    stampVC.showedContentsView = NO;
-    
+   
     SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
     [self presentViewController:setteiVC animated:YES completion:nil];
     
@@ -986,6 +969,7 @@
     StampViewController *stampVC = segue.destinationViewController;
     stampVC.buttonTag = checkNumber;
     NSLog(@"prepare == %d", stampVC.buttonTag);
+    
     stampVC.showedContentsView = YES;
 }
 
