@@ -22,15 +22,16 @@
 #define STAMP_WIDTH_PAD     85
 #define STAMP_HEIGHT_PAD    85
 
+
 @implementation GraphViewController
 {
     int checkNumber;
 }
 
-
 #pragma mark - ViewDidLoad
 - (void)viewDidLoad
 {
+    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkVersionNotification:) name:@"CheckVersion" object:nil];
@@ -39,7 +40,7 @@
     
     upRed = YES;
     upBlue = NO;
-    self.showedContentsView = NO;
+    stampVC.showedContentsView = NO;
 }
 
 
@@ -58,15 +59,12 @@
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
     NSLog(@"checkNum = %d",checkNumber);
     
-    if(self.showedContentsView == YES){
+    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
+    if(stampVC.showedContentsView == YES){
         
         NSLog(@"ViewWillAppear");
         
-        /*StampViewController *stampVC = [self.storyboard  instantiateViewControllerWithIdentifier:@"stamp"];
 
-        checkNumber = stampVC.buttonTag;
-        */
-        
         [mainView removeFromSuperview];
 
         [self changeStamp];
@@ -113,6 +111,7 @@
     [contentsStamp setImage:iconImage forState:UIControlStateNormal];
     
     [contentsStamp addTarget:self action:@selector(contentsStampPushed:) forControlEvents:UIControlEventTouchUpInside];
+    
     
 }
 
@@ -276,8 +275,16 @@
 -(void)contentsStampPushed:(UIButton *)sender{
     
     [self performSegueWithIdentifier:@"toStamp" sender:nil];
-    self.showedContentsView = YES;
+    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
+   
+    stampVC.showedContentsView = YES;
     
+     if(stampVC.showedContentsView==YES){
+        NSLog(@"YEEEES");
+    }else{
+        NSLog(@"NOOO");
+        
+    }
     NSLog(@"スタンプ画面遷移");
 }
 
@@ -331,7 +338,11 @@
     StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     stampVC.buttonTag = (int)button.tag;
     checkNumber = stampVC.buttonTag;
+    
+    stampVC.showedContentsView = YES;
+    
     NSLog(@"押したスタンプの順番 %d", (int)stampVC.buttonTag);
+    
     
     if(_contentsView) {
         [self changeContents:(UIButton *)button];
@@ -451,6 +462,9 @@
     [_contentsView removeFromSuperview];
     _contentsView = nil;
     textView = nil;
+    
+    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
+    stampVC.showedContentsView = NO;
 }
 
 
@@ -814,7 +828,9 @@
 
 #pragma mark - 追加
 -(void)plus{
-    self.showedContentsView = NO;
+    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
+    stampVC.showedContentsView = NO;
+    
     SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
     [self presentViewController:setteiVC animated:YES completion:nil];
     

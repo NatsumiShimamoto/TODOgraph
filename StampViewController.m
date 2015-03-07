@@ -11,6 +11,7 @@
 
 @implementation StampViewController
 @synthesize buttonTag;
+@synthesize showedContentsView;
 
 
 - (void)viewDidLoad
@@ -39,30 +40,29 @@
 
 -(IBAction)stamp:(UIButton *)stamp
 {
-    GraphViewController *graphVC = [self.storyboard instantiateViewControllerWithIdentifier:@"graph"];
     
-    
-    if(graphVC.showedContentsView == YES){
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
-    NSArray *array = [ud objectForKey:@"hoge"];
-    
-    NSDictionary *resaveDic = array[self.buttonTag];
-    NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
-    
-    [resaveMDic setObject:[NSString stringWithFormat:@"%d",(int)stamp.tag] forKey:@"stamp"];
-    
-    
-    NSLog(@"resaveMDic %@",resaveMDic);
-    
-    NSMutableArray *resaveMArray = [array mutableCopy];
-    resaveMArray[self.buttonTag] = resaveMDic;
-    
-    [ud setObject:resaveMArray forKey:@"hoge"];
-    [ud synchronize];
+    if(self.showedContentsView == YES){
+        NSLog(@"YES");
+        
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
+        NSArray *array = [ud objectForKey:@"hoge"];
+        
+        NSDictionary *resaveDic = array[self.buttonTag];
+        NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
+        
+        [resaveMDic setObject:[NSString stringWithFormat:@"%d",(int)stamp.tag] forKey:@"stamp"];
+        
+        
+        NSLog(@"resaveMDic %@",resaveMDic);
+        
+        NSMutableArray *resaveMArray = [array mutableCopy];
+        resaveMArray[self.buttonTag] = resaveMDic;
+        
+        [ud setObject:resaveMArray forKey:@"hoge"];
+        [ud synchronize];
         
     }else{
-        
+        NSLog(@"NO");
         NSUserDefaults *sta = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
         NSLog(@"button is %d", (int)stamp.tag);
         
@@ -70,7 +70,7 @@
         
         [sta synchronize];
     }
-
+    
     NSLog(@"ボタンの種類 == %d",(int)stamp.tag);
     /* -- 戻る --*/
     [self dismissViewControllerAnimated:YES completion:nil];

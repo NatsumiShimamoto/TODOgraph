@@ -15,5 +15,6 @@
 }
 
 @property (nonatomic)int buttonTag;
+@property (nonatomic)BOOL showedContentsView;
 
 @end

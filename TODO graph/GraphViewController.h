@@ -51,7 +51,7 @@
 }
 
 @property (nonatomic) ContentsView *contentsView;
-@property (nonatomic) BOOL showedContentsView;
+
 
 
 @end
