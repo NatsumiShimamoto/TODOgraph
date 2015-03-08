@@ -31,7 +31,6 @@
 #pragma mark - ViewDidLoad
 - (void)viewDidLoad
 {
-    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkVersionNotification:) name:@"CheckVersion" object:nil];
@@ -56,15 +55,10 @@
     [super viewWillAppear:animated];
     
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
-    NSLog(@"checkNum = %d",checkNumber);
+    [mainView removeFromSuperview];
+    
     
     if(_contentsView){
-        
-        NSLog(@"ViewWillAppear");
-        
-        
-        [mainView removeFromSuperview];
-        
         [self changeStamp];
         
         mainView = [self createView];//スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
@@ -72,21 +66,16 @@
         [self.view bringSubviewToFront:_contentsView];
         [self.view bringSubviewToFront:plusButton];
         
-        
     }else{
-        
-        //一回mainViewを全部消す
-        [mainView removeFromSuperview];
         mainView = [self createView];//スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
         
         [self.view addSubview:mainView];
-        [self.view bringSubviewToFront:plusButton];
-        [self.view bringSubviewToFront:stampButton];
-        
     }
-    self.screenName = @"GraphViewController";
     
+    [self.view bringSubviewToFront:plusButton];
+    self.screenName = @"GraphViewController";
 }
+
 
 -(void)changeStamp{
     NSLog(@"changeStamp");
@@ -95,12 +84,9 @@
     array = [ud objectForKey:@"hoge"];
     
     stampDic = array[checkNumber];
-    
-    NSLog(@"checkNum = %d",checkNumber);
-    
-    NSLog(@"%@",stampDic);
-    resaveStamp = [stampDic objectForKey:@"stamp"];
-    int number = [resaveStamp intValue] + 1;
+
+    stampImgNum = [stampDic objectForKey:@"stamp"];
+    int number = [stampImgNum intValue] + 1;
     
     imageName = [NSString stringWithFormat: @"icon%d.png", number];
     UIImage *iconImage = [UIImage imageNamed:imageName];
@@ -109,8 +95,6 @@
     [contentsStamp setImage:iconImage forState:UIControlStateNormal];
     
     [contentsStamp addTarget:self action:@selector(contentsStampPushed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
 }
 
 #pragma mark - ViewDidAppear
@@ -121,7 +105,6 @@
 - (UIView *)createView{
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)]; //画面の宣言
-    
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     array = [ud objectForKey:@"hoge"]; //hogeでudをarrayに入れる
@@ -144,7 +127,7 @@
         stampButton.tag = i;
         stampDic = array[i];
         
-        resaveStamp = [stampDic objectForKey:@"stamp"];
+        stampImgNum = [stampDic objectForKey:@"stamp"];
         
         kigenNum = [[stampDic objectForKey:@"kigen"] intValue]; //０だったら近い
         juyouNum = [[stampDic objectForKey:@"juyou"] intValue]; //０だったら重要
@@ -154,7 +137,7 @@
         
         
         /* --- スタンプの条件分け ---*/
-        int number = [resaveStamp intValue] + 1;
+        int number = [stampImgNum intValue] + 1;
         imageName = [NSString stringWithFormat: @"icon%d.png", number];
         [stampButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
         
@@ -164,7 +147,8 @@
         
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)]; //ドラッグを検知してpanActionを呼び出す
         [stampButton addGestureRecognizer:pan]; //stampViewにpanを設定する
-        
+        int h;
+        int w;
         
         if(screenHeight == SCREEN_HEIGHT_4){
             
@@ -242,7 +226,6 @@
                 ww=86;
             }
             
-            
             if(xpoint==0&&ypoint==0){
                 stampButton.frame=CGRectMake(ww+juyouNum*w,hh+(5-kigenNum)*h,STAMP_WIDTH_PAD,STAMP_HEIGHT_PAD);
                 
@@ -252,14 +235,9 @@
             
             [view addSubview:stampButton];
             [self.view bringSubviewToFront:stampButton];
-            
-            
         }
     }
-    NSLog(@"create");
     return view;
-    
-    
 }
 
 
@@ -279,9 +257,7 @@
 
 
 -(void)changeContents:(UIButton *)sender{
-    
-    NSLog(@"スタンプの順番 %d",checkNumber);
-    
+
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     ud = [NSUserDefaults standardUserDefaults];
@@ -328,13 +304,8 @@
     stampVC.buttonTag = (int)button.tag;
     checkNumber = stampVC.buttonTag;
     
-    
-    NSLog(@"押したスタンプの順番 %d", (int)stampVC.buttonTag);
-    
-    
     if(_contentsView) {
         [self changeContents:(UIButton *)button];
-        
     }else{
         [self makeContentsView:(UIButton *)button];
     }
@@ -345,16 +316,13 @@
 
 #pragma mark - ContentsView作成
 -(void)makeContentsView:(UIButton *)sender{
-    
-    NSLog(@"おおお");
+  
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     ud = [NSUserDefaults standardUserDefaults];
     array = [ud objectForKey:@"hoge"];
     NSDictionary *dic = array[sender.tag];
-    
-    NSLog(@"%@",dic[@"contents"]);
-    
+  
     NSDictionary *resaveDic = array[sender.tag];
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
     
@@ -382,11 +350,10 @@
     }else if(screenHeight == SCREEN_HEIGHT_PAD){
         closeButton.frame = CGRectMake(481, 0, 120, 120);
     }
-    //closeButton.tag = sender.tag;
     
     [_contentsView addSubview:closeButton];
     
-    [closeButton addTarget:self action:@selector(closeButtonPushed:)forControlEvents:UIControlEventTouchUpInside];
+    [closeButton addTarget:self action:@selector(closeButtonPushed)forControlEvents:UIControlEventTouchUpInside];
     _contentsView.userInteractionEnabled = YES; //タッチの検知をする
     
     
@@ -435,17 +402,11 @@
     [_contentsView addSubview:contentsStamp];
     
     [self closeImageFadeIn];
-    
-    NSLog(@"ボタンの順番 == %d",(int)sender.tag);
-    
-    
-    
 }
 
 
--(void)closeButtonPushed:(UIButton *)sender
-{
-    [self saveEdit:(int)sender.tag];
+-(void)closeButtonPushed{
+    [self saveEdit];
     [self closeImageFadeOut];
     [_contentsView removeFromSuperview];
     _contentsView = nil;
@@ -497,7 +458,6 @@
             
             return NO;
         }
-        
     }else if(screenHeight == SCREEN_HEIGHT_PAD){
         
         maxInputLength = 75;
@@ -521,21 +481,18 @@
 }
 
 
-
 /*
  *  saveEditメソッド
  *  = editIndexを受け取って、スタンプの配列のeditIndex番目のcontentsを更新するメソッド
  *
  */
 
-
 #pragma mark - 編集保存
-- (void)saveEdit:(int)editIndex
+- (void)saveEdit
 {
     ud = [NSUserDefaults standardUserDefaults];
     
     array = [ud objectForKey:@"hoge"];
-    //NSDictionary *resaveDic = array[editIndex];
     NSDictionary *resaveDic = array[checkNumber];
     
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
@@ -543,13 +500,11 @@
     NSMutableArray *resaveMArray = [array mutableCopy];
     
     if(textView.text) [resaveMDic setObject:textView.text forKey:@"contents"];
-    
-    //resaveMArray[editIndex] = resaveMDic;
+
     resaveMArray[checkNumber] = resaveMDic;
     
     [ud setObject:resaveMArray forKey:@"hoge"];
     [ud synchronize];
-    
 }
 
 
@@ -569,10 +524,10 @@
     
     
     //指を離した時
-    if(sender.state == UIGestureRecognizerStateEnded)
-    {
+    if(sender.state == UIGestureRecognizerStateEnded){
         [self dragEnded:(UIPanGestureRecognizer *)sender];
     }
+    
     // ドラッグで移動した距離を初期化する
     [sender setTranslation:CGPointZero inView:self.view];
     [self.view bringSubviewToFront:stampButton];
@@ -601,7 +556,6 @@
     
     [ud setObject:mArray forKey:@"hoge"];
     [ud synchronize];
-    
     
     
     if(upBlue){
@@ -749,8 +703,6 @@
         }
         movedPoint = sender.view.center;
     }
-    
-    
 }
 
 
@@ -813,7 +765,7 @@
 
 #pragma mark - 追加
 -(void)plus{
-   
+    
     SetteiViewController *setteiVC = [self.storyboard instantiateViewControllerWithIdentifier:@"settei"];
     [self presentViewController:setteiVC animated:YES completion:nil];
     

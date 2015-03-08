@@ -15,8 +15,6 @@
 @implementation SetteiViewController
 
 @synthesize editIndex; //スタンプの順番
-//@synthesize stampArrNum; //スタンプの番号
-
 
 -(void)viewDidLoad{
     
@@ -48,28 +46,8 @@
         textField.frame = CGRectMake(textFieldFrame.origin.x, textFieldFrame.origin.y,
                                      textFieldFrame.size.width, textFieldFrame.size.height+40);
     }
-    
-    
-    /* -- 各種情報の呼び出し -- */
-    /* if(self.editIndex)
-     {
-     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-     NSArray *array = [ud objectForKey:@"hoge"]; //hogeというキーでudという格納場所にarrayに入れる
-     NSDictionary *dic = array[self.editIndex];
-     
-     textField.text = [dic objectForKey:@"contents"];
-     
-     kigenNum = [[dic objectForKey:@"kigen"] intValue];
-     [kigenSeg setSelectedSegmentIndex:kigenNum];
-     
-     juyouNum = [[dic objectForKey:@"juyou"] intValue];
-     juyouSeg.selectedSegmentIndex = juyouNum;
-     NSLog(@"ああああああああおj");
-     }
-     */
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
-    
 }
 
 
@@ -83,20 +61,12 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-    
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     NSUserDefaults *stampUD = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
-        
     
-    
-    
-    
-    
-    
-    
-    stStampArrNum = [stampUD objectForKey:@"stamp"]; //@"stamp"のkeyにはアイコンのタグが入ってる(0から)
-    stampArrNum = [stStampArrNum intValue];
+    stampArrString = [stampUD objectForKey:@"stamp"]; //@"stamp"のkeyにはアイコンのタグが入ってる(0から)
+    stampArrNum = [stampArrString intValue];
     
     if(!iconArray){
         
@@ -237,7 +207,6 @@
 }
 
 
-
 #pragma mark - スタンプ内容(データ)の保存
 -(IBAction)hozon
 {
@@ -274,28 +243,6 @@
         }
     }
     
-    
-    /* -- 予定の作成 -- */
-    /*if(self.editIndex)
-     {
-     NSDictionary *dic = array[self.editIndex];
-     NSMutableDictionary * mDic = [dic mutableCopy];
-     
-     
-     [mDic setObject:textField.text forKey:@"contents"];
-     [mDic setObject:[NSString stringWithFormat:@"%d",stampArrNum] forKey:@"stamp"];
-     [mDic setObject:[NSString stringWithFormat:@"%d",kigenNum] forKey:@"kigen"];
-     [mDic setObject:[NSString stringWithFormat:@"%d",juyouNum] forKey:@"juyou"];
-     
-     NSMutableArray *mArray = [array mutableCopy];
-     mArray[self.editIndex] = mDic;//mDicをmArrayに入れます。
-     
-     [ud setObject:mArray forKey:@"hoge"];
-     [ud synchronize];
-     NSLog(@"編集");
-     NSLog(@"%@",mDic);
-     }else{
-     */
     NSDictionary *todo = [NSDictionary dictionaryWithObjectsAndKeys:
                           textField.text,@"contents",
                           [NSString stringWithFormat:@"%d",stampArrNum],@"stamp",
@@ -310,8 +257,6 @@
     
     NSLog(@"新規作成");
     
-    //}
-    
     GraphViewController *prevController = [self.navigationController.viewControllers objectAtIndex:0];
     [prevController.contentsView removeFromSuperview];
     prevController.contentsView = nil;
@@ -324,7 +269,6 @@
 /* -- 戻る -- */
 -(IBAction)back{
     [self dismissViewControllerAnimated:YES completion:nil];
-    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 

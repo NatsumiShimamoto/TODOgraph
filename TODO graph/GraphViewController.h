@@ -30,10 +30,7 @@
     
     UIButton *closeButton;
     UIButton *contentsStamp;
-    
-    int h;
-    int w;
-
+   
     BOOL upRed;
     BOOL upBlue;
     
@@ -42,17 +39,11 @@
     UIImage *trash;
     UIImageView *trashView;
 
-    NSString *resaveStamp;
-    
+    NSString *stampImgNum;
     NSString *imageName;
     NSDictionary *stampDic;
-    
-    
 }
 
 @property (nonatomic) ContentsView *contentsView;
-
-
-
 @end
 

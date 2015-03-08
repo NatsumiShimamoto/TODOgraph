@@ -18,8 +18,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    NSLog(@"ムムムッ%d",self.buttonTag);
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +40,6 @@
 {
     
     if(self.showedContentsView == YES){
-        NSLog(@"YES");
         
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
         NSArray *array = [ud objectForKey:@"hoge"];
@@ -51,9 +48,6 @@
         NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
         
         [resaveMDic setObject:[NSString stringWithFormat:@"%d",(int)stamp.tag] forKey:@"stamp"];
-        
-        
-        NSLog(@"resaveMDic %@",resaveMDic);
         
         NSMutableArray *resaveMArray = [array mutableCopy];
         resaveMArray[self.buttonTag] = resaveMDic;
@@ -64,16 +58,12 @@
         self.showedContentsView = YES;
         
     }else{
-        NSLog(@"NO");
-        NSUserDefaults *sta = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
-        NSLog(@"button is %d", (int)stamp.tag);
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
         
-        [sta setInteger:stamp.tag forKey:@"stamp"];
-        
-        [sta synchronize];
+        [ud setInteger:stamp.tag forKey:@"stamp"];
+        [ud synchronize];
     }
-    
-    NSLog(@"ボタンの種類 == %d",(int)stamp.tag);
+   
     /* -- 戻る --*/
     [self dismissViewControllerAnimated:YES completion:nil];
 }
