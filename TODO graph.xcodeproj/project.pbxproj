@@ -769,8 +769,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mayumi Shimamoto (SV24GV2B3T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mayumi Shimamoto (SV24GV2B3T)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -785,7 +785,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0c7a079b-8fb1-4f88-be99-66c7ee59ebe5";
+				PROVISIONING_PROFILE = "f24d2dd9-198c-45c0-a842-4c3541b96a14";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -802,8 +802,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mayumi Shimamoto (SV24GV2B3T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mayumi Shimamoto (SV24GV2B3T)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -812,7 +812,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "0c7a079b-8fb1-4f88-be99-66c7ee59ebe5";
+				PROVISIONING_PROFILE = "f24d2dd9-198c-45c0-a842-4c3541b96a14";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -822,8 +822,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mayumi Shimamoto (SV24GV2B3T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mayumi Shimamoto (SV24GV2B3T)";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/parse-library";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TODO graph/TODO graph-Prefix.pch";
@@ -836,7 +836,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c7a079b-8fb1-4f88-be99-66c7ee59ebe5";
+				PROVISIONING_PROFILE = "f24d2dd9-198c-45c0-a842-4c3541b96a14";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7s armv7";
 				WRAPPER_EXTENSION = app;
@@ -847,8 +847,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mayumi Shimamoto (SV24GV2B3T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mayumi Shimamoto (SV24GV2B3T)";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/parse-library";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TODO graph/TODO graph-Prefix.pch";
@@ -860,7 +860,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c7a079b-8fb1-4f88-be99-66c7ee59ebe5";
+				PROVISIONING_PROFILE = "f24d2dd9-198c-45c0-a842-4c3541b96a14";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7s armv7";
 				WRAPPER_EXTENSION = app;
