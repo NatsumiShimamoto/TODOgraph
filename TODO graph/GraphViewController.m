@@ -64,7 +64,6 @@
         mainView = [self createView];//スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
         [self.view addSubview:mainView];
         [self.view bringSubviewToFront:_contentsView];
-        [self.view bringSubviewToFront:plusButton];
         
     }else{
         mainView = [self createView];//スタンプの描画呼び出し(ゴミがなくなったmainViewを新たに作り直す)
@@ -78,7 +77,6 @@
 
 
 -(void)changeStamp{
-    NSLog(@"changeStamp");
     
     ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
     array = [ud objectForKey:@"hoge"];
@@ -248,12 +246,23 @@
     [textView resignFirstResponder];
 }
 
--(void)contentsStampPushed:(UIButton *)sender{
+
+#pragma mark - スタンプの選択
+- (void)buttonPushed:(UIButton *)button
+{
+    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
+    stampVC.buttonTag = (int)button.tag;
+    checkNumber = stampVC.buttonTag;
     
-    [self performSegueWithIdentifier:@"toStamp" sender:nil];
+    if(_contentsView) {
+        [self changeContents:(UIButton *)button];
+    }else{
+        [self makeContentsView:(UIButton *)button];
+    }
     
-    NSLog(@"スタンプ画面遷移");
+    [self.view bringSubviewToFront:stampButton];
 }
+
 
 
 -(void)changeContents:(UIButton *)sender{
@@ -294,23 +303,6 @@
     //stamp画像を書き換える
     [contentsStamp setImage:sender.currentImage forState:UIControlStateNormal];
     [contentsStamp addTarget:self action:@selector(contentsStampPushed:) forControlEvents:UIControlEventTouchUpInside];
-}
-
-
-#pragma mark - スタンプの選択
-- (void)buttonPushed:(UIButton *)button
-{
-    StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
-    stampVC.buttonTag = (int)button.tag;
-    checkNumber = stampVC.buttonTag;
-    
-    if(_contentsView) {
-        [self changeContents:(UIButton *)button];
-    }else{
-        [self makeContentsView:(UIButton *)button];
-    }
-    
-    [self.view bringSubviewToFront:stampButton];
 }
 
 
@@ -405,6 +397,13 @@
 }
 
 
+//スタンプ画面遷移
+-(void)contentsStampPushed:(UIButton *)sender{
+    
+    [self performSegueWithIdentifier:@"toStamp" sender:nil];
+}
+
+
 -(void)closeButtonPushed{
     [self saveEdit];
     [self closeImageFadeOut];
@@ -414,6 +413,7 @@
 }
 
 
+#pragma mark - TextView
 - (BOOL)textView:(UITextView *)lenTextView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
@@ -913,6 +913,7 @@
     NSInteger iOsVersionMajor  = [[aOsVersions objectAtIndex:0] intValue];
     return (iOsVersionMajor <= 7);
 }
+
 
 #pragma mark - Segue
 
