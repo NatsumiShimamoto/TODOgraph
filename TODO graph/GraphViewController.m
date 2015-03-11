@@ -284,7 +284,7 @@
         [textView setFont:[UIFont fontWithName:@"azuki_font" size:25]];
         
     }else if(screenHeight == SCREEN_HEIGHT_5){
-        [textView setFont:[UIFont fontWithName:@"azuki_font" size:23]];
+        [textView setFont:[UIFont fontWithName:@"azuki_font" size:22]];
         
     }else if(screenHeight == SCREEN_HEIGHT_PAD){
         [textView setFont:[UIFont fontWithName:@"azuki_font" size:50]];
