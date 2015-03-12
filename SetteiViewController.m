@@ -126,7 +126,6 @@
 {
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
-    
     // 入力済みのテキストを取得
     NSMutableString *mText = [lenTextField.text mutableCopy];
     
@@ -135,8 +134,6 @@
     
     
     if(screenHeight == SCREEN_HEIGHT_4){
-        //iPhone4,4s,iPod Touch第4世代
-        
         int maxInputLength = 52;
         
         if ([mText length] > maxInputLength) {
@@ -153,8 +150,6 @@
             return NO;
         }
     }else if(screenHeight == SCREEN_HEIGHT_5){
-        //iPhone5,5s,iPhod Touch第5世代
-        
         int maxInputLength = 35;
         
         if ([mText length] > maxInputLength) {
@@ -172,7 +167,6 @@
             return NO;
         }
     }else if(screenHeight == SCREEN_HEIGHT_PAD){
-        
         int maxInputLength = 75;
         
         if ([mText length] > maxInputLength) {

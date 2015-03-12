@@ -36,8 +36,7 @@
     self.screenName = @"StampScreen";
 }
 
--(IBAction)stamp:(UIButton *)stamp
-{
+-(IBAction)stamp:(UIButton *)stamp{
     
     if(self.showedContentsView == YES){
         
@@ -63,7 +62,6 @@
         [ud setInteger:stamp.tag forKey:@"stamp"];
         [ud synchronize];
     }
-   
     /* -- 戻る --*/
     [self dismissViewControllerAnimated:YES completion:nil];
 }
