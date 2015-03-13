@@ -51,6 +51,7 @@
 		DD2BC32B1A78F1C800176691 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2BC3261A78F1C800176691 /* ParseFacebookUtils.framework */; };
 		DD2BC32C1A78F1C800176691 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2BC3271A78F1C800176691 /* ParseUI.framework */; };
 		DD2BC32D1A78F32B00176691 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2BC3241A78F1C800176691 /* Parse.framework */; };
+		DD3B8FB81AB30D480072CC3F /* TODO_4inchhhh.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3B8FB71AB30D480072CC3F /* TODO_4inchhhh.png */; };
 		DD4C7B5C187D49FE00A7FC53 /* azuki.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD4C7B5B187D49FE00A7FC53 /* azuki.ttf */; };
 		DD6A68A61A305F1700EE68E5 /* ContentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6A68A51A305F1700EE68E5 /* ContentsView.m */; };
 		DD6A68A81A3063BE00EE68E5 /* contentsView.png in Resources */ = {isa = PBXBuildFile; fileRef = DD6A68A71A3063BE00EE68E5 /* contentsView.png */; };
@@ -108,7 +109,6 @@
 		DDE8E6CB17AA042400B8AA4F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE8E6A617AA042400B8AA4F /* Foundation.framework */; };
 		DDE8E6D317AA042400B8AA4F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDE8E6D117AA042400B8AA4F /* InfoPlist.strings */; };
 		DDE8E6D617AA042400B8AA4F /* TODO_graphTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE8E6D517AA042400B8AA4F /* TODO_graphTests.m */; };
-		DDFFA0FE1A2C69220065B15C /* iconBack.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFFA0FD1A2C69220065B15C /* iconBack.png */; };
 		DDFFA1041A2DBD1B0065B15C /* setting_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFFA1031A2DBD1B0065B15C /* setting_iPad.png */; };
 /* End PBXBuildFile section */
 
@@ -173,6 +173,7 @@
 		DD2BC3251A78F1C800176691 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		DD2BC3261A78F1C800176691 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		DD2BC3271A78F1C800176691 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		DD3B8FB71AB30D480072CC3F /* TODO_4inchhhh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TODO_4inchhhh.png; sourceTree = "<group>"; };
 		DD4C7B5B187D49FE00A7FC53 /* azuki.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = azuki.ttf; sourceTree = "<group>"; };
 		DD6A68A41A305F1700EE68E5 /* ContentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentsView.h; sourceTree = "<group>"; };
 		DD6A68A51A305F1700EE68E5 /* ContentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentsView.m; sourceTree = "<group>"; };
@@ -238,7 +239,6 @@
 		DDE8E6D217AA042400B8AA4F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DDE8E6D417AA042400B8AA4F /* TODO_graphTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TODO_graphTests.h; sourceTree = "<group>"; };
 		DDE8E6D517AA042400B8AA4F /* TODO_graphTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TODO_graphTests.m; sourceTree = "<group>"; };
-		DDFFA0FD1A2C69220065B15C /* iconBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconBack.png; sourceTree = "<group>"; };
 		DDFFA1031A2DBD1B0065B15C /* setting_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_iPad.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -391,7 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				DDA9B1E01AB3037D0020D6AD /* stampView.png */,
-				DDFFA0FD1A2C69220065B15C /* iconBack.png */,
+				DD3B8FB71AB30D480072CC3F /* TODO_4inchhhh.png */,
 				DDA86CBB1A2B59150052D35F /* setting_3.5.png */,
 				DDFFA1031A2DBD1B0065B15C /* setting_iPad.png */,
 				DDA9B1DD1AB302FA0020D6AD /* setting.png */,
@@ -639,6 +639,7 @@
 				DDA86CAD1A2B4CE30052D35F /* backView.png in Resources */,
 				DDE8E6B917AA042400B8AA4F /* Default@2x.png in Resources */,
 				DDE8E6BB17AA042400B8AA4F /* Default-568h@2x.png in Resources */,
+				DD3B8FB81AB30D480072CC3F /* TODO_4inchhhh.png in Resources */,
 				DD04C68F1A1E1206005B27AD /* icon9.png in Resources */,
 				DDDC7ACB1A305C3E003592C3 /* closeView.png in Resources */,
 				DDFFA1041A2DBD1B0065B15C /* setting_iPad.png in Resources */,
@@ -655,7 +656,6 @@
 				DD04C6951A1F4DCB005B27AD /* icon6.png in Resources */,
 				DDA9B1DE1AB302FA0020D6AD /* graph.png in Resources */,
 				DDA86CC11A2B5EAF0052D35F /* backView_iPadsize.png in Resources */,
-				DDFFA0FE1A2C69220065B15C /* iconBack.png in Resources */,
 				DDA86CA41A2B48550052D35F /* icon10_todo.png in Resources */,
 				DD1FBE6A18B6056200C7AB12 /* todoicon_76.png in Resources */,
 				DDA86CA81A2B4AD00052D35F /* icon11_todo.png in Resources */,

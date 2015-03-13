@@ -13,10 +13,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting.png" id="eGw-aF-8Pv">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zue-T4-bGt">
                                 <rect key="frame" x="0.0" y="503" width="160" height="65"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -32,11 +28,11 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock.png" id="oXc-4o-FML">
-                                <rect key="frame" x="96" y="290" width="23" height="23"/>
+                                <rect key="frame" x="95" y="298" width="23" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exclamation.png" id="ER6-1X-6Xw">
-                                <rect key="frame" x="118" y="394" width="23" height="23"/>
+                                <rect key="frame" x="114" y="396" width="23" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YUF-2I-dDR">
@@ -54,7 +50,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="やることを入力してください" minimumFontSize="17" id="d1h-hC-bPN">
-                                <rect key="frame" x="51" y="240" width="223" height="30"/>
+                                <rect key="frame" x="51" y="249" width="223" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -63,7 +59,7 @@
                                 </connections>
                             </textField>
                             <segmentedControl opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Dgz-Vs-fdH">
-                                <rect key="frame" x="51" y="424" width="219" height="29"/>
+                                <rect key="frame" x="51" y="425" width="219" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <segments>
@@ -80,7 +76,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="K8q-aW-SOF">
-                                <rect key="frame" x="51" y="320" width="219" height="29"/>
+                                <rect key="frame" x="51" y="324" width="219" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <segments>
@@ -96,6 +92,10 @@
                                     <action selector="SegChanged:" destination="0ks-Po-3dM" eventType="valueChanged" id="SSZ-K3-1oY"/>
                                 </connections>
                             </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting.png" id="eGw-aF-8Pv">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -276,7 +276,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="graph.png" id="qx4-f7-d4G">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TODO_4inchhhh.png" id="qx4-f7-d4G">
                                 <rect key="frame" x="-1" y="20" width="321" height="548"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             </imageView>
@@ -294,11 +294,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TODO_4inchhhh.png" width="640" height="1136"/>
         <image name="backView.png" width="320" height="130"/>
         <image name="checkView.png" width="320" height="130"/>
         <image name="clock.png" width="57" height="57"/>
         <image name="exclamation.png" width="53" height="49"/>
-        <image name="graph.png" width="640" height="1136"/>
         <image name="icon1.png" width="1200" height="1200"/>
         <image name="icon10.png" width="1200" height="1200"/>
         <image name="icon11.png" width="1200" height="1200"/>
