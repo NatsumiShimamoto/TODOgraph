@@ -875,10 +875,10 @@
     
     if (![currentVersion isEqualToString:latestVersion]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"お知らせ"
-                                                        message:@"最新バージョンが入手可能です。アップデートしますか？"
+                                                        message:@"最新バージョンが入手可能です。AppStoreでアップデートしますか？"
                                                        delegate:self
                                               cancelButtonTitle:@"キャンセル"
-                                              otherButtonTitles:@"アップデート", nil];
+                                              otherButtonTitles:@"更新する", nil];
         [alert show];
     }
 }
