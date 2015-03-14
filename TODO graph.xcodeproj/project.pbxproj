@@ -52,6 +52,9 @@
 		DD2BC32C1A78F1C800176691 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2BC3271A78F1C800176691 /* ParseUI.framework */; };
 		DD2BC32D1A78F32B00176691 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2BC3241A78F1C800176691 /* Parse.framework */; };
 		DD3B8FB81AB30D480072CC3F /* TODO_4inchhhh.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3B8FB71AB30D480072CC3F /* TODO_4inchhhh.png */; };
+		DD3B8FBA1AB318520072CC3F /* TODO_4inchuuu.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3B8FB91AB318520072CC3F /* TODO_4inchuuu.png */; };
+		DD3B8FBE1AB44D2F0072CC3F /* graph_3.5inch.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3B8FBD1AB44D2F0072CC3F /* graph_3.5inch.png */; };
+		DD3B8FC01AB44D550072CC3F /* setting_3.5inch.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3B8FBF1AB44D550072CC3F /* setting_3.5inch.png */; };
 		DD4C7B5C187D49FE00A7FC53 /* azuki.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD4C7B5B187D49FE00A7FC53 /* azuki.ttf */; };
 		DD6A68A61A305F1700EE68E5 /* ContentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6A68A51A305F1700EE68E5 /* ContentsView.m */; };
 		DD6A68A81A3063BE00EE68E5 /* contentsView.png in Resources */ = {isa = PBXBuildFile; fileRef = DD6A68A71A3063BE00EE68E5 /* contentsView.png */; };
@@ -87,7 +90,6 @@
 		DDA86CA81A2B4AD00052D35F /* icon11_todo.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86CA71A2B4AD00052D35F /* icon11_todo.png */; };
 		DDA86CAA1A2B4B940052D35F /* icon12_todo.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86CA91A2B4B940052D35F /* icon12_todo.png */; };
 		DDA86CAD1A2B4CE30052D35F /* backView.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86CAB1A2B4CE30052D35F /* backView.png */; };
-		DDA86CBC1A2B59150052D35F /* setting_3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86CBB1A2B59150052D35F /* setting_3.5.png */; };
 		DDA86CC11A2B5EAF0052D35F /* backView_iPadsize.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86CBF1A2B5EAF0052D35F /* backView_iPadsize.png */; };
 		DDA9B1DE1AB302FA0020D6AD /* graph.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA9B1DC1AB302FA0020D6AD /* graph.png */; };
 		DDA9B1DF1AB302FA0020D6AD /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA9B1DD1AB302FA0020D6AD /* setting.png */; };
@@ -174,6 +176,9 @@
 		DD2BC3261A78F1C800176691 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		DD2BC3271A78F1C800176691 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		DD3B8FB71AB30D480072CC3F /* TODO_4inchhhh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TODO_4inchhhh.png; sourceTree = "<group>"; };
+		DD3B8FB91AB318520072CC3F /* TODO_4inchuuu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TODO_4inchuuu.png; sourceTree = "<group>"; };
+		DD3B8FBD1AB44D2F0072CC3F /* graph_3.5inch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graph_3.5inch.png; sourceTree = "<group>"; };
+		DD3B8FBF1AB44D550072CC3F /* setting_3.5inch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_3.5inch.png; sourceTree = "<group>"; };
 		DD4C7B5B187D49FE00A7FC53 /* azuki.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = azuki.ttf; sourceTree = "<group>"; };
 		DD6A68A41A305F1700EE68E5 /* ContentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentsView.h; sourceTree = "<group>"; };
 		DD6A68A51A305F1700EE68E5 /* ContentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentsView.m; sourceTree = "<group>"; };
@@ -212,7 +217,6 @@
 		DDA86CA71A2B4AD00052D35F /* icon11_todo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon11_todo.png; sourceTree = "<group>"; };
 		DDA86CA91A2B4B940052D35F /* icon12_todo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon12_todo.png; sourceTree = "<group>"; };
 		DDA86CAB1A2B4CE30052D35F /* backView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backView.png; sourceTree = "<group>"; };
-		DDA86CBB1A2B59150052D35F /* setting_3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_3.5.png; sourceTree = "<group>"; };
 		DDA86CBF1A2B5EAF0052D35F /* backView_iPadsize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backView_iPadsize.png; sourceTree = "<group>"; };
 		DDA9B1DC1AB302FA0020D6AD /* graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graph.png; sourceTree = "<group>"; };
 		DDA9B1DD1AB302FA0020D6AD /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
@@ -391,9 +395,11 @@
 			isa = PBXGroup;
 			children = (
 				DDA9B1E01AB3037D0020D6AD /* stampView.png */,
+				DD3B8FB91AB318520072CC3F /* TODO_4inchuuu.png */,
 				DD3B8FB71AB30D480072CC3F /* TODO_4inchhhh.png */,
-				DDA86CBB1A2B59150052D35F /* setting_3.5.png */,
+				DD3B8FBD1AB44D2F0072CC3F /* graph_3.5inch.png */,
 				DDFFA1031A2DBD1B0065B15C /* setting_iPad.png */,
+				DD3B8FBF1AB44D550072CC3F /* setting_3.5inch.png */,
 				DDA9B1DD1AB302FA0020D6AD /* setting.png */,
 				DDA9B1DC1AB302FA0020D6AD /* graph.png */,
 				DDA86C551A2AD6490052D35F /* todo01_3.5.png */,
@@ -629,6 +635,7 @@
 				DDA86C561A2AD6490052D35F /* todo01_3.5.png in Resources */,
 				DDA86C941A2B32900052D35F /* icon6_todo.png in Resources */,
 				DDA86C3E1A232D270052D35F /* Images.xcassets in Resources */,
+				DD3B8FBE1AB44D2F0072CC3F /* graph_3.5inch.png in Resources */,
 				DD1FBE6F18B6056200C7AB12 /* todoicon_120.png in Resources */,
 				DDE8E6B717AA042400B8AA4F /* Default.png in Resources */,
 				DDA86C6A1A2AE3620052D35F /* todoSplash_960.640.png in Resources */,
@@ -661,7 +668,6 @@
 				DDA86CA81A2B4AD00052D35F /* icon11_todo.png in Resources */,
 				DD1FBE6B18B6056200C7AB12 /* todoicon_80.png in Resources */,
 				DD1A03AE1A31B08200C89E1A /* checkView_iPad.png in Resources */,
-				DDA86CBC1A2B59150052D35F /* setting_3.5.png in Resources */,
 				DD04C67D1A1B62A9005B27AD /* icon4.png in Resources */,
 				DD4C7B5C187D49FE00A7FC53 /* azuki.ttf in Resources */,
 				DD1FBE7018B6056200C7AB12 /* todoicon_144.png in Resources */,
@@ -675,11 +681,13 @@
 				DDA9B1E11AB3037D0020D6AD /* stampView.png in Resources */,
 				DDA86C6E1A2AE41B0052D35F /* todoSplash_2048.1536.png in Resources */,
 				DDA86C4E1A2605A70052D35F /* icon12.png in Resources */,
+				DD3B8FC01AB44D550072CC3F /* setting_3.5inch.png in Resources */,
 				DD04C67B1A1B62A9005B27AD /* icon2.png in Resources */,
 				DDA86C601A2ADE7A0052D35F /* trashView_iPad.png in Resources */,
 				DDA86C731A2AE7630052D35F /* plusView_iPhone.png in Resources */,
 				DDA86C741A2AE7630052D35F /* trashView_iPhone.png in Resources */,
 				DD04C67E1A1B62A9005B27AD /* icon5.png in Resources */,
+				DD3B8FBA1AB318520072CC3F /* TODO_4inchuuu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

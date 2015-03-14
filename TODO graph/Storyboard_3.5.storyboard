@@ -13,7 +13,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setting_3.5.png" id="4gc-yZ-q5k">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setting_3.5inch.png" id="4gc-yZ-q5k">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -292,7 +292,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="todo01_3.5.png" id="Pat-xZ-mWt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="graph_3.5inch.png" id="Pat-xZ-mWt">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="484"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -324,6 +324,7 @@
         <image name="checkView.png" width="320" height="130"/>
         <image name="clock.png" width="57" height="57"/>
         <image name="exclamation.png" width="53" height="49"/>
+        <image name="graph_3.5inch.png" width="640" height="960"/>
         <image name="icon1.png" width="1200" height="1200"/>
         <image name="icon10.png" width="1200" height="1200"/>
         <image name="icon11.png" width="1200" height="1200"/>
@@ -337,9 +338,8 @@
         <image name="icon8.png" width="1200" height="1200"/>
         <image name="icon9.png" width="1200" height="1200"/>
         <image name="iconTodo.png" width="613" height="157"/>
-        <image name="setting_3.5.png" width="640" height="960"/>
+        <image name="setting_3.5inch.png" width="640" height="960"/>
         <image name="stampView.png" width="640" height="1136"/>
-        <image name="todo01_3.5.png" width="640" height="960"/>
         <image name="プラス.png" width="105" height="89"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
