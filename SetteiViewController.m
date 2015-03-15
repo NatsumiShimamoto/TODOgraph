@@ -91,7 +91,7 @@
         iconButton.frame = CGRectMake(132, 105, 55, 55);
         
     }else if(screenHeight == SCREEN_HEIGHT_5){
-        iconButton.frame = CGRectMake(127, 130, 70, 70);
+        iconButton.frame = CGRectMake(127, 145, 70, 70);
         
     }else if(screenHeight == SCREEN_HEIGHT_PAD){
         iconButton.frame = CGRectMake(318, 218, 120, 120);

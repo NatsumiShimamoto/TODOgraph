@@ -82,7 +82,7 @@
     array = [ud objectForKey:@"hoge"];
     
     stampDic = array[checkNumber];
-
+    
     stampImgNum = [stampDic objectForKey:@"stamp"];
     int number = [stampImgNum intValue] + 1;
     
@@ -266,7 +266,7 @@
 
 
 -(void)changeContents:(UIButton *)sender{
-
+    
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     ud = [NSUserDefaults standardUserDefaults];
@@ -308,13 +308,13 @@
 
 #pragma mark - ContentsView作成
 -(void)makeContentsView:(UIButton *)sender{
-  
+    
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     ud = [NSUserDefaults standardUserDefaults];
     array = [ud objectForKey:@"hoge"];
     NSDictionary *dic = array[sender.tag];
-  
+    
     NSDictionary *resaveDic = array[sender.tag];
     NSMutableDictionary *resaveMDic = [resaveDic mutableCopy];
     
@@ -500,7 +500,7 @@
     NSMutableArray *resaveMArray = [array mutableCopy];
     
     if(textView.text) [resaveMDic setObject:textView.text forKey:@"contents"];
-
+    
     resaveMArray[checkNumber] = resaveMDic;
     
     [ud setObject:resaveMArray forKey:@"hoge"];
@@ -879,9 +879,11 @@
                                                        delegate:self
                                               cancelButtonTitle:@"キャンセル"
                                               otherButtonTitles:@"更新する", nil];
-        [alert show];
+    
+    [alert show];
     }
 }
+
 
 
 
