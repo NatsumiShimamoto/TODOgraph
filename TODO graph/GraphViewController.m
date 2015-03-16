@@ -138,12 +138,14 @@
         int number = [stampImgNum intValue] + 1;
         imageName = [NSString stringWithFormat: @"icon%d.png", number];
         [stampButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+       
         
         //stampButtonが押されたらbuttonPushedが呼び出される
         [stampButton addTarget:self action:@selector(buttonPushed:) forControlEvents:UIControlEventTouchUpInside];
         
         
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)]; //ドラッグを検知してpanActionを呼び出す
+       
         [stampButton addGestureRecognizer:pan]; //stampViewにpanを設定する
         int h;
         int w;
@@ -534,6 +536,14 @@
 }
 
 
+// ドラッグ中の座標を取得
+-(void)touchesMoved:(NSSet*)touches withEvent:(UIEvent *)event {
+    CGPoint locationPoint = [[touches anyObject] locationInView:stampButton];
+    NSLog(@"touchesMoved = %lf,%lf\n", locationPoint.x, locationPoint.y);
+}
+
+
+
 //指を離した時
 -(void)dragEnded:(UIPanGestureRecognizer *)sender{
     
@@ -875,12 +885,12 @@
     
     if (![currentVersion isEqualToString:latestVersion]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"お知らせ"
-                                                        message:@"最新バージョンが入手可能です。AppStoreでアップデートしますか？"
+                                                        message:@"新しいバージョンがあります。AppStoreでアップデートします。"
                                                        delegate:self
-                                              cancelButtonTitle:@"キャンセル"
+                                              cancelButtonTitle:nil
                                               otherButtonTitles:@"更新する", nil];
-    
-    [alert show];
+        
+        [alert show];
     }
 }
 
@@ -889,23 +899,22 @@
 
 /* --- AlertViewで"アップデート"を選択した際の処理(AppStoreに遷移) --- */
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        
-        NSString* urlString;
-        
-        //iOSのバージョンでAppStoreに遷移するURLスキームの変更
-        if( [self isIOS7]){
-            //iOS7以上
-            urlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%d",APP_ID
-                         ];
-        }else{
-            urlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%d&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software",APP_ID
-                         ];
-        }
-        NSURL* url= [NSURL URLWithString:urlString];
-        [[UIApplication sharedApplication] openURL:url];
+    
+    NSString* urlString;
+    
+    //iOSのバージョンでAppStoreに遷移するURLスキームの変更
+    if( [self isIOS7]){
+        //iOS7以上
+        urlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%d",APP_ID
+                     ];
+    }else{
+        urlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%d&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software",APP_ID
+                     ];
     }
+    NSURL* url= [NSURL URLWithString:urlString];
+    [[UIApplication sharedApplication] openURL:url];
 }
+
 
 
 /* --- 実行中の環境がiOS7以上かどうかを判定する --- */
