@@ -524,7 +524,40 @@
     
     [self escape:(UIPanGestureRecognizer *)sender];
     
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        CGPoint p = [sender translationInView:sender.view];
+        NSLog(@"p = %f,%f",p.x,p.y);
+    }
     
+    if (sender.state == UIGestureRecognizerStateChanged) {
+        CGPoint p = [sender translationInView:sender.view];
+        
+        if (p.y+sender.view.center.y >= screenHeight - trashView.frame.size.height){
+            
+            [UIView animateWithDuration:0.4f
+                                  delay:0.1f
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 // アニメーションをする処理
+                                 
+                                 if(screenHeight == SCREEN_HEIGHT_4){
+                                     trashView.transform = CGAffineTransformMakeTranslation(0, -60);
+                                     
+                                 }else if(screenHeight == SCREEN_HEIGHT_5){
+                                     trashView.transform = CGAffineTransformMakeScale(2.0, 2.0);
+                                     
+                                     
+                                 }else if(screenHeight == SCREEN_HEIGHT_PAD){
+                                     trashView.transform = CGAffineTransformMakeTranslation(0, -130);
+                                 }
+                             }
+                             completion:^(BOOL finished){
+                                 // アニメーションが終わった後実行する処理
+                                
+                             }];
+
+        }
+    }
     //指を離した時
     if(sender.state == UIGestureRecognizerStateEnded){
         [self dragEnded:(UIPanGestureRecognizer *)sender];
@@ -533,13 +566,6 @@
     // ドラッグで移動した距離を初期化する
     [sender setTranslation:CGPointZero inView:self.view];
     [self.view bringSubviewToFront:stampButton];
-}
-
-
-// ドラッグ中の座標を取得
--(void)touchesMoved:(NSSet*)touches withEvent:(UIEvent *)event {
-    CGPoint locationPoint = [[touches anyObject] locationInView:stampButton];
-    NSLog(@"touchesMoved = %lf,%lf\n", locationPoint.x, locationPoint.y);
 }
 
 
