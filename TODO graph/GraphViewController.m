@@ -886,6 +886,7 @@
 
 #pragma mark - 強制アップデート
 /* --- バージョン判定(ユーザのバージョンが前のバージョンの場合はアラートを表示) --- */
+/*
 - (void)checkVersionNotification:(NSNotification *)notification{
     NSString *url = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%d",APP_ID
                      ];
@@ -921,10 +922,10 @@
 }
 
 
-
+*/
 
 /* --- AlertViewで"アップデート"を選択した際の処理(AppStoreに遷移) --- */
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+/*- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     NSString* urlString;
     
@@ -940,17 +941,17 @@
     NSURL* url= [NSURL URLWithString:urlString];
     [[UIApplication sharedApplication] openURL:url];
 }
-
+*/
 
 
 /* --- 実行中の環境がiOS7以上かどうかを判定する --- */
-- (BOOL)isIOS7
+/*- (BOOL)isIOS7
 {
     NSArray  *aOsVersions = [[[UIDevice currentDevice]systemVersion] componentsSeparatedByString:@"."];
     NSInteger iOsVersionMajor  = [[aOsVersions objectAtIndex:0] intValue];
     return (iOsVersionMajor <= 7);
 }
-
+*/
 
 #pragma mark - Segue
 
