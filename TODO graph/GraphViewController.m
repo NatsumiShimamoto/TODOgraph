@@ -883,6 +883,18 @@
 }
 
 
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    StampViewController *stampVC = segue.destinationViewController;
+    stampVC.buttonTag = checkNumber;
+    NSLog(@"prepare == %d", stampVC.buttonTag);
+    
+    stampVC.showedContentsView = YES;
+}
+
+
 
 #pragma mark - 強制アップデート
 /* --- バージョン判定(ユーザのバージョンが前のバージョンの場合はアラートを表示) --- */
@@ -952,17 +964,5 @@
     return (iOsVersionMajor <= 7);
 }
 */
-
-#pragma mark - Segue
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    StampViewController *stampVC = segue.destinationViewController;
-    stampVC.buttonTag = checkNumber;
-    NSLog(@"prepare == %d", stampVC.buttonTag);
-    
-    stampVC.showedContentsView = YES;
-}
-
 
 @end
