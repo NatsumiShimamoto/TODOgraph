@@ -103,6 +103,8 @@
 }
 
 
+#pragma mark - 設定
+
 -(void)buttonPushed{
     StampViewController *stampVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stamp"];
     
