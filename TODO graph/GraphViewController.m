@@ -54,7 +54,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    ud = [NSUserDefaults standardUserDefaults];  //UserDefaultsのデータ領域の一部をudとおく
+    ud = [NSUserDefaults standardUserDefaults];
     [mainView removeFromSuperview];
     
     

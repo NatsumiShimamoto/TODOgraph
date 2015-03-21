@@ -63,7 +63,7 @@
     [super viewWillAppear:animated];
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
-    NSUserDefaults *stampUD = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
+    NSUserDefaults *stampUD = [NSUserDefaults standardUserDefaults];
     
     stampArrString = [stampUD objectForKey:@"stamp"]; //@"stamp"のkeyにはアイコンのタグが入ってる(0から)
     stampArrNum = [stampArrString intValue];

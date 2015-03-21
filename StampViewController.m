@@ -57,7 +57,7 @@
         self.showedContentsView = YES;
         
     }else{
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults]; //UserDefaultsのデータ領域の一部をudとおく
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         
         [ud setInteger:stamp.tag forKey:@"stamp"];
         [ud synchronize];
