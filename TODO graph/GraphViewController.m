@@ -6,6 +6,9 @@
 //  Copyright (c) 2013年 嶋本夏海. All rights reserved.
 //
 
+
+//trashViewを丸くする！かも！
+
 #import "GraphViewController.h"
 #import "SetteiViewController.h"
 #import "StampViewController.h"
