@@ -184,7 +184,7 @@
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qaF-ID-70y">
                                 <rect key="frame" x="27" y="362" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="icon7.png">
+                                <state key="normal" image="icontest.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -308,10 +308,10 @@
         <image name="icon4.png" width="1200" height="1200"/>
         <image name="icon5.png" width="1200" height="1200"/>
         <image name="icon6.png" width="1200" height="1200"/>
-        <image name="icon7.png" width="1200" height="1200"/>
         <image name="icon8.png" width="1200" height="1200"/>
         <image name="icon9.png" width="1200" height="1200"/>
         <image name="iconTodo.png" width="613" height="157"/>
+        <image name="icontest.png" width="1200" height="1200"/>
         <image name="setting.png" width="640" height="1136"/>
         <image name="stampView.png" width="640" height="1136"/>
     </resources>
