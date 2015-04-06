@@ -548,7 +548,7 @@
                                      
                                  }else if(screenHeight == SCREEN_HEIGHT_5){
                                      trashView.transform = CGAffineTransformMakeScale(2.0, 2.0);
-                                     
+#error 100%これじゃない感
                                      
                                  }else if(screenHeight == SCREEN_HEIGHT_PAD){
                                      trashView.transform = CGAffineTransformMakeTranslation(0, -130);
