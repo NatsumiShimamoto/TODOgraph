@@ -111,6 +111,7 @@
 		DDE8E6CB17AA042400B8AA4F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE8E6A617AA042400B8AA4F /* Foundation.framework */; };
 		DDE8E6D317AA042400B8AA4F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDE8E6D117AA042400B8AA4F /* InfoPlist.strings */; };
 		DDE8E6D617AA042400B8AA4F /* TODO_graphTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE8E6D517AA042400B8AA4F /* TODO_graphTests.m */; };
+		DDFDC12D1AD403A100F5D9FC /* set.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFDC12C1AD403A100F5D9FC /* set.png */; };
 		DDFFA1041A2DBD1B0065B15C /* setting_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFFA1031A2DBD1B0065B15C /* setting_iPad.png */; };
 /* End PBXBuildFile section */
 
@@ -243,6 +244,7 @@
 		DDE8E6D217AA042400B8AA4F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DDE8E6D417AA042400B8AA4F /* TODO_graphTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TODO_graphTests.h; sourceTree = "<group>"; };
 		DDE8E6D517AA042400B8AA4F /* TODO_graphTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TODO_graphTests.m; sourceTree = "<group>"; };
+		DDFDC12C1AD403A100F5D9FC /* set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = set.png; sourceTree = "<group>"; };
 		DDFFA1031A2DBD1B0065B15C /* setting_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_iPad.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -395,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				DDA9B1E01AB3037D0020D6AD /* stampView.png */,
+				DDFDC12C1AD403A100F5D9FC /* set.png */,
 				DD3B8FB91AB318520072CC3F /* TODO_4inchuuu.png */,
 				DD3B8FB71AB30D480072CC3F /* TODO_4inchhhh.png */,
 				DD3B8FBD1AB44D2F0072CC3F /* graph_3.5inch.png */,
@@ -647,6 +650,7 @@
 				DD3B8FB81AB30D480072CC3F /* TODO_4inchhhh.png in Resources */,
 				DDDC7ACB1A305C3E003592C3 /* closeView.png in Resources */,
 				DDFFA1041A2DBD1B0065B15C /* setting_iPad.png in Resources */,
+				DDFDC12D1AD403A100F5D9FC /* set.png in Resources */,
 				DDA86C901A2B30220052D35F /* icon5_todo.png in Resources */,
 				DDA86C861A2B0D570052D35F /* icon3_todo.png in Resources */,
 				DDA86C4D1A2605A70052D35F /* icon11.png in Resources */,
