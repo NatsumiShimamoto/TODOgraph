@@ -16,7 +16,7 @@
 #define APP_ID 824743666
 
 #define SCREEN_HEIGHT_4     460 //iPhone4,4s,iPod Touch第4世代
-#define SCREEN_HEIGHT_5     568 //iPhone5,5s,iPhod Touch第5世代
+#define SCREEN_HEIGHT_5     568 //iPhone5,5s,iPod Touch第5世代
 #define SCREEN_HEIGHT_PAD   1024 //iPad
 
 #define STAMP_WIDTH_PHONE   50
@@ -27,9 +27,7 @@
 
 
 @implementation GraphViewController
-{
-    int checkNumber;
-}
+
 
 #pragma mark - ViewDidLoad
 - (void)viewDidLoad
@@ -526,41 +524,8 @@
     NSLog(@"%d番目のスタンプが動かされたよ",(int)sender.view.tag);
     
     [self escape:(UIPanGestureRecognizer *)sender];
+   
     
-    if (sender.state == UIGestureRecognizerStateBegan) {
-        CGPoint p = [sender translationInView:sender.view];
-        NSLog(@"p = %f,%f",p.x,p.y);
-    }
-    
-    if (sender.state == UIGestureRecognizerStateChanged) {
-        CGPoint p = [sender translationInView:sender.view];
-        
-        if (p.y+sender.view.center.y >= screenHeight - trashView.frame.size.height){
-            
-            [UIView animateWithDuration:0.4f
-                                  delay:0.1f
-                                options:UIViewAnimationOptionCurveEaseInOut
-                             animations:^{
-                                 // アニメーションをする処理
-                                 
-                                 if(screenHeight == SCREEN_HEIGHT_4){
-                                     trashView.transform = CGAffineTransformMakeTranslation(0, -60);
-                                     
-                                 }else if(screenHeight == SCREEN_HEIGHT_5){
-                                     trashView.transform = CGAffineTransformMakeScale(2.0, 2.0);
-#error 100%これじゃない感
-                                     
-                                 }else if(screenHeight == SCREEN_HEIGHT_PAD){
-                                     trashView.transform = CGAffineTransformMakeTranslation(0, -130);
-                                 }
-                             }
-                             completion:^(BOOL finished){
-                                 // アニメーションが終わった後実行する処理
-                                
-                             }];
-
-        }
-    }
     //指を離した時
     if(sender.state == UIGestureRecognizerStateEnded){
         [self dragEnded:(UIPanGestureRecognizer *)sender];

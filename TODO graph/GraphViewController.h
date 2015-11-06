@@ -23,6 +23,7 @@
     int i;
     int kigenNum;
     int juyouNum;
+    int checkNumber;
     
     UIButton *stampButton;
     UITextView *textView;
