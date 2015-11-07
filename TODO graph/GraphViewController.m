@@ -13,6 +13,8 @@
 #import "SetteiViewController.h"
 #import "StampViewController.h"
 
+
+
 #define APP_ID 824743666
 
 #define SCREEN_HEIGHT_4     460 //iPhone4,4s,iPod Touch第4世代
@@ -139,14 +141,14 @@
         int number = [stampImgNum intValue] + 1;
         imageName = [NSString stringWithFormat: @"icon%d.png", number];
         [stampButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-       
+        
         
         //stampButtonが押されたらbuttonPushedが呼び出される
         [stampButton addTarget:self action:@selector(buttonPushed:) forControlEvents:UIControlEventTouchUpInside];
         
         
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)]; //ドラッグを検知してpanActionを呼び出す
-       
+        
         [stampButton addGestureRecognizer:pan]; //stampViewにpanを設定する
         int h;
         int w;
@@ -524,7 +526,7 @@
     NSLog(@"%d番目のスタンプが動かされたよ",(int)sender.view.tag);
     
     [self escape:(UIPanGestureRecognizer *)sender];
-   
+    
     
     //指を離した時
     if(sender.state == UIGestureRecognizerStateEnded){
@@ -776,6 +778,15 @@
     
     [_contentsView removeFromSuperview];
     _contentsView = nil;
+    
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"プラスを押した"
+                                                          action:@"プラスボタンが押されました。"
+                                                           label:@"plus"
+                                                           value:nil]
+                   build]];
+    
 }
 
 
@@ -866,70 +877,70 @@
 #pragma mark - 強制アップデート
 /* --- バージョン判定(ユーザのバージョンが前のバージョンの場合はアラートを表示) --- */
 /*
-- (void)checkVersionNotification:(NSNotification *)notification{
-    NSString *url = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%d",APP_ID
-                     ];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]
-                                             cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                         timeoutInterval:60.0];
-    
-    NSURLResponse *response;
-    NSError *error;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request
-                                         returningResponse:&response
-                                                     error:&error];
-    
-    NSDictionary *dataDic  = [NSJSONSerialization JSONObjectWithData:data
-                                                             options:NSJSONReadingAllowFragments
-                                                               error:&error];
-    
-    
-    NSDictionary *results = [[dataDic objectForKey:@"results"] objectAtIndex:0];
-    NSString *latestVersion = [results objectForKey:@"version"];
-    NSString *currentVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-    
-    if (![currentVersion isEqualToString:latestVersion]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"お知らせ"
-                                                        message:@"新しいバージョンがあります。AppStoreでアップデートします。"
-                                                       delegate:self
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:@"更新する", nil];
-        
-        [alert show];
-    }
-}
-
-
-*/
+ - (void)checkVersionNotification:(NSNotification *)notification{
+ NSString *url = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%d",APP_ID
+ ];
+ 
+ NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]
+ cachePolicy:NSURLRequestUseProtocolCachePolicy
+ timeoutInterval:60.0];
+ 
+ NSURLResponse *response;
+ NSError *error;
+ NSData *data = [NSURLConnection sendSynchronousRequest:request
+ returningResponse:&response
+ error:&error];
+ 
+ NSDictionary *dataDic  = [NSJSONSerialization JSONObjectWithData:data
+ options:NSJSONReadingAllowFragments
+ error:&error];
+ 
+ 
+ NSDictionary *results = [[dataDic objectForKey:@"results"] objectAtIndex:0];
+ NSString *latestVersion = [results objectForKey:@"version"];
+ NSString *currentVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+ 
+ if (![currentVersion isEqualToString:latestVersion]) {
+ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"お知らせ"
+ message:@"新しいバージョンがあります。AppStoreでアップデートします。"
+ delegate:self
+ cancelButtonTitle:nil
+ otherButtonTitles:@"更新する", nil];
+ 
+ [alert show];
+ }
+ }
+ 
+ 
+ */
 
 /* --- AlertViewで"アップデート"を選択した際の処理(AppStoreに遷移) --- */
 /*- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    NSString* urlString;
-    
-    //iOSのバージョンでAppStoreに遷移するURLスキームの変更
-    if( [self isIOS7]){
-        //iOS7以上
-        urlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%d",APP_ID
-                     ];
-    }else{
-        urlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%d&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software",APP_ID
-                     ];
-    }
-    NSURL* url= [NSURL URLWithString:urlString];
-    [[UIApplication sharedApplication] openURL:url];
-}
-*/
+ 
+ NSString* urlString;
+ 
+ //iOSのバージョンでAppStoreに遷移するURLスキームの変更
+ if( [self isIOS7]){
+ //iOS7以上
+ urlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%d",APP_ID
+ ];
+ }else{
+ urlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%d&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software",APP_ID
+ ];
+ }
+ NSURL* url= [NSURL URLWithString:urlString];
+ [[UIApplication sharedApplication] openURL:url];
+ }
+ */
 
 
 /* --- 実行中の環境がiOS7以上かどうかを判定する --- */
 /*- (BOOL)isIOS7
-{
-    NSArray  *aOsVersions = [[[UIDevice currentDevice]systemVersion] componentsSeparatedByString:@"."];
-    NSInteger iOsVersionMajor  = [[aOsVersions objectAtIndex:0] intValue];
-    return (iOsVersionMajor <= 7);
-}
-*/
+ {
+ NSArray  *aOsVersions = [[[UIDevice currentDevice]systemVersion] componentsSeparatedByString:@"."];
+ NSInteger iOsVersionMajor  = [[aOsVersions objectAtIndex:0] intValue];
+ return (iOsVersionMajor <= 7);
+ }
+ */
 
 @end

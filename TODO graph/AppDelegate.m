@@ -14,6 +14,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+   
     /* --- Parse --- */
     
     [Parse setApplicationId:@"D2zSnWaRftB00rjUsilBqznEgETBOIU7pHAJTAct"
@@ -37,6 +38,9 @@
         
         NSLog(@"Push");
         
+        
+        
+        
     } else {
         
         // iOS 7 以前の処理
@@ -51,26 +55,25 @@
     }
     
     /* --- Google Analytics --- */
+   
+    // 例外を自動的にGoogle Analyticsに送る
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
     
-     // Optional: automatically send uncaught exceptions to Google Analytics.
-     [GAI sharedInstance].trackUncaughtExceptions = YES;
-     
-     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-     [GAI sharedInstance].dispatchInterval = 20;
-     
-     // Optional: set Logger to VERBOSE for debug information.
-     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-
-     // Initialize tracker. Replace with your tracking ID.
-     [[GAI sharedInstance] trackerWithTrackingId:@"UA-59766853-1"];
+    // トラッキング間隔　20秒
+    [GAI sharedInstance].dispatchInterval = 20;
     
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-59766853-1"];
+    
+    // トラッカーのインスタンス作成
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     
-    //NSLog(@"tracker == %@", tracker);
-    
-    // Override point for customization after application launch.
+    NSLog(@"tracker == %@", tracker);
     
     return YES;
+   
 }
 
 
@@ -97,7 +100,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 

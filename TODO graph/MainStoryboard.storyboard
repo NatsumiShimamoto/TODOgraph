@@ -181,16 +181,6 @@
                                     <action selector="stamp:" destination="kXg-2u-tm9" eventType="touchUpInside" id="scX-TX-67J"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qaF-ID-70y">
-                                <rect key="frame" x="27" y="362" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="icontest.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="stamp:" destination="kXg-2u-tm9" eventType="touchUpInside" id="Xp7-5b-9X6"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qwq-mY-05v">
                                 <rect key="frame" x="125" y="362" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -259,6 +249,16 @@
                                 <rect key="frame" x="12" y="53" width="297" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qaF-ID-70y">
+                                <rect key="frame" x="27" y="362" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icon7.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stamp:" destination="kXg-2u-tm9" eventType="touchUpInside" id="Xp7-5b-9X6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -308,10 +308,10 @@
         <image name="icon4.png" width="1200" height="1200"/>
         <image name="icon5.png" width="1200" height="1200"/>
         <image name="icon6.png" width="1200" height="1200"/>
+        <image name="icon7.png" width="1200" height="1200"/>
         <image name="icon8.png" width="1200" height="1200"/>
         <image name="icon9.png" width="1200" height="1200"/>
         <image name="iconTodo.png" width="613" height="157"/>
-        <image name="icontest.png" width="1200" height="1200"/>
         <image name="set.png" width="640" height="1136"/>
         <image name="stampView.png" width="640" height="1136"/>
     </resources>

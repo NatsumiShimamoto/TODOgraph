@@ -11,6 +11,8 @@
 #import "SetteiViewController.h"//設定画面に、選んだスタンプのアイコン画像を送る
 #import "ContentsView.h"
 #import "GAITrackedViewController.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface GraphViewController :  GAITrackedViewController<UITextViewDelegate>{
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9BA9E02A64A2010E5775A252 /* libPods-TODO graph.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B172E038DEDBAC46671ACAB9 /* libPods-TODO graph.a */; };
 		DD04C67B1A1B62A9005B27AD /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = DD04C6751A1B62A9005B27AD /* icon2.png */; };
 		DD04C67C1A1B62A9005B27AD /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = DD04C6761A1B62A9005B27AD /* icon3.png */; };
 		DD04C67D1A1B62A9005B27AD /* icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = DD04C6771A1B62A9005B27AD /* icon4.png */; };
@@ -14,17 +15,9 @@
 		DD04C6951A1F4DCB005B27AD /* icon6.png in Resources */ = {isa = PBXBuildFile; fileRef = DD04C6941A1F4DCB005B27AD /* icon6.png */; };
 		DD050B621802E9AB00AF0FCE /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD050B611802E9AB00AF0FCE /* GraphViewController.m */; };
 		DD174CA21A78DEA2004695E0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CA11A78DEA2004695E0 /* AudioToolbox.framework */; };
-		DD174CA41A78DEAA004695E0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CA31A78DEAA004695E0 /* CFNetwork.framework */; };
-		DD174CA61A78DEB9004695E0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CA51A78DEB9004695E0 /* CoreLocation.framework */; };
-		DD174CA81A78DEC3004695E0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CA71A78DEC3004695E0 /* MobileCoreServices.framework */; };
 		DD174CAA1A78DED3004695E0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CA91A78DED3004695E0 /* QuartzCore.framework */; };
-		DD174CAC1A78DEDE004695E0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CAB1A78DEDE004695E0 /* Security.framework */; };
-		DD174CB01A78DEF4004695E0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CAF1A78DEF4004695E0 /* SystemConfiguration.framework */; };
-		DD174CB21A78DF03004695E0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CB11A78DF03004695E0 /* libz.dylib */; };
-		DD174CB41A78DF0F004695E0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD174CB31A78DF0F004695E0 /* libsqlite3.dylib */; };
 		DD1A03AE1A31B08200C89E1A /* checkView_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DD1A03AC1A31B08200C89E1A /* checkView_iPad.png */; };
 		DD1A03AF1A31B08200C89E1A /* checkView.png in Resources */ = {isa = PBXBuildFile; fileRef = DD1A03AD1A31B08200C89E1A /* checkView.png */; };
-		DD1AFF651A90A7F8001276B5 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1AFF641A90A7F8001276B5 /* libGoogleAnalyticsServices.a */; };
 		DD1FBE6118B6056200C7AB12 /* todoicon_29.png in Resources */ = {isa = PBXBuildFile; fileRef = DD1FBE4F18B6056200C7AB12 /* todoicon_29.png */; };
 		DD1FBE6318B6056200C7AB12 /* todoicon_40.png in Resources */ = {isa = PBXBuildFile; fileRef = DD1FBE5118B6056200C7AB12 /* todoicon_40.png */; };
 		DD1FBE6418B6056200C7AB12 /* todoicon_50.png in Resources */ = {isa = PBXBuildFile; fileRef = DD1FBE5218B6056200C7AB12 /* todoicon_50.png */; };
@@ -41,11 +34,6 @@
 		DD1FBE7518B607C000C7AB12 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE8E6A817AA042400B8AA4F /* CoreGraphics.framework */; };
 		DD28FD551A94ABF70076079E /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = DD28FD531A94ABF70076079E /* clock.png */; };
 		DD28FD561A94ABF70076079E /* exclamation.png in Resources */ = {isa = PBXBuildFile; fileRef = DD28FD541A94ABF70076079E /* exclamation.png */; };
-		DD2BC3281A78F1C800176691 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2BC3231A78F1C800176691 /* Bolts.framework */; };
-		DD2BC32A1A78F1C800176691 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2BC3251A78F1C800176691 /* ParseCrashReporting.framework */; };
-		DD2BC32B1A78F1C800176691 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2BC3261A78F1C800176691 /* ParseFacebookUtils.framework */; };
-		DD2BC32C1A78F1C800176691 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2BC3271A78F1C800176691 /* ParseUI.framework */; };
-		DD2BC32D1A78F32B00176691 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2BC3241A78F1C800176691 /* Parse.framework */; };
 		DD3B8FB81AB30D480072CC3F /* TODO_4inchhhh.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3B8FB71AB30D480072CC3F /* TODO_4inchhhh.png */; };
 		DD3B8FBA1AB318520072CC3F /* TODO_4inchuuu.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3B8FB91AB318520072CC3F /* TODO_4inchuuu.png */; };
 		DD3B8FBE1AB44D2F0072CC3F /* graph_3.5inch.png in Resources */ = {isa = PBXBuildFile; fileRef = DD3B8FBD1AB44D2F0072CC3F /* graph_3.5inch.png */; };
@@ -54,10 +42,15 @@
 		DD6A68A61A305F1700EE68E5 /* ContentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6A68A51A305F1700EE68E5 /* ContentsView.m */; };
 		DD6A68A81A3063BE00EE68E5 /* contentsView.png in Resources */ = {isa = PBXBuildFile; fileRef = DD6A68A71A3063BE00EE68E5 /* contentsView.png */; };
 		DD6A68C01A307A4700EE68E5 /* iconTodo.png in Resources */ = {isa = PBXBuildFile; fileRef = DD6A68BF1A307A4700EE68E5 /* iconTodo.png */; };
-		DD6CD8731A90777A00477907 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6CD8721A90777A00477907 /* AdSupport.framework */; };
-		DD6CD8751A90778900477907 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6CD8741A90778800477907 /* CoreData.framework */; };
 		DD6E155C17B90BD000D24891 /* SetteiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6E155B17B90BD000D24891 /* SetteiViewController.m */; };
 		DD8B6E5917BB191A00414607 /* StampViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8B6E5817BB191A00414607 /* StampViewController.m */; };
+		DDA0CF511BEDCB29002571BA /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA0CF501BEDCB29002571BA /* icon1.png */; };
+		DDA0CF531BEDCB4E002571BA /* icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA0CF521BEDCB4E002571BA /* icon5.png */; };
+		DDA0CF551BEDCB67002571BA /* icon7.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA0CF541BEDCB67002571BA /* icon7.png */; };
+		DDA0CF571BEDCB7A002571BA /* icon9.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA0CF561BEDCB7A002571BA /* icon9.png */; };
+		DDA0CF591BEDCB91002571BA /* icon10.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA0CF581BEDCB91002571BA /* icon10.png */; };
+		DDA0CF5B1BEDCBA2002571BA /* icon12.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA0CF5A1BEDCBA2002571BA /* icon12.png */; };
+		DDA0CF6A1BEDF279002571BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDA0CF691BEDF279002571BA /* GoogleService-Info.plist */; };
 		DDA86C3E1A232D270052D35F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDA86C3D1A232D270052D35F /* Images.xcassets */; };
 		DDA86C4D1A2605A70052D35F /* icon11.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86C4B1A2605A70052D35F /* icon11.png */; };
 		DDA86C561A2AD6490052D35F /* todo01_3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA86C551A2AD6490052D35F /* todo01_3.5.png */; };
@@ -88,12 +81,6 @@
 		DDA9B1DE1AB302FA0020D6AD /* graph.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA9B1DC1AB302FA0020D6AD /* graph.png */; };
 		DDA9B1DF1AB302FA0020D6AD /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA9B1DD1AB302FA0020D6AD /* setting.png */; };
 		DDA9B1E11AB3037D0020D6AD /* stampView.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA9B1E01AB3037D0020D6AD /* stampView.png */; };
-		DDB9BEF61ACEAEE500CC715D /* icon7.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB9BEF51ACEAEE500CC715D /* icon7.png */; };
-		DDB9BEF81ACEAF9400CC715D /* icon9.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB9BEF71ACEAF9400CC715D /* icon9.png */; };
-		DDB9BEFA1ACEB01B00CC715D /* icon12.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB9BEF91ACEB01B00CC715D /* icon12.png */; };
-		DDB9BEFC1ACEB17D00CC715D /* icon10.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB9BEFB1ACEB17D00CC715D /* icon10.png */; };
-		DDB9BEFE1ACEB1EB00CC715D /* icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB9BEFD1ACEB1EB00CC715D /* icon5.png */; };
-		DDB9BF001ACEB24400CC715D /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB9BEFF1ACEB24400CC715D /* icon1.png */; };
 		DDD1041A18A2528C006DD1BD /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD1041918A2528C006DD1BD /* MainStoryboard.storyboard */; };
 		DDDC7ACB1A305C3E003592C3 /* closeView.png in Resources */ = {isa = PBXBuildFile; fileRef = DDDC7AC91A305C3E003592C3 /* closeView.png */; };
 		DDDED97E17E9B28600DC97FA /* Storyboard_3.5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDDED97D17E9B28600DC97FA /* Storyboard_3.5.storyboard */; };
@@ -126,6 +113,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		253592D8D9DF7D66421A763D /* Pods-TODO graph.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TODO graph.release.xcconfig"; path = "Pods/Target Support Files/Pods-TODO graph/Pods-TODO graph.release.xcconfig"; sourceTree = "<group>"; };
+		B172E038DEDBAC46671ACAB9 /* libPods-TODO graph.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TODO graph.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0D6238B0950026452D0B084 /* Pods-TODO graph.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TODO graph.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TODO graph/Pods-TODO graph.debug.xcconfig"; sourceTree = "<group>"; };
 		DD04C6751A1B62A9005B27AD /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
 		DD04C6761A1B62A9005B27AD /* icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.png; sourceTree = "<group>"; };
 		DD04C6771A1B62A9005B27AD /* icon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon4.png; sourceTree = "<group>"; };
@@ -134,23 +124,9 @@
 		DD050B601802E9AB00AF0FCE /* GraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphViewController.h; sourceTree = "<group>"; };
 		DD050B611802E9AB00AF0FCE /* GraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		DD174CA11A78DEA2004695E0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		DD174CA31A78DEAA004695E0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		DD174CA51A78DEB9004695E0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		DD174CA71A78DEC3004695E0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DD174CA91A78DED3004695E0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		DD174CAB1A78DEDE004695E0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		DD174CAF1A78DEF4004695E0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		DD174CB11A78DF03004695E0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		DD174CB31A78DF0F004695E0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		DD1A03AC1A31B08200C89E1A /* checkView_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkView_iPad.png; sourceTree = "<group>"; };
 		DD1A03AD1A31B08200C89E1A /* checkView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkView.png; sourceTree = "<group>"; };
-		DD1AFF5E1A90A799001276B5 /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		DD1AFF5F1A90A7B8001276B5 /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		DD1AFF601A90A7C0001276B5 /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		DD1AFF611A90A7CA001276B5 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		DD1AFF621A90A7DC001276B5 /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
-		DD1AFF631A90A7E3001276B5 /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
-		DD1AFF641A90A7F8001276B5 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		DD1FBE4F18B6056200C7AB12 /* todoicon_29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = todoicon_29.png; path = ../todoicon_29.png; sourceTree = "<group>"; };
 		DD1FBE5118B6056200C7AB12 /* todoicon_40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = todoicon_40.png; path = ../todoicon_40.png; sourceTree = "<group>"; };
 		DD1FBE5218B6056200C7AB12 /* todoicon_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = todoicon_50.png; path = ../todoicon_50.png; sourceTree = "<group>"; };
@@ -166,11 +142,6 @@
 		DD1FBE5F18B6056200C7AB12 /* todoicon_152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = todoicon_152.png; path = ../todoicon_152.png; sourceTree = "<group>"; };
 		DD28FD531A94ABF70076079E /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		DD28FD541A94ABF70076079E /* exclamation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exclamation.png; sourceTree = "<group>"; };
-		DD2BC3231A78F1C800176691 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		DD2BC3241A78F1C800176691 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		DD2BC3251A78F1C800176691 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
-		DD2BC3261A78F1C800176691 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		DD2BC3271A78F1C800176691 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		DD3B8FB71AB30D480072CC3F /* TODO_4inchhhh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TODO_4inchhhh.png; sourceTree = "<group>"; };
 		DD3B8FB91AB318520072CC3F /* TODO_4inchuuu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TODO_4inchuuu.png; sourceTree = "<group>"; };
 		DD3B8FBD1AB44D2F0072CC3F /* graph_3.5inch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graph_3.5inch.png; sourceTree = "<group>"; };
@@ -180,12 +151,17 @@
 		DD6A68A51A305F1700EE68E5 /* ContentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentsView.m; sourceTree = "<group>"; };
 		DD6A68A71A3063BE00EE68E5 /* contentsView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contentsView.png; sourceTree = "<group>"; };
 		DD6A68BF1A307A4700EE68E5 /* iconTodo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconTodo.png; sourceTree = "<group>"; };
-		DD6CD8721A90777A00477907 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		DD6CD8741A90778800477907 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DD6E155A17B90BD000D24891 /* SetteiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetteiViewController.h; path = ../SetteiViewController.h; sourceTree = "<group>"; };
 		DD6E155B17B90BD000D24891 /* SetteiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetteiViewController.m; path = ../SetteiViewController.m; sourceTree = "<group>"; };
 		DD8B6E5717BB191A00414607 /* StampViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StampViewController.h; path = ../StampViewController.h; sourceTree = "<group>"; };
 		DD8B6E5817BB191A00414607 /* StampViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StampViewController.m; path = ../StampViewController.m; sourceTree = "<group>"; };
+		DDA0CF501BEDCB29002571BA /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
+		DDA0CF521BEDCB4E002571BA /* icon5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon5.png; sourceTree = "<group>"; };
+		DDA0CF541BEDCB67002571BA /* icon7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon7.png; sourceTree = "<group>"; };
+		DDA0CF561BEDCB7A002571BA /* icon9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon9.png; sourceTree = "<group>"; };
+		DDA0CF581BEDCB91002571BA /* icon10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon10.png; sourceTree = "<group>"; };
+		DDA0CF5A1BEDCBA2002571BA /* icon12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon12.png; sourceTree = "<group>"; };
+		DDA0CF691BEDF279002571BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDA86C3D1A232D270052D35F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DDA86C4B1A2605A70052D35F /* icon11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon11.png; sourceTree = "<group>"; };
 		DDA86C551A2AD6490052D35F /* todo01_3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todo01_3.5.png; sourceTree = "<group>"; };
@@ -216,12 +192,6 @@
 		DDA9B1DC1AB302FA0020D6AD /* graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graph.png; sourceTree = "<group>"; };
 		DDA9B1DD1AB302FA0020D6AD /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 		DDA9B1E01AB3037D0020D6AD /* stampView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stampView.png; sourceTree = "<group>"; };
-		DDB9BEF51ACEAEE500CC715D /* icon7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon7.png; sourceTree = "<group>"; };
-		DDB9BEF71ACEAF9400CC715D /* icon9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon9.png; sourceTree = "<group>"; };
-		DDB9BEF91ACEB01B00CC715D /* icon12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon12.png; sourceTree = "<group>"; };
-		DDB9BEFB1ACEB17D00CC715D /* icon10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon10.png; sourceTree = "<group>"; };
-		DDB9BEFD1ACEB1EB00CC715D /* icon5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon5.png; sourceTree = "<group>"; };
-		DDB9BEFF1ACEB24400CC715D /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
 		DDD1041918A2528C006DD1BD /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DDDC7AC91A305C3E003592C3 /* closeView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeView.png; sourceTree = "<group>"; };
 		DDDED97D17E9B28600DC97FA /* Storyboard_3.5.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_3.5.storyboard; sourceTree = "<group>"; };
@@ -253,26 +223,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD174CB21A78DF03004695E0 /* libz.dylib in Frameworks */,
-				DD174CB01A78DEF4004695E0 /* SystemConfiguration.framework in Frameworks */,
-				DD6CD8751A90778900477907 /* CoreData.framework in Frameworks */,
-				DD6CD8731A90777A00477907 /* AdSupport.framework in Frameworks */,
-				DD174CB41A78DF0F004695E0 /* libsqlite3.dylib in Frameworks */,
-				DD2BC32C1A78F1C800176691 /* ParseUI.framework in Frameworks */,
-				DD2BC32B1A78F1C800176691 /* ParseFacebookUtils.framework in Frameworks */,
-				DD2BC32D1A78F32B00176691 /* Parse.framework in Frameworks */,
-				DD174CAC1A78DEDE004695E0 /* Security.framework in Frameworks */,
 				DD174CAA1A78DED3004695E0 /* QuartzCore.framework in Frameworks */,
-				DD174CA81A78DEC3004695E0 /* MobileCoreServices.framework in Frameworks */,
-				DD174CA61A78DEB9004695E0 /* CoreLocation.framework in Frameworks */,
-				DD174CA41A78DEAA004695E0 /* CFNetwork.framework in Frameworks */,
 				DD174CA21A78DEA2004695E0 /* AudioToolbox.framework in Frameworks */,
 				DDE8E6A517AA042400B8AA4F /* UIKit.framework in Frameworks */,
 				DDE8E6A717AA042400B8AA4F /* Foundation.framework in Frameworks */,
-				DD1AFF651A90A7F8001276B5 /* libGoogleAnalyticsServices.a in Frameworks */,
 				DDE8E6A917AA042400B8AA4F /* CoreGraphics.framework in Frameworks */,
-				DD2BC3281A78F1C800176691 /* Bolts.framework in Frameworks */,
-				DD2BC32A1A78F1C800176691 /* ParseCrashReporting.framework in Frameworks */,
+				9BA9E02A64A2010E5775A252 /* libPods-TODO graph.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +245,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11D50E1C587A4363E1B7289D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D0D6238B0950026452D0B084 /* Pods-TODO graph.debug.xcconfig */,
+				253592D8D9DF7D66421A763D /* Pods-TODO graph.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AF1682A017F3F8A200973991 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,20 +278,6 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		DD1AFF661A90A81A001276B5 /* GoogleAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				DD1AFF5E1A90A799001276B5 /* GAI.h */,
-				DD1AFF5F1A90A7B8001276B5 /* GAITracker.h */,
-				DD1AFF601A90A7C0001276B5 /* GAITrackedViewController.h */,
-				DD1AFF611A90A7CA001276B5 /* GAIDictionaryBuilder.h */,
-				DD1AFF621A90A7DC001276B5 /* GAIFields.h */,
-				DD1AFF631A90A7E3001276B5 /* GAILogger.h */,
-				DD1AFF641A90A7F8001276B5 /* libGoogleAnalyticsServices.a */,
-			);
-			name = GoogleAnalytics;
-			sourceTree = "<group>";
-		};
 		DD2BC3201A78E5A000176691 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,18 +288,6 @@
 				DDA86C6F1A2AE4D60052D35F /* todoSplash_480.320.png */,
 			);
 			name = Splash;
-			sourceTree = "<group>";
-		};
-		DD2BC3221A78F1C800176691 /* parse-library */ = {
-			isa = PBXGroup;
-			children = (
-				DD2BC3231A78F1C800176691 /* Bolts.framework */,
-				DD2BC3241A78F1C800176691 /* Parse.framework */,
-				DD2BC3251A78F1C800176691 /* ParseCrashReporting.framework */,
-				DD2BC3261A78F1C800176691 /* ParseFacebookUtils.framework */,
-				DD2BC3271A78F1C800176691 /* ParseUI.framework */,
-			);
-			path = "parse-library";
 			sourceTree = "<group>";
 		};
 		DDAD094818E946980084C7A3 /* icons */ = {
@@ -426,18 +365,18 @@
 				DDA86CA31A2B48550052D35F /* icon10_todo.png */,
 				DDA86CA71A2B4AD00052D35F /* icon11_todo.png */,
 				DDA86CA91A2B4B940052D35F /* icon12_todo.png */,
-				DDB9BEFF1ACEB24400CC715D /* icon1.png */,
+				DDA0CF501BEDCB29002571BA /* icon1.png */,
 				DD04C6751A1B62A9005B27AD /* icon2.png */,
 				DD04C6761A1B62A9005B27AD /* icon3.png */,
 				DD04C6771A1B62A9005B27AD /* icon4.png */,
-				DDB9BEFD1ACEB1EB00CC715D /* icon5.png */,
+				DDA0CF521BEDCB4E002571BA /* icon5.png */,
 				DD04C6941A1F4DCB005B27AD /* icon6.png */,
-				DDB9BEF51ACEAEE500CC715D /* icon7.png */,
+				DDA0CF541BEDCB67002571BA /* icon7.png */,
 				DD04C6901A1F4DAA005B27AD /* icon8.png */,
-				DDB9BEF71ACEAF9400CC715D /* icon9.png */,
-				DDB9BEFB1ACEB17D00CC715D /* icon10.png */,
+				DDA0CF561BEDCB7A002571BA /* icon9.png */,
+				DDA0CF581BEDCB91002571BA /* icon10.png */,
 				DDA86C4B1A2605A70052D35F /* icon11.png */,
-				DDB9BEF91ACEB01B00CC715D /* icon12.png */,
+				DDA0CF5A1BEDCBA2002571BA /* icon12.png */,
 			);
 			name = stamps;
 			sourceTree = "<group>";
@@ -445,12 +384,13 @@
 		DDE8E69817AA042300B8AA4F = {
 			isa = PBXGroup;
 			children = (
+				DDA0CF691BEDF279002571BA /* GoogleService-Info.plist */,
 				DD4C7B5B187D49FE00A7FC53 /* azuki.ttf */,
-				DD1AFF661A90A81A001276B5 /* GoogleAnalytics */,
 				DDE8E6AA17AA042400B8AA4F /* TODO graph */,
 				DDE8E6CE17AA042400B8AA4F /* TODO graphTests */,
 				DDE8E6A317AA042400B8AA4F /* Frameworks */,
 				DDE8E6A217AA042400B8AA4F /* Products */,
+				11D50E1C587A4363E1B7289D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -466,21 +406,12 @@
 		DDE8E6A317AA042400B8AA4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DD6CD8741A90778800477907 /* CoreData.framework */,
-				DD6CD8721A90777A00477907 /* AdSupport.framework */,
-				DD174CB31A78DF0F004695E0 /* libsqlite3.dylib */,
-				DD174CB11A78DF03004695E0 /* libz.dylib */,
-				DD2BC3221A78F1C800176691 /* parse-library */,
-				DD174CAF1A78DEF4004695E0 /* SystemConfiguration.framework */,
-				DD174CAB1A78DEDE004695E0 /* Security.framework */,
 				DD174CA91A78DED3004695E0 /* QuartzCore.framework */,
-				DD174CA71A78DEC3004695E0 /* MobileCoreServices.framework */,
-				DD174CA51A78DEB9004695E0 /* CoreLocation.framework */,
-				DD174CA31A78DEAA004695E0 /* CFNetwork.framework */,
 				DD174CA11A78DEA2004695E0 /* AudioToolbox.framework */,
 				DDE8E6A417AA042400B8AA4F /* UIKit.framework */,
 				DDE8E6A617AA042400B8AA4F /* Foundation.framework */,
 				DDE8E6A817AA042400B8AA4F /* CoreGraphics.framework */,
+				B172E038DEDBAC46671ACAB9 /* libPods-TODO graph.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -542,9 +473,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDE8E6D917AA042400B8AA4F /* Build configuration list for PBXNativeTarget "TODO graph" */;
 			buildPhases = (
+				203D4FC2EADAAA47D78F48BC /* Check Pods Manifest.lock */,
 				DDE8E69D17AA042400B8AA4F /* Sources */,
 				DDE8E69E17AA042400B8AA4F /* Frameworks */,
 				DDE8E69F17AA042400B8AA4F /* Resources */,
+				23A762DA0E5A9243FB5824B0 /* Embed Pods Frameworks */,
+				8C69F8686A738106093C0D6D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -632,9 +566,9 @@
 				DD04C6911A1F4DAA005B27AD /* icon8.png in Resources */,
 				DD1FBE6418B6056200C7AB12 /* todoicon_50.png in Resources */,
 				DDA86C6C1A2AE3620052D35F /* todoSplash_1136.640.png in Resources */,
-				DDB9BEF81ACEAF9400CC715D /* icon9.png in Resources */,
 				DDA86C561A2AD6490052D35F /* todo01_3.5.png in Resources */,
 				DDA86C941A2B32900052D35F /* icon6_todo.png in Resources */,
+				DDA0CF571BEDCB7A002571BA /* icon9.png in Resources */,
 				DDA86C3E1A232D270052D35F /* Images.xcassets in Resources */,
 				DD3B8FBE1AB44D2F0072CC3F /* graph_3.5inch.png in Resources */,
 				DD1FBE6F18B6056200C7AB12 /* todoicon_120.png in Resources */,
@@ -655,18 +589,19 @@
 				DDA86C861A2B0D570052D35F /* icon3_todo.png in Resources */,
 				DDA86C4D1A2605A70052D35F /* icon11.png in Resources */,
 				DDA86C581A2AD7D00052D35F /* todo01_iPad.png in Resources */,
+				DDA0CF511BEDCB29002571BA /* icon1.png in Resources */,
 				DD1FBE7118B6056200C7AB12 /* todoicon_152.png in Resources */,
 				DDA86C821A2B0B110052D35F /* icon1_todo.png in Resources */,
-				DDB9BEFE1ACEB1EB00CC715D /* icon5.png in Resources */,
-				DDB9BEF61ACEAEE500CC715D /* icon7.png in Resources */,
+				DDA0CF551BEDCB67002571BA /* icon7.png in Resources */,
 				DD28FD561A94ABF70076079E /* exclamation.png in Resources */,
 				DD1FBE6318B6056200C7AB12 /* todoicon_40.png in Resources */,
-				DDB9BEFC1ACEB17D00CC715D /* icon10.png in Resources */,
 				DD1FBE6E18B6056200C7AB12 /* todoicon_114.png in Resources */,
 				DDA86C9E1A2B45D00052D35F /* icon8_todo.png in Resources */,
 				DD04C6951A1F4DCB005B27AD /* icon6.png in Resources */,
 				DDA9B1DE1AB302FA0020D6AD /* graph.png in Resources */,
 				DDA86CC11A2B5EAF0052D35F /* backView_iPadsize.png in Resources */,
+				DDA0CF6A1BEDF279002571BA /* GoogleService-Info.plist in Resources */,
+				DDA0CF591BEDCB91002571BA /* icon10.png in Resources */,
 				DDA86CA41A2B48550052D35F /* icon10_todo.png in Resources */,
 				DD1FBE6A18B6056200C7AB12 /* todoicon_76.png in Resources */,
 				DDA86CA81A2B4AD00052D35F /* icon11_todo.png in Resources */,
@@ -679,10 +614,9 @@
 				DDDED97E17E9B28600DC97FA /* Storyboard_3.5.storyboard in Resources */,
 				DD1FBE6918B6056200C7AB12 /* todoicon_72.png in Resources */,
 				DDA86C5C1A2ADC170052D35F /* plusView_iPad.png in Resources */,
-				DDB9BEFA1ACEB01B00CC715D /* icon12.png in Resources */,
 				DD1FBE6118B6056200C7AB12 /* todoicon_29.png in Resources */,
 				DDDED98017E9B37700DC97FA /* Storyboard_iPad.storyboard in Resources */,
-				DDB9BF001ACEB24400CC715D /* icon1.png in Resources */,
+				DDA0CF531BEDCB4E002571BA /* icon5.png in Resources */,
 				DD6A68C01A307A4700EE68E5 /* iconTodo.png in Resources */,
 				DDA9B1E11AB3037D0020D6AD /* stampView.png in Resources */,
 				DDA86C6E1A2AE41B0052D35F /* todoSplash_2048.1536.png in Resources */,
@@ -692,6 +626,7 @@
 				DDA86C731A2AE7630052D35F /* plusView_iPhone.png in Resources */,
 				DDA86C741A2AE7630052D35F /* trashView_iPhone.png in Resources */,
 				DD3B8FBA1AB318520072CC3F /* TODO_4inchuuu.png in Resources */,
+				DDA0CF5B1BEDCBA2002571BA /* icon12.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,6 +641,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		203D4FC2EADAAA47D78F48BC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		23A762DA0E5A9243FB5824B0 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TODO graph/Pods-TODO graph-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C69F8686A738106093C0D6D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TODO graph/Pods-TODO graph-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DDE8E6C517AA042400B8AA4F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -836,6 +816,7 @@
 		};
 		DDE8E6DA17AA042400B8AA4F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0D6238B0950026452D0B084 /* Pods-TODO graph.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
@@ -846,8 +827,8 @@
 				INFOPLIST_FILE = "TODO graph/TODO graph-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(inherited)",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
@@ -861,6 +842,7 @@
 		};
 		DDE8E6DB17AA042400B8AA4F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 253592D8D9DF7D66421A763D /* Pods-TODO graph.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mayumi Shimamoto (4GLY9T4QVK)";
@@ -870,10 +852,7 @@
 				GCC_PREFIX_HEADER = "TODO graph/TODO graph-Prefix.pch";
 				INFOPLIST_FILE = "TODO graph/TODO graph-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0c7a079b-8fb1-4f88-be99-66c7ee59ebe5";
